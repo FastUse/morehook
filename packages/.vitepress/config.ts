@@ -20,12 +20,12 @@ export default defineConfig({
     } as DefaultTheme.Sidebar,
 
     editLink: {
-      pattern: 'https://github.com/yanquanfahei/blog/blob/main/docs/:path',
-      text: '在 GitHub 上编辑此页面'
+      pattern: 'https://github.com/M-cheng-web/morehook/tree/main/packages/:path',
+      text: 'Suggest changes to this page'
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/process1024/vitepress' }
+      { icon: 'github', link: 'https://github.com/M-cheng-web/morehook' }
     ],
 
     // 这里后续一定要去申请
@@ -35,13 +35,13 @@ export default defineConfig({
     //   indexName: 'vitepress'
     // },
 
-    lastUpdatedText: '最后更新',
+    // lastUpdatedText: '最后更新',
 
-    docFooter: {
-      prev: '上一页',
-      next: '下一页'
-    },
-    outlineTitle: 'This',
+    // docFooter: {
+    //   prev: '上一页',
+    //   next: '下一页'
+    // },
+    // outlineTitle: 'This',
 
     footer: {
       message: 'Released under the MIT License.',
@@ -55,16 +55,17 @@ function nav(): DefaultTheme.NavItem[] {
     { text: '开始', link: '/guide/introduce', activeMatch: '/guide/' },
     {
       text: version,
-      items: [
-        {
-          text: 'Changelog',
-          link: 'https://github.com/vuejs/vitepress/blob/main/CHANGELOG.md'
-        },
-        {
-          text: 'Contributing',
-          link: 'https://github.com/vuejs/vitepress/blob/main/.github/contributing.md'
-        }
-      ]
+      link: ''
+      // items: [
+      //   {
+      //     text: 'Changelog',
+      //     link: 'https://github.com/vuejs/vitepress/blob/main/CHANGELOG.md'
+      //   },
+      //   {
+      //     text: 'Contributing',
+      //     link: 'https://github.com/vuejs/vitepress/blob/main/.github/contributing.md'
+      //   }
+      // ]
     }
   ]
 }

@@ -1,6 +1,6 @@
 import fs from 'fs-extra'
 import fg from 'fast-glob'
-// import Git from 'simple-git'
+import Git from 'simple-git'
 import matter from 'gray-matter'
 import { join, relative, resolve } from 'path'
 import type { PackageIndexes, VueUseFunction } from '../types'
@@ -11,7 +11,7 @@ export const DOCS_URL = 'https://m-cheng-web.github.io/morehook/'
 const DIR_PACKAGE = resolve(__dirname, '..')
 const DIR_ROOT = resolve(__dirname, '../../../')
 const DIR_SRC = resolve(DIR_ROOT, 'packages')
-// const git = Git(DIR_ROOT)
+const git = Git(DIR_ROOT)
 
 /**
  * 将 demo以及分类这种加入到 md文档中
@@ -54,7 +54,7 @@ async function readFunctions() {
 
     await Promise.all(functions.map(async (fnName) => {
       const mdPath = join(dir, fnName, 'index.md')
-      // const tsPath = join(dir, fnName, 'index.ts')
+      const tsPath = join(dir, fnName, 'index.ts')
 
       const fn: VueUseFunction = {
         name: fnName,
@@ -62,7 +62,7 @@ async function readFunctions() {
         docs: '', // 文档地址
         category: '', // 种类
         description: '', // 描述
-        // lastUpdated: +await git.raw(['log', '-1', '--format=%at', tsPath]) * 1000, // 最后更新时间
+        lastUpdated: +await git.raw(['log', '-1', '--format=%at', tsPath]) * 1000, // 最后更新时间
         deprecated: false, // 是否不赞成使用
         alias: [], // 化名
         related: [], // 联系
