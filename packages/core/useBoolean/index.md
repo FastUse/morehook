@@ -1,5 +1,5 @@
 ---
-category: State2
+category: State
 ---
 
 # useBoolean

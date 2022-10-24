@@ -35,8 +35,8 @@ export default defineConfig(async () => {
     ],
     // resolve: {
     //   alias: {
-    //     '@vueuse/shared': resolve(__dirname, 'shared/index.ts'),
     //     '@vueuse/core': resolve(__dirname, 'core/index.ts'),
+    //     '@vueuse/shared': resolve(__dirname, 'shared/index.ts'),
     //     '@vueuse/math': resolve(__dirname, 'math/index.ts'),
     //     '@vueuse/integrations': resolve(__dirname, 'integrations/index.ts'),
     //     '@vueuse/components': resolve(__dirname, 'components/index.ts'),

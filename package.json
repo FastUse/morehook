@@ -1,6 +1,6 @@
 {
   "name": "@morehook/vue",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Vue 的Hooks集合",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -42,6 +42,7 @@
     "@babel/core": "^7.10.2",
     "@babel/preset-env": "^7.10.2",
     "@types/node": "^18.11.2",
+    "@types/web-bluetooth": "^0.0.16",
     "rollup": "^2.15.0",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",

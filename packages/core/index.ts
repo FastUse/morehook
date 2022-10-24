@@ -1,4 +1,4 @@
-export * from './useAsyncState'
+export * from './useToggle'
 export * from './useBoolean'
 // export * from '@vueuse/shared'
 // export * from './types'
