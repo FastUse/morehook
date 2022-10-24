@@ -1,0 +1,78 @@
+{
+  "name": "@morehook/vue",
+  "version": "1.0.9",
+  "description": "Vue 的Hooks集合",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "jsdelivr": "dist/index.umd.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "git@github.com:M-cheng-web/morehook.git",
+  "author": "M-cheng-web <2604856589@qq.com>",
+  "files": [
+    "/dist/index.cjs.js",
+    "/dist/index.esm.js",
+    "/dist/index.umd.js",
+    "/dist/index.d.ts"
+  ],
+  "keywords": [
+    "vuehook",
+    "hook",
+    "vue3",
+    "vue3hook",
+    "morehook",
+    "vueHook"
+  ],
+  "scripts": {
+    "build:rollup": "cross-env NODE_OPTIONS=\"--max-old-space-size=6144\" rollup -c build/rollup.config.build.js",
+    "build:types": "tsc --emitDeclarationOnly && nr types:fix",
+    "dev": "nr update:full && nr docs",
+    "docs": "vitepress dev packages",
+    "docs:serve": "vitepress serve packages",
+    "docs:build": "nr update:full && vitepress build packages",
+    "types:fix": "esno scripts/fix-types.ts",
+    "update": "esno packages/metadata/scripts/update.ts",
+    "update:full": "nr update && nr build:types",
+    "clean": "rimraf dist types packages/*/dist"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "@types/node": "^18.11.2",
+    "rollup": "^2.15.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "rollup-plugin-uglify": "^6.0.4",
+    "typescript": "^4.8.4",
+    "vitepress": "^1.0.0-alpha.21",
+    "vue": "^3.2.41"
+  },
+  "dependencies": {
+    "@algolia/client-search": "^4.14.2",
+    "@types/fs-extra": "^9.0.13",
+    "@types/js-yaml": "^4.0.5",
+    "@types/prettier": "^2.7.1",
+    "consola": "^2.15.3",
+    "cross-env": "^7.0.3",
+    "export-size": "^0.5.2",
+    "fast-glob": "^3.2.12",
+    "fs-extra": "^10.1.0",
+    "gray-matter": "^4.0.3",
+    "markdown-table": "^3.0.2",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "rollup-plugin-dts": "^5.0.0",
+    "simple-git": "^3.14.1",
+    "unplugin-icons": "^0.14.12",
+    "unplugin-vue-components": "^0.22.8",
+    "vitest": "^0.24.3"
+  }
+}

@@ -1,0 +1,112 @@
+import { defineConfig, DefaultTheme } from 'vitepress'
+import { version } from '../../package.json'
+import { categoryNames, metadata } from '../metadata/metadata'
+
+export default defineConfig({
+  lang: 'zh-CN',
+  title: 'VueHooks',
+  description: '针对于vue3的hooks',
+
+  lastUpdated: true,
+  base: '/vuehooks',
+  cleanUrls: 'without-subfolders',
+
+  themeConfig: {
+    nav: nav(),
+
+    sidebar: {
+      '/guide/': sidebarGuide(),
+      '/core/': sidebarCore(),
+    } as DefaultTheme.Sidebar,
+
+    editLink: {
+      pattern: 'https://github.com/yanquanfahei/blog/blob/main/docs/:path',
+      text: '在 GitHub 上编辑此页面'
+    },
+
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/process1024/vitepress' }
+    ],
+
+    // 这里后续一定要去申请
+    // algolia: {
+    //   appId: '8J64VVRP8K',
+    //   apiKey: 'a18e2f4cc5665f6602c5631fd868adfd',
+    //   indexName: 'vitepress'
+    // },
+
+    lastUpdatedText: '最后更新',
+
+    docFooter: {
+      prev: '上一页',
+      next: '下一页'
+    },
+    outlineTitle: 'This',
+
+    footer: {
+      message: 'Released under the MIT License.',
+    },
+  },
+})
+
+// 顶部栏
+function nav(): DefaultTheme.NavItem[] {
+  return [
+    { text: '开始', link: '/guide/introduce', activeMatch: '/guide/' },
+    {
+      text: version,
+      items: [
+        {
+          text: 'Changelog',
+          link: 'https://github.com/vuejs/vitepress/blob/main/CHANGELOG.md'
+        },
+        {
+          text: 'Contributing',
+          link: 'https://github.com/vuejs/vitepress/blob/main/.github/contributing.md'
+        }
+      ]
+    }
+  ]
+}
+
+// 其他tab侧边栏，例如 介绍
+function sidebarGuide() {
+  return [
+    {
+      text: '开始',
+      items: [
+        { text: '介绍', link: '/guide/introduce' },
+        { text: '快速上手', link: '/guide/getting-started' },
+      ]
+    },
+    ...sidebarCore()
+  ]
+}
+
+// 核心tab侧边栏，都是 hooks
+function sidebarCore() {
+  return getCoreSideBar()
+}
+
+function getCoreSideBar() {
+  const links: any[] = []
+
+  for (const name of categoryNames) {
+    if (name.startsWith('_')) continue
+
+    const functions = metadata.functions.filter(i => i.category === name && !i.internal)
+
+    links.push({
+      text: name,
+      items: functions.map(i => ({
+        text: i.name,
+        link: i.external || `/${i.package}/${i.name}/`,
+      })),
+      link: name.startsWith('@')
+        ? functions[0].external || `/${functions[0].package}/README`
+        : undefined,
+    })
+  }
+
+  return links
+}
