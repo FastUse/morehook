@@ -4,11 +4,11 @@ import { categoryNames, metadata } from '../metadata/metadata'
 
 export default defineConfig({
   lang: 'zh-CN',
-  title: 'VueHooks',
+  title: 'MoreHook',
   description: '针对于vue3的hooks',
 
   lastUpdated: true,
-  base: '/vuehooks',
+  base: '/morehook',
   cleanUrls: 'without-subfolders',
 
   themeConfig: {

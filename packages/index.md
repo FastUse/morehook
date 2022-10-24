@@ -1,11 +1,11 @@
 ---
 layout: home
 
-title: VueHooks
+title: MoreHooks
 titleTemplate: 基于vue提炼的一些hooks
 
 hero:
-  name: VueHooks
+  name: MoreHooks
   text: 基于vue提炼的hooks
   tagline: 部分与VueUse相同，会加些甜点，作者目的也是练手观摩
   image:
