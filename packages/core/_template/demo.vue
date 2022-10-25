@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import { useCounter } from '@vueuse/core'
 
 const { count, inc, dec } = useCounter()
@@ -14,4 +14,4 @@ const { count, inc, dec } = useCounter()
       Decrement
     </button>
   </div>
-</template>
+</template> -->

@@ -40,5 +40,5 @@ export default {
       extensions,
     }),
   ],
-  external: ["vue", "vue-router"],
+  external: ["vue-demi", "vue", "vue-router"],
 };

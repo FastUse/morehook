@@ -1,76 +1,93 @@
 lockfileVersion: 5.4
 
-specifiers:
-  '@algolia/client-search': ^4.14.2
-  '@babel/core': ^7.10.2
-  '@babel/preset-env': ^7.10.2
-  '@types/fs-extra': ^9.0.13
-  '@types/js-yaml': ^4.0.5
-  '@types/node': ^18.11.2
-  '@types/prettier': ^2.7.1
-  consola: ^2.15.3
-  cross-env: ^7.0.3
-  export-size: ^0.5.2
-  fast-glob: ^3.2.12
-  fs-extra: ^10.1.0
-  gray-matter: ^4.0.3
-  markdown-table: ^3.0.2
-  prettier: ^2.7.1
-  rimraf: ^3.0.2
-  rollup: ^2.15.0
-  rollup-plugin-babel: ^4.4.0
-  rollup-plugin-commonjs: ^10.1.0
-  rollup-plugin-dts: ^5.0.0
-  rollup-plugin-json: ^4.0.0
-  rollup-plugin-livereload: ^2.0.5
-  rollup-plugin-node-resolve: ^5.2.0
-  rollup-plugin-serve: ^1.1.0
-  rollup-plugin-typescript2: ^0.34.1
-  rollup-plugin-uglify: ^6.0.4
-  simple-git: ^3.14.1
-  typescript: ^4.8.4
-  unplugin-icons: ^0.14.12
-  unplugin-vue-components: ^0.22.8
-  vitepress: ^1.0.0-alpha.21
-  vitest: ^0.24.3
-  vue: ^3.2.41
+importers:
 
-dependencies:
-  '@algolia/client-search': 4.14.2
-  '@types/fs-extra': 9.0.13
-  '@types/js-yaml': 4.0.5
-  '@types/prettier': 2.7.1
-  consola: 2.15.3
-  cross-env: 7.0.3
-  export-size: 0.5.2
-  fast-glob: 3.2.12
-  fs-extra: 10.1.0
-  gray-matter: 4.0.3
-  markdown-table: 3.0.2
-  prettier: 2.7.1
-  rimraf: 3.0.2
-  rollup-plugin-dts: 5.0.0_rgdoxrudhz5lxzgmaosvkjax6q
-  simple-git: 3.14.1
-  unplugin-icons: 0.14.12
-  unplugin-vue-components: 0.22.8_vue@3.2.41
-  vitest: 0.24.3
+  .:
+    specifiers:
+      '@algolia/client-search': ^4.14.2
+      '@babel/core': ^7.10.2
+      '@babel/preset-env': ^7.10.2
+      '@morehook/vue': workspace:*
+      '@types/fs-extra': ^9.0.13
+      '@types/js-yaml': ^4.0.5
+      '@types/node': ^18.11.2
+      '@types/prettier': ^2.7.1
+      '@types/web-bluetooth': ^0.0.16
+      consola: ^2.15.3
+      cross-env: ^7.0.3
+      export-size: ^0.5.2
+      fast-glob: ^3.2.12
+      fs-extra: ^10.1.0
+      gray-matter: ^4.0.3
+      markdown-table: ^3.0.2
+      prettier: ^2.7.1
+      rimraf: ^3.0.2
+      rollup: ^2.15.0
+      rollup-plugin-babel: ^4.4.0
+      rollup-plugin-commonjs: ^10.1.0
+      rollup-plugin-dts: ^5.0.0
+      rollup-plugin-json: ^4.0.0
+      rollup-plugin-livereload: ^2.0.5
+      rollup-plugin-node-resolve: ^5.2.0
+      rollup-plugin-serve: ^1.1.0
+      rollup-plugin-typescript2: ^0.34.1
+      rollup-plugin-uglify: ^6.0.4
+      simple-git: ^3.14.1
+      typescript: ^4.8.4
+      unplugin-icons: ^0.14.12
+      unplugin-vue-components: ^0.22.8
+      vite: ^3.1.8
+      vitepress: ^1.0.0-alpha.21
+      vitest: ^0.24.3
+      vue: ^3.2.41
+      vue-demi: latest
+    dependencies:
+      '@algolia/client-search': 4.14.2
+      '@morehook/vue': link:packages/core
+      '@types/fs-extra': 9.0.13
+      '@types/js-yaml': 4.0.5
+      '@types/prettier': 2.7.1
+      consola: 2.15.3
+      cross-env: 7.0.3
+      export-size: 0.5.2
+      fast-glob: 3.2.12
+      fs-extra: 10.1.0
+      gray-matter: 4.0.3
+      markdown-table: 3.0.2
+      prettier: 2.7.1
+      rimraf: 3.0.2
+      rollup-plugin-dts: 5.0.0_rgdoxrudhz5lxzgmaosvkjax6q
+      simple-git: 3.14.1
+      unplugin-icons: 0.14.12
+      unplugin-vue-components: 0.22.8_vue@3.2.41
+      vite: 3.1.8
+      vitest: 0.24.3
+      vue-demi: 0.13.11_vue@3.2.41
+    devDependencies:
+      '@babel/core': 7.19.6
+      '@babel/preset-env': 7.19.4_@babel+core@7.19.6
+      '@types/node': 18.11.2
+      '@types/web-bluetooth': 0.0.16
+      rollup: 2.78.1
+      rollup-plugin-babel: 4.4.0_yehnshsifcqwc46rl6qn4z7nie
+      rollup-plugin-commonjs: 10.1.0_rollup@2.78.1
+      rollup-plugin-json: 4.0.0
+      rollup-plugin-livereload: 2.0.5
+      rollup-plugin-node-resolve: 5.2.0_rollup@2.78.1
+      rollup-plugin-serve: 1.1.0
+      rollup-plugin-typescript2: 0.34.1_rgdoxrudhz5lxzgmaosvkjax6q
+      rollup-plugin-uglify: 6.0.4_rollup@2.78.1
+      typescript: 4.8.4
+      vitepress: 1.0.0-alpha.21_tbpndr44ulefs3hehwpi2mkf2y
+      vue: 3.2.41
 
-devDependencies:
-  '@babel/core': 7.19.6
-  '@babel/preset-env': 7.19.4_@babel+core@7.19.6
-  '@types/node': 18.11.2
-  rollup: 2.78.1
-  rollup-plugin-babel: 4.4.0_yehnshsifcqwc46rl6qn4z7nie
-  rollup-plugin-commonjs: 10.1.0_rollup@2.78.1
-  rollup-plugin-json: 4.0.0
-  rollup-plugin-livereload: 2.0.5
-  rollup-plugin-node-resolve: 5.2.0_rollup@2.78.1
-  rollup-plugin-serve: 1.1.0
-  rollup-plugin-typescript2: 0.34.1_rgdoxrudhz5lxzgmaosvkjax6q
-  rollup-plugin-uglify: 6.0.4_rollup@2.78.1
-  typescript: 4.8.4
-  vitepress: 1.0.0-alpha.21_tbpndr44ulefs3hehwpi2mkf2y
-  vue: 3.2.41
+  packages/core:
+    specifiers:
+      '@types/web-bluetooth': ^0.0.16
+      vue-demi: '*'
+    dependencies:
+      '@types/web-bluetooth': 0.0.16
+      vue-demi: 0.13.11
 
 packages:
 
@@ -1587,7 +1604,6 @@ packages:
 
   /@types/web-bluetooth/0.0.16:
     resolution: {integrity: sha512-oh8q2Zc32S6gd/j50GowEjKLoOVOwHP/bWVjKJInBwQqdOYMdPrf1oVlelTlyfFK3CKxL1uahMDAr+vy8T7yMQ==}
-    dev: true
 
   /@vitejs/plugin-vue/3.1.2_vite@3.1.8+vue@3.2.41:
     resolution: {integrity: sha512-3zxKNlvA3oNaKDYX0NBclgxTQ1xaFdL7PzwF6zj9tGFziKwmBa3Q/6XcJQxudlT81WxDjEhHmevvIC4Orc1LhQ==}
@@ -3597,6 +3613,19 @@ packages:
     resolution: {integrity: sha512-gu73tuZfJgu+mvCSy4UZwd2JXykjK9zAZsfmDeut5dx/1a7FeTk0XwJsSuqQn+cuMCGVbIBfl+s53X4T19DnzQ==}
     dev: true
 
+  /vue-demi/0.13.11:
+    resolution: {integrity: sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dev: false
+
   /vue-demi/0.13.11_vue@3.2.41:
     resolution: {integrity: sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==}
     engines: {node: '>=12'}
@@ -3610,7 +3639,6 @@ packages:
         optional: true
     dependencies:
       vue: 3.2.41
-    dev: true
 
   /vue/3.2.41:
     resolution: {integrity: sha512-uuuvnrDXEeZ9VUPljgHkqB5IaVO8SxhPpqF2eWOukVrBnRBx2THPSGQBnVRt0GrIG1gvCmFXMGbd7FqcT1ixNQ==}

@@ -1,0 +1,33 @@
+{
+  "name": "@morehook/vue",
+  "version": "1.0.11",
+  "description": "Vue 的Hooks集合",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "jsdelivr": "dist/index.umd.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "git@github.com:M-cheng-web/morehook.git",
+  "author": "M-cheng-web <2604856589@qq.com>",
+  "files": [
+    "/dist/index.cjs.js",
+    "/dist/index.esm.js",
+    "/dist/index.umd.js",
+    "/dist/index.d.ts"
+  ],
+  "keywords": [
+    "vuehook",
+    "hook",
+    "vue3",
+    "vue3hook",
+    "morehook",
+    "vueHook"
+  ],
+  "dependencies": {
+    "@types/web-bluetooth": "^0.0.16",
+    "vue-demi": "*"
+  }
+}

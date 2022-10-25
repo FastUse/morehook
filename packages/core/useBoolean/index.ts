@@ -1,4 +1,4 @@
-import { Ref } from 'vue'
+import { Ref } from 'vue-demi'
 import { useToggle } from '@morehook/vue'
 
 const defaultValue = false

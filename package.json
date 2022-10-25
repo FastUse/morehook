@@ -1,34 +1,16 @@
 {
-  "name": "@morehook/vue",
-  "version": "1.0.10",
-  "description": "Vue 的Hooks集合",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "jsdelivr": "dist/index.umd.js",
-  "types": "dist/index.d.ts",
+  "name": "@morehook/monorepo",
+  "version": "1.0.11",
+  "description": "基本的Vue合成实用程序的集合",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
   "repository": "git@github.com:M-cheng-web/morehook.git",
   "author": "M-cheng-web <2604856589@qq.com>",
-  "files": [
-    "/dist/index.cjs.js",
-    "/dist/index.esm.js",
-    "/dist/index.umd.js",
-    "/dist/index.d.ts"
-  ],
-  "keywords": [
-    "vuehook",
-    "hook",
-    "vue3",
-    "vue3hook",
-    "morehook",
-    "vueHook"
-  ],
   "scripts": {
     "build:rollup": "cross-env NODE_OPTIONS=\"--max-old-space-size=6144\" rollup -c build/rollup.config.build.js",
-    "build:types": "tsc --emitDeclarationOnly && nr types:fix",
+    "build:types": "tsc --emitDeclarationOnly --skipLibCheck && nr types:fix",
     "dev": "nr update:full && nr docs",
     "docs": "vitepress dev packages",
     "docs:serve": "vitepress serve packages",
@@ -57,6 +39,7 @@
     "vue": "^3.2.41"
   },
   "dependencies": {
+    "@morehook/vue": "workspace:*",
     "@algolia/client-search": "^4.14.2",
     "@types/fs-extra": "^9.0.13",
     "@types/js-yaml": "^4.0.5",
@@ -74,6 +57,8 @@
     "simple-git": "^3.14.1",
     "unplugin-icons": "^0.14.12",
     "unplugin-vue-components": "^0.22.8",
-    "vitest": "^0.24.3"
+    "vite": "^3.1.8",
+    "vitest": "^0.24.3",
+    "vue-demi": "latest"
   }
 }

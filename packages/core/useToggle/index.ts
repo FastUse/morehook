@@ -1,4 +1,4 @@
-import { ref, Ref, isRef } from 'vue'
+import { ref, Ref, isRef } from 'vue-demi'
 
 type State = string | number | boolean | undefined
 type RefState = Ref<State>
