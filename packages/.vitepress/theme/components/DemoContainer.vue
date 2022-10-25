@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onErrorCaptured, ref } from 'vue'
+import { onErrorCaptured, ref } from 'vue-demi'
 
 const error = ref(null)
 

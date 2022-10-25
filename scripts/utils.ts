@@ -49,10 +49,12 @@ export async function getTypeDefinition(pkg: string, name: string): Promise<stri
     .trim()
 }
 
+/**
+ * 填充 index.ts 文件的导入导出
+ */
 export async function updateImport({ packages, functions }: PackageIndexes) {
   for (const { name, dir, manualImport } of Object.values(packages)) {
-    if (manualImport)
-      continue
+    if (manualImport) continue
 
     let imports: string[]
     if (name === 'components') {
@@ -71,8 +73,7 @@ export async function updateImport({ packages, functions }: PackageIndexes) {
             arr.push(`export * from '../${fn.package}/${fn.name}/directive'`)
           return arr
         })
-    }
-    else {
+    } else {
       imports = functions
         .filter(i => i.package === name)
         .map(f => f.name)
@@ -80,19 +81,19 @@ export async function updateImport({ packages, functions }: PackageIndexes) {
         .map(name => `export * from './${name}'`)
     }
 
-    if (name === 'core') {
-      imports.push(
-        'export * from \'./types\'',
-        'export * from \'@vueuse/shared\'',
-        'export * from \'./ssr-handlers\'',
-      )
-    }
+    // if (name === 'core') {
+    //   imports.push(
+    //     'export * from \'./types\'',
+    //     'export * from \'@vueuse/shared\'',
+    //     'export * from \'./ssr-handlers\'',
+    //   )
+    // }
 
-    if (name === 'nuxt') {
-      imports.push(
-        'export * from \'@vueuse/core\'',
-      )
-    }
+    // if (name === 'nuxt') {
+    //   imports.push(
+    //     'export * from \'@vueuse/core\'',
+    //   )
+    // }
 
     await fs.writeFile(join(dir, 'index.ts'), `${imports.join('\n')}\n`)
 

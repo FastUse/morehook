@@ -1,0 +1,11 @@
+{
+  "name": "@morehook/metadata",
+  "version": "1.0.11",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "update": "esno scripts/update.ts"
+  },
+  "author": "",
+  "license": "MIT"
+}

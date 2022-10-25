@@ -2,10 +2,18 @@
   "name": "@morehook/vue",
   "version": "1.0.11",
   "description": "Vue 的Hooks集合",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "jsdelivr": "dist/index.umd.js",
-  "types": "dist/index.d.ts",
+  "main": "./index.cjs.js",
+  "module": "./index.esm.js",
+  "jsdelivr": "./index.umd.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "require": "./index.cjs",
+      "import": "./index.mjs"
+    },
+    "./*": "./*"
+  },
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -25,9 +33,5 @@
     "vue3hook",
     "morehook",
     "vueHook"
-  ],
-  "dependencies": {
-    "@types/web-bluetooth": "^0.0.16",
-    "vue-demi": "*"
-  }
+  ]
 }
