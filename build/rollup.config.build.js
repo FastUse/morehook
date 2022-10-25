@@ -6,7 +6,6 @@ coreConfig.output.forEach((item) => {
   item.sourcemap = false;
 });
 
-// coreConfig.plugins = [...coreConfig.plugins];
 coreConfig.plugins = [...coreConfig.plugins, uglify()];
 
 export default [
