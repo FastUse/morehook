@@ -1,4 +1,4 @@
-import { join, resolve, dirname } from 'path'
+import { join, resolve } from 'path'
 import fs from 'fs-extra'
 import matter from 'gray-matter'
 import YAML from 'js-yaml'
@@ -7,10 +7,6 @@ import type { PackageIndexes } from '../packages/metadata/types'
 // import { $fetch } from 'ohmyfetch'
 // import { getCategories } from '../packages/metadata/utils'
 import { packages } from '../meta/packages'
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 export const git = Git()
 

@@ -8,10 +8,6 @@ import metadata from '../packages/metadata/metadata'
 import { packages } from '../meta/packages'
 import { version } from '../package.json'
 import { updateImport } from './utils'
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const rootDir = path.resolve(__dirname, '..')
 const watch = process.argv.includes('--watch')
@@ -61,8 +57,8 @@ async function build() {
   consola.info('Generate Imports')
   await updateImport(metadata.metadata)
 
-  consola.info('Rollup')
-  exec(`pnpm run build:rollup${watch ? ' -- --watch' : ''}`, { stdio: 'inherit' })
+  exec(`pnpm run build:rollup`, { stdio: 'inherit' })
+  // exec(`pnpm run build:rollup${watch ? ' -- --watch' : ''}`, { stdio: 'inherit' })
 
   consola.info('Fix types')
   exec('pnpm run types:fix', { stdio: 'inherit' })

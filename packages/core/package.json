@@ -2,15 +2,16 @@
   "name": "@morehook/vue",
   "version": "1.0.11",
   "description": "Vue 的Hooks集合",
-  "main": "./index.cjs.js",
-  "module": "./index.esm.js",
-  "jsdelivr": "./index.umd.js",
-  "types": "./index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "jsdelivr": "./dist/index.iife.min.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./index.d.ts",
-      "require": "./index.cjs",
-      "import": "./index.mjs"
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
     },
     "./*": "./*"
   },
@@ -20,12 +21,6 @@
   },
   "repository": "git@github.com:M-cheng-web/morehook.git",
   "author": "M-cheng-web <2604856589@qq.com>",
-  "files": [
-    "/dist/index.cjs.js",
-    "/dist/index.esm.js",
-    "/dist/index.umd.js",
-    "/dist/index.d.ts"
-  ],
   "keywords": [
     "vuehook",
     "hook",

@@ -6,11 +6,10 @@
   "publishConfig": {
     "access": "public"
   },
-  "type": "module",
   "repository": "git@github.com:M-cheng-web/morehook.git",
   "author": "M-cheng-web <2604856589@qq.com>",
   "scripts": {
-    "build:rollup": "cross-env NODE_OPTIONS=\"--max-old-space-size=6144\" rollup -c build/rollup.config.build.js",
+    "build:rollup": "cross-env NODE_OPTIONS=\"--max-old-space-size=6144\" rollup -cw",
     "build:types": "tsc --emitDeclarationOnly && nr types:fix",
     "dev": "nr update && nr docs",
     "docs": "vitepress dev packages",
@@ -23,11 +22,11 @@
     "watch": "esno scripts/build.ts --watch"
   },
   "devDependencies": {
+    "@morehook/metadata": "workspace:*",
+    "@morehook/vue": "workspace:*",
     "@algolia/client-search": "^4.14.2",
     "@babel/core": "^7.10.2",
     "@babel/preset-env": "^7.10.2",
-    "@morehook/metadata": "workspace:*",
-    "@morehook/vue": "workspace:*",
     "@rollup/plugin-babel": "^6.0.2",
     "@rollup/plugin-commonjs": "^23.0.2",
     "@rollup/plugin-json": "^5.0.1",
@@ -39,6 +38,7 @@
     "@types/web-bluetooth": "^0.0.16",
     "consola": "^2.15.3",
     "cross-env": "^7.0.3",
+    "esbuild-register": "^3.3.3",
     "export-size": "^0.5.2",
     "fast-glob": "^3.2.12",
     "fs-extra": "^10.1.0",
@@ -48,6 +48,7 @@
     "rimraf": "^3.0.2",
     "rollup": "^3.2.3",
     "rollup-plugin-dts": "^5.0.0",
+    "rollup-plugin-esbuild": "^4.10.1",
     "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-serve": "^1.1.0",
     "rollup-plugin-typescript2": "^0.34.1",
@@ -61,5 +62,8 @@
     "vitest": "^0.24.3",
     "vue": "^3.2.41",
     "vue-demi": "latest"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
   }
 }
