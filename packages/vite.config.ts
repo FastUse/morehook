@@ -33,22 +33,22 @@ export default defineConfig(async () => {
         transformer: 'vue3',
       }),
     ],
-    // resolve: {
-    //   alias: {
-    //     '@vueuse/core': resolve(__dirname, 'core/index.ts'),
-    //     '@vueuse/shared': resolve(__dirname, 'shared/index.ts'),
-    //     '@vueuse/math': resolve(__dirname, 'math/index.ts'),
-    //     '@vueuse/integrations': resolve(__dirname, 'integrations/index.ts'),
-    //     '@vueuse/components': resolve(__dirname, 'components/index.ts'),
-    //     '@vueuse/metadata': resolve(__dirname, 'metadata/index.ts'),
-    //     '@vueuse/docs-utils': resolve(__dirname, '.vitepress/plugins/utils.ts'),
-    //   },
-    //   dedupe: [
-    //     'vue',
-    //     'vue-demi',
-    //     '@vue/runtime-core',
-    //   ],
-    // },
+    resolve: {
+      alias: {
+        '@morehook/core': resolve(__dirname, 'core/index.ts'),
+        // '@vueuse/shared': resolve(__dirname, 'shared/index.ts'),
+        // '@vueuse/math': resolve(__dirname, 'math/index.ts'),
+        // '@vueuse/integrations': resolve(__dirname, 'integrations/index.ts'),
+        // '@vueuse/components': resolve(__dirname, 'components/index.ts'),
+        // '@vueuse/metadata': resolve(__dirname, 'metadata/index.ts'),
+        // '@vueuse/docs-utils': resolve(__dirname, '.vitepress/plugins/utils.ts'),
+      },
+      // dedupe: [
+      //   'vue',
+      //   'vue-demi',
+      //   '@vue/runtime-core',
+      // ],
+    },
     // optimizeDeps: {
     //   exclude: [
     //     'vue-demi',

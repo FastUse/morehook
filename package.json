@@ -1,6 +1,7 @@
 {
   "name": "@morehook/monorepo",
   "version": "1.0.11",
+  "private": true,
   "description": "基本的Vue合成实用程序的集合",
   "license": "MIT",
   "publishConfig": {
@@ -13,7 +14,7 @@
     "build:rollup": "cross-env NODE_OPTIONS=\"--max-old-space-size=6144\" rollup -c",
     "build:types": "tsc --emitDeclarationOnly && nr types:fix",
     "dev": "nr update && nr docs",
-    "docs": "vitepress dev packages",
+    "docs": "vue-demi-switch 3 && vitepress dev packages --open",
     "docs:serve": "vitepress serve packages",
     "docs:build": "nr update:full && vitepress build packages",
     "types:fix": "esno scripts/fix-types.ts",
@@ -67,5 +68,14 @@
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
+  },
+  "pnpm": {
+    "neverBuiltDependencies": [
+      "electron"
+    ],
+    "overrides": {
+      "vue-demi": "0.13.11",
+      "vite": "^3.1.6"
+    }
   }
 }

@@ -26,6 +26,9 @@ const FILES_COPY_LOCAL = [
 
 assert(process.cwd() !== __dirname)
 
+/**
+ * 将打包后的 dist 文件进行二次处理 (复制一些公共文件进 dist 包以及文件的移动)
+ */
 async function buildMetaFiles() {
   for (const { name } of packages) {
     const packageRoot = path.resolve(__dirname, '..', 'packages', name)
@@ -42,9 +45,12 @@ async function buildMetaFiles() {
       await fs.copyFile(path.join(packageRoot, file), path.join(packageDist, file))
 
     const packageJSON = await fs.readJSON(path.join(packageRoot, 'package.json'))
+
+    // 当子类包互相引用时，要手动更改其版本（不改的话则是 workspace）
     for (const key of Object.keys(packageJSON.dependencies || {})) {
-      if (key.startsWith('@vueuse/'))
+      if (key.startsWith('@morehook/')) {
         packageJSON.dependencies[key] = version
+      }
     }
     await fs.writeJSON(path.join(packageDist, 'package.json'), packageJSON, { spaces: 2 })
   }
@@ -61,9 +67,9 @@ async function build() {
   // exec(`pnpm run build:rollup${watch ? ' -- --watch' : ''}`, { stdio: 'inherit' })
 
   consola.info('Fix types')
-  exec('pnpm run types:fix', { stdio: 'inherit' })
+  exec('pnpm run build:types', { stdio: 'inherit' })
 
-  // await buildMetaFiles()
+  await buildMetaFiles()
 }
 
 async function cli() {

@@ -1,5 +1,12 @@
 lockfileVersion: 5.4
 
+neverBuiltDependencies:
+  - electron
+
+overrides:
+  vue-demi: 0.13.11
+  vite: ^3.1.6
+
 importers:
 
   .:
@@ -39,11 +46,11 @@ importers:
       typescript: ^4.8.4
       unplugin-icons: ^0.14.12
       unplugin-vue-components: ^0.22.8
-      vite: ^3.1.8
+      vite: ^3.1.6
       vitepress: ^1.0.0-alpha.21
       vitest: ^0.24.3
       vue: ^3.2.41
-      vue-demi: latest
+      vue-demi: 0.13.11
     devDependencies:
       '@algolia/client-search': 4.14.2
       '@babel/core': 7.19.6
