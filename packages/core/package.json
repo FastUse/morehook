@@ -1,24 +1,21 @@
 {
   "name": "@morehook/core",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Vue 的Hooks集合",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "jsdelivr": "./dist/index.iife.min.js",
-  "types": "./dist/index.d.ts",
+  "main": "./index.cjs",
+  "module": "./index.mjs",
+  "jsdelivr": "./index.iife.min.js",
+  "types": "./index.d.ts",
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs"
+      "types": "./index.d.ts",
+      "require": "./index.cjs",
+      "import": "./index.mjs"
     },
     "./*": "./*"
   },
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
   "repository": "git@github.com:M-cheng-web/morehook.git",
   "author": "M-cheng-web <2604856589@qq.com>",
   "keywords": [
