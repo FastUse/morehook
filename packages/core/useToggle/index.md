@@ -7,7 +7,7 @@ category: State
 
 ## Usage
 ```ts
-import { useTToggle } from '@morehook/vue';
+import { useTToggle } from '@morehook/core';
 
 const [ useToggleDemoState, [ useTToggle, useTSetLeft, useTSetCenter, useTSetRight]] = useToggle('left','center','right');
 

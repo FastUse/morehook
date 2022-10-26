@@ -7,6 +7,7 @@ export async function fixTypes() {
     onlyFiles: true,
   })
 
+
   for (const f of files) {
     const raw = await fs.readFile(f, 'utf-8')
     const changed = raw

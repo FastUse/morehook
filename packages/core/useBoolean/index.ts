@@ -1,5 +1,5 @@
 import { Ref } from 'vue-demi'
-import { useToggle } from '@morehook/vue'
+import { useToggle } from '@morehook/core'
 
 const defaultValue = false
 

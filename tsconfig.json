@@ -18,8 +18,8 @@
     "skipDefaultLibCheck": true,
     "noUnusedLocals": true,
     "paths": {
-      "@morehook/vue": ["./packages/core/index.ts"],
-      "@morehook/vue/*": ["./packages/core/*"],
+      "@morehook/core": ["./packages/core/index.ts"],
+      "@morehook/core/*": ["./packages/core/*"],
       // "@vueuse/docs-utils": ["./packages/.vitepress/plugins/utils.ts"],
       // "@vueuse/integrations": ["./packages/integrations/index.ts"],
       // "@vueuse/metadata": ["./packages/metadata/index.ts"],

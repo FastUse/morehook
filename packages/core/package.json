@@ -1,6 +1,6 @@
 {
-  "name": "@morehook/vue",
-  "version": "1.0.11",
+  "name": "@morehook/core",
+  "version": "1.0.13",
   "description": "Vue 的Hooks集合",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",

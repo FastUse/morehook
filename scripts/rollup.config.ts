@@ -31,7 +31,7 @@ const externals = [
   'vue-demi',
   'vue',
   'vue-router',
-  '@morehook/vue',
+  '@morehook/core',
 ]
 
 const esbuildMinifer = (options: ESBuildOptions) => {
@@ -48,7 +48,7 @@ for (const { globals, name, external, submodules, iife, build, cjs, mjs, dts, ta
 
   const iifeGlobals = {
     'vue-demi': 'VueDemi',
-    '@morehook/vue': 'MoreHook',
+    '@morehook/core': 'MoreHook',
     ...(globals || {}),
   }
 

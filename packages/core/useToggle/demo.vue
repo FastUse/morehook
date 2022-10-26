@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useToggle } from '@morehook/vue';
+import { useToggle } from '@morehook/core';
 
 const [ useToggleDemoState, [ useTToggle, useTSetLeft, useTSetCenter, useTSetRight]] = useToggle('left','center','right');
 

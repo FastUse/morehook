@@ -9,7 +9,8 @@
   "repository": "git@github.com:M-cheng-web/morehook.git",
   "author": "M-cheng-web <2604856589@qq.com>",
   "scripts": {
-    "build:rollup": "cross-env NODE_OPTIONS=\"--max-old-space-size=6144\" rollup -cw",
+    "build": "nr update && esno scripts/build.ts",
+    "build:rollup": "cross-env NODE_OPTIONS=\"--max-old-space-size=6144\" rollup -c",
     "build:types": "tsc --emitDeclarationOnly && nr types:fix",
     "dev": "nr update && nr docs",
     "docs": "vitepress dev packages",
@@ -19,11 +20,12 @@
     "update": "nr -C packages/metadata update",
     "update:full": "nr update && nr build:types",
     "clean": "rimraf dist types packages/*/dist",
-    "watch": "esno scripts/build.ts --watch"
+    "watch": "esno scripts/build.ts --watch",
+    "publish": "esno scripts/publish.ts"
   },
   "devDependencies": {
     "@morehook/metadata": "workspace:*",
-    "@morehook/vue": "workspace:*",
+    "@morehook/core": "workspace:*",
     "@algolia/client-search": "^4.14.2",
     "@babel/core": "^7.10.2",
     "@babel/preset-env": "^7.10.2",

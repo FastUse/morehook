@@ -1,7 +1,7 @@
 export const packages: any[] = [
   {
     name: 'core',
-    display: 'VueUse',
+    display: 'MoreHook',
     description: 'Collection of essential Vue Composition Utilities',
   },
 ]
