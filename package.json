@@ -4,9 +4,6 @@
   "private": true,
   "description": "基本的Vue合成实用程序的集合",
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
   "repository": "git@github.com:M-cheng-web/morehook.git",
   "author": "M-cheng-web <https://github.com/M-cheng-web>",
   "scripts": {
