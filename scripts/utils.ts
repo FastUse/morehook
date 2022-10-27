@@ -225,26 +225,29 @@ export async function updateCountBadge(indexes: PackageIndexes) {
   await fs.writeFile(join(DIR_ROOT, 'packages/public/badge-function-count.svg'), data, 'utf-8')
 }
 
+/**
+ * 更改每个子包的 packages
+ */
 export async function updatePackageJSON(indexes: PackageIndexes) {
   const { version } = await fs.readJSON('package.json')
 
-  for (const { name, description, author, submodules, iife } of packages) {
+  for (const { name, description, author, submodules, iife, keywords } of packages) {
     const packageDir = join(DIR_SRC, name)
     const packageJSONPath = join(packageDir, 'package.json')
     const packageJSON = await fs.readJSON(packageJSONPath)
 
     packageJSON.version = version
     packageJSON.description = description || packageJSON.description
-    packageJSON.author = author || 'Anthony Fu <https://github.com/antfu>'
+    packageJSON.author = author || 'M-cheng-web <https://github.com/M-cheng-web>'
     packageJSON.bugs = {
-      url: 'https://github.com/vueuse/vueuse/issues',
+      url: 'https://github.com/M-cheng-web/morehook/issues',
     }
     packageJSON.homepage = name === 'core'
-      ? 'https://github.com/vueuse/vueuse#readme'
+      ? 'https://github.com/M-cheng-web/morehook#readme'
       : `https://github.com/vueuse/vueuse/tree/main/packages/${name}#readme`
     packageJSON.repository = {
       type: 'git',
-      url: 'git+https://github.com/vueuse/vueuse.git',
+      url: 'git+https://github.com/M-cheng-web/morehook',
       directory: `packages/${name}`,
     }
     packageJSON.main = './index.cjs'
@@ -262,6 +265,9 @@ export async function updatePackageJSON(indexes: PackageIndexes) {
       },
       './*': './*',
       ...packageJSON.exports,
+    }
+    if (keywords) {
+      packageJSON.keywords = [...keywords]
     }
 
     if (submodules) {

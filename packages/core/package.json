@@ -1,7 +1,7 @@
 {
   "name": "@morehook/core",
-  "version": "1.0.19",
-  "description": "Vue 的Hooks集合",
+  "version": "1.1.1",
+  "description": "Collection of essential Vue Composition Utilities",
   "main": "./index.cjs",
   "module": "./index.mjs",
   "jsdelivr": "./index.iife.min.js",
@@ -16,8 +16,12 @@
     "./*": "./*"
   },
   "license": "MIT",
-  "repository": "git@github.com:M-cheng-web/morehook.git",
-  "author": "M-cheng-web <2604856589@qq.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vueuse/vueuse.git",
+    "directory": "packages/core"
+  },
+  "author": "Anthony Fu <https://github.com/antfu>",
   "keywords": [
     "vuehook",
     "hook",
@@ -25,5 +29,10 @@
     "vue3hook",
     "morehook",
     "vueHook"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/vueuse/vueuse/issues"
+  },
+  "homepage": "https://github.com/vueuse/vueuse#readme",
+  "unpkg": "./index.iife.min.js"
 }

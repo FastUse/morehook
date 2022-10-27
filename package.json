@@ -1,6 +1,6 @@
 {
   "name": "@morehook/monorepo",
-  "version": "1.0.11",
+  "version": "1.1.1",
   "private": true,
   "description": "基本的Vue合成实用程序的集合",
   "license": "MIT",
@@ -41,6 +41,7 @@
     "@types/node": "^18.11.2",
     "@types/prettier": "^2.7.1",
     "@types/web-bluetooth": "^0.0.16",
+    "bumpp": "^8.2.1",
     "consola": "^2.15.3",
     "cross-env": "^7.0.3",
     "esbuild-register": "^3.3.3",
