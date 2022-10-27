@@ -4,7 +4,7 @@ import { execSync as exec } from 'child_process'
 import fs from 'fs-extra'
 import fg from 'fast-glob'
 import consola from 'consola'
-import metadata from '../packages/metadata/metadata'
+import { metadata } from '../packages/metadata/metadata'
 import { packages } from '../meta/packages'
 import { version } from '../package.json'
 import { updateImport } from './utils'
@@ -61,7 +61,7 @@ async function build() {
   exec('pnpm run clean', { stdio: 'inherit' })
 
   consola.info('Generate Imports')
-  await updateImport(metadata.metadata)
+  await updateImport(metadata)
 
   exec(`pnpm run build:rollup`, { stdio: 'inherit' })
   // exec(`pnpm run build:rollup${watch ? ' -- --watch' : ''}`, { stdio: 'inherit' })
