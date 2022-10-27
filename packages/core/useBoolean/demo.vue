@@ -1,8 +1,5 @@
-<script lang="ts" setup>
-</script>
+<script lang="ts" setup></script>
 
 <template>
-  <button>
-    Change
-  </button>
+  <button>Change</button>
 </template>
