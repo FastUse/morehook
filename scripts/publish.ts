@@ -11,6 +11,6 @@ let command = 'npm publish --access public'
 if (version.includes('beta')) command += ' --tag beta'
 
 for (const { name } of packages) {
-  execSync(command, { stdio: 'inherit', cwd: path.join('packages', name) })
+  execSync(command, { stdio: 'inherit', cwd: path.join('packages', name, 'dist') })
   consola.success(`Published @morehook/${name}`)
 }

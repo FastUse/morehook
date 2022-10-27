@@ -4,8 +4,9 @@ import matter from 'gray-matter'
 import YAML from 'js-yaml'
 import Git from 'simple-git'
 import type { PackageIndexes } from '../packages/metadata/types'
-// import { $fetch } from 'ohmyfetch'
-// import { getCategories } from '../packages/metadata/utils'
+import { $fetch } from 'ohmyfetch'
+import { getCategories } from '../packages/metadata/utils'
+import type { VueUseFunction } from '../packages/metadata/types'
 import { packages } from '../meta/packages'
 
 export const git = Git()
@@ -50,7 +51,7 @@ export async function getTypeDefinition(pkg: string, name: string): Promise<stri
 }
 
 /**
- * 填充 index.ts 文件的导入导出
+ * 填充 每个子包下的 index.ts 文件的导入导出
  */
 export async function updateImport({ packages, functions }: PackageIndexes) {
   for (const { name, dir, manualImport } of Object.values(packages)) {
@@ -106,33 +107,33 @@ export function uniq<T extends any[]>(a: T) {
   return Array.from(new Set(a))
 }
 
-// export function stringifyFunctions(functions: VueUseFunction[], title = true) {
-//   let list = ''
+export function stringifyFunctions(functions: VueUseFunction[], title = true) {
+  let list = ''
 
-//   const categories = getCategories(functions)
+  const categories = getCategories(functions)
 
-//   for (const category of categories) {
-//     if (category.startsWith('_'))
-//       continue
+  for (const category of categories) {
+    if (category.startsWith('_'))
+      continue
 
-//     if (title)
-//       list += `### ${category}\n`
+    if (title)
+      list += `### ${category}\n`
 
-//     const categoryFunctions = functions
-//       .filter(i => i.category === category)
-//       .sort((a, b) => a.name.localeCompare(b.name))
+    const categoryFunctions = functions
+      .filter(i => i.category === category)
+      .sort((a, b) => a.name.localeCompare(b.name))
 
-//     for (const { name, docs, description, deprecated } of categoryFunctions) {
-//       if (deprecated)
-//         continue
+    for (const { name, docs, description, deprecated } of categoryFunctions) {
+      if (deprecated)
+        continue
 
-//       const desc = description ? ` — ${description}` : ''
-//       list += `  - [\`${name}\`](${docs})${desc}\n`
-//     }
-//     list += '\n'
-//   }
-//   return list
-// }
+      const desc = description ? ` — ${description}` : ''
+      list += `  - [\`${name}\`](${docs})${desc}\n`
+    }
+    list += '\n'
+  }
+  return list
+}
 
 export function replacer(code: string, value: string, key: string, insert: 'head' | 'tail' | 'none' = 'none') {
   const START = `<!--${key}_STARTS-->`
@@ -153,20 +154,20 @@ export function replacer(code: string, value: string, key: string, insert: 'head
   return code.replace(regex, target)
 }
 
-// export async function updatePackageREADME({ packages, functions }: PackageIndexes) {
-//   for (const { name, dir } of Object.values(packages)) {
-//     const readmePath = join(dir, 'README.md')
+export async function updatePackageREADME({ packages, functions }: PackageIndexes) {
+  for (const { name, dir } of Object.values(packages)) {
+    const readmePath = join(dir, 'README.md')
 
-//     if (!fs.existsSync(readmePath))
-//       continue
+    if (!fs.existsSync(readmePath))
+      continue
 
-//     const functionMD = stringifyFunctions(functions.filter(i => i.package === name), false)
-//     let readme = await fs.readFile(readmePath, 'utf-8')
-//     readme = replacer(readme, functionMD, 'FUNCTIONS_LIST')
+    const functionMD = stringifyFunctions(functions.filter(i => i.package === name), false)
+    let readme = await fs.readFile(readmePath, 'utf-8')
+    readme = replacer(readme, functionMD, 'FUNCTIONS_LIST')
 
-//     await fs.writeFile(readmePath, `${readme.trim()}\n`, 'utf-8')
-//   }
-// }
+    await fs.writeFile(readmePath, `${readme.trim()}\n`, 'utf-8')
+  }
+}
 
 export async function updateIndexREADME({ packages, functions }: PackageIndexes) {
   let readme = await fs.readFile('README.md', 'utf-8')
@@ -178,21 +179,21 @@ export async function updateIndexREADME({ packages, functions }: PackageIndexes)
   await fs.writeFile('README.md', `${readme.trim()}\n`, 'utf-8')
 }
 
-// export async function updateFunctionsMD({ packages, functions }: PackageIndexes) {
-//   let mdAddons = await fs.readFile('packages/add-ons.md', 'utf-8')
+export async function updateFunctionsMD({ packages, functions }: PackageIndexes) {
+  let mdAddons = await fs.readFile('packages/add-ons.md', 'utf-8')
 
-//   const addons = Object.values(packages)
-//     .filter(i => i.addon && !i.deprecated)
-//     .map(({ docs, name, display, description }) => {
-//       return `## ${display} - [\`@vueuse/${name}\`](${docs})\n${description}\n${
-//         stringifyFunctions(functions.filter(i => i.package === name), false)}`
-//     })
-//     .join('\n')
+  const addons = Object.values(packages)
+    .filter(i => i.addon && !i.deprecated)
+    .map(({ docs, name, display, description }) => {
+      return `## ${display} - [\`@vueuse/${name}\`](${docs})\n${description}\n${
+        stringifyFunctions(functions.filter(i => i.package === name), false)}`
+    })
+    .join('\n')
 
-//   mdAddons = replacer(mdAddons, addons, 'ADDONS_LIST')
+  mdAddons = replacer(mdAddons, addons, 'ADDONS_LIST')
 
-//   await fs.writeFile('packages/add-ons.md', mdAddons, 'utf-8')
-// }
+  await fs.writeFile('packages/add-ons.md', mdAddons, 'utf-8')
+}
 
 export async function updateFunctionREADME(indexes: PackageIndexes) {
   const hasTypes = fs.existsSync(DIR_TYPES)
@@ -217,12 +218,12 @@ export async function updateFunctionREADME(indexes: PackageIndexes) {
   }
 }
 
-// export async function updateCountBadge(indexes: PackageIndexes) {
-//   const functionsCount = indexes.functions.filter(i => !i.internal).length
-//   const url = `https://img.shields.io/badge/-${functionsCount}%20functions-13708a`
-//   const data = await $fetch(url, { responseType: 'text' })
-//   await fs.writeFile(join(DIR_ROOT, 'packages/public/badge-function-count.svg'), data, 'utf-8')
-// }
+export async function updateCountBadge(indexes: PackageIndexes) {
+  const functionsCount = indexes.functions.filter(i => !i.internal).length
+  const url = `https://img.shields.io/badge/-${functionsCount}%20functions-13708a`
+  const data = await $fetch(url, { responseType: 'text' })
+  await fs.writeFile(join(DIR_ROOT, 'packages/public/badge-function-count.svg'), data, 'utf-8')
+}
 
 export async function updatePackageJSON(indexes: PackageIndexes) {
   const { version } = await fs.readJSON('package.json')
@@ -286,27 +287,27 @@ export async function updatePackageJSON(indexes: PackageIndexes) {
   }
 }
 
-// async function fetchContributors(page = 1) {
-//   const additional = ['egoist']
+async function fetchContributors(page = 1) {
+  const additional = ['egoist']
 
-//   const collaborators: string[] = []
-//   const data = await $fetch<{ login: string }[]>(`https://api.github.com/repos/vueuse/vueuse/contributors?per_page=100&page=${page}`, {
-//     method: 'get',
-//     headers: {
-//       'content-type': 'application/json',
-//     },
-//   }) || []
-//   collaborators.push(...data.map(i => i.login))
-//   if (data.length === 100)
-//     collaborators.push(...(await fetchContributors(page + 1)))
+  const collaborators: string[] = []
+  const data = await $fetch<{ login: string }[]>(`https://api.github.com/repos/vueuse/vueuse/contributors?per_page=100&page=${page}`, {
+    method: 'get',
+    headers: {
+      'content-type': 'application/json',
+    },
+  }) || []
+  collaborators.push(...data.map(i => i.login))
+  if (data.length === 100)
+    collaborators.push(...(await fetchContributors(page + 1)))
 
-//   return Array.from(new Set([
-//     ...collaborators.filter(collaborator => !['renovate[bot]', 'dependabot[bot]', 'renovate-bot'].includes(collaborator)),
-//     ...additional,
-//   ]))
-// }
+  return Array.from(new Set([
+    ...collaborators.filter(collaborator => !['renovate[bot]', 'dependabot[bot]', 'renovate-bot'].includes(collaborator)),
+    ...additional,
+  ]))
+}
 
-// export async function updateContributors() {
-//   const collaborators = await fetchContributors()
-//   await fs.writeFile(join(DIR_SRC, './contributors.json'), `${JSON.stringify(collaborators, null, 2)}\n`, 'utf8')
-// }
+export async function updateContributors() {
+  const collaborators = await fetchContributors()
+  await fs.writeFile(join(DIR_SRC, './contributors.json'), `${JSON.stringify(collaborators, null, 2)}\n`, 'utf8')
+}
