@@ -1,11 +1,14 @@
-# useCounter
+---
+category: State
+---
 
-Basic counter with utility functions.
+# useBoolean
+我是
 
-## Usage
+## 我是副标题一号
+asdd
 
-```ts
-import { useCounter } from '@vueuse/core'
-
-const { count, inc, dec, set, reset } = useCounter()
+## 我是副标题二号
+```
+asdasd22
 ```

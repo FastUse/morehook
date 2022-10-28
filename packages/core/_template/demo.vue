@@ -1,17 +1,5 @@
-<!-- <script setup lang="ts">
-import { useCounter } from '@vueuse/core'
-
-const { count, inc, dec } = useCounter()
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div>
-    <p>Count: {{ count }}</p>
-    <button @click="inc()">
-      Increment
-    </button>
-    <button @click="dec()">
-      Decrement
-    </button>
-  </div>
-</template> -->
+  <div></div>
+</template>
