@@ -48,6 +48,9 @@ export default defineConfig({
     //   message: 'Released under the MIT License.',
     // },
   },
+  head: [
+    ['link', { rel: 'icon', href: '/logo.svg', type: 'image/png' }],
+  ]
 })
 
 // 顶部栏
