@@ -18,7 +18,7 @@ async function run() {
     // updateIndexREADME(metadata),
     // updateFunctionsMD(metadata),
     // updateFunctionREADME(metadata),
-    updatePackageJSON(metadata),
+    updatePackageJSON(metadata)
     // process.env.CI && updateCountBadge(metadata),
     // process.env.CI && updateContributors(),
   ])
