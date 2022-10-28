@@ -23,6 +23,7 @@ importers:
       '@types/fs-extra': ^9.0.13
       '@types/js-yaml': ^4.0.5
       '@types/node': ^18.11.2
+      '@types/prettier': ^2.7.1
       '@types/web-bluetooth': ^0.0.16
       '@typescript-eslint/eslint-plugin': ^5.41.0
       '@typescript-eslint/parser': ^5.41.0
@@ -71,6 +72,7 @@ importers:
       '@types/fs-extra': 9.0.13
       '@types/js-yaml': 4.0.5
       '@types/node': 18.11.5
+      '@types/prettier': 2.7.1
       '@types/web-bluetooth': 0.0.16
       '@typescript-eslint/eslint-plugin': 5.41.0_huremdigmcnkianavgfk3x6iou
       '@typescript-eslint/parser': 5.41.0_wyqvi574yv7oiwfeinomdzmc3m
@@ -1743,6 +1745,10 @@ packages:
 
   /@types/node/18.11.5:
     resolution: {integrity: sha512-3JRwhbjI+cHLAkUorhf8RnqUbFXajvzX4q6fMn5JwkgtuwfYtRQYI3u4V92vI6NJuTsbBQWWh3RZjFsuevyMGQ==}
+    dev: true
+
+  /@types/prettier/2.7.1:
+    resolution: {integrity: sha512-ri0UmynRRvZiiUJdiz38MmIblKK+oH30MztdBVR95dv/Ubw6neWSb8u1XpRb72L4qsZOhz+L+z9JD40SJmfWow==}
     dev: true
 
   /@types/resolve/1.17.1:

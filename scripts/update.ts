@@ -1,15 +1,16 @@
-import fs from 'fs-extra'
+// import fs from 'fs-extra'
+// import {
+//   updateContributors,
+//   updateCountBadge,
+//   updateFunctionREADME,
+//   updateFunctionsMD,
+//   updateImport,
+//   updateIndexREADME,
+//   updatePackageJSON,
+//   updatePackageREADME
+// } from './utils'
 import { metadata } from '../packages/metadata/metadata'
-import {
-  updateContributors,
-  updateCountBadge,
-  updateFunctionREADME,
-  updateFunctionsMD,
-  updateImport,
-  updateIndexREADME,
-  updatePackageJSON,
-  updatePackageREADME
-} from './utils'
+import { updatePackageJSON } from './utils'
 
 async function run() {
   await Promise.all([

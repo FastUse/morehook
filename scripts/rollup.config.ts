@@ -9,47 +9,54 @@ import fg from 'fast-glob'
 import { functions } from '../packages/metadata/metadata'
 import { packages } from '../meta/packages'
 
-const VUE_DEMI_IIFE = fs.readFileSync(require.resolve('vue-demi/lib/index.iife.js'), 'utf-8')
+const VUE_DEMI_IIFE = fs.readFileSync(
+  require.resolve('vue-demi/lib/index.iife.js'),
+  'utf-8'
+)
 const configs: RollupOptions[] = []
 
 const injectVueDemi: Plugin = {
   name: 'inject-vue-demi',
   renderChunk(code) {
     return `${VUE_DEMI_IIFE};\n;${code}`
-  },
+  }
 }
 
 const esbuildPlugin = esbuild({
   target: 'esnext'
 })
 
-const dtsPlugin = [
-  dts(),
-]
+const dtsPlugin = [dts()]
 
-const externals = [
-  'vue-demi',
-  'vue',
-  'vue-router',
-  '@morehook/core',
-]
+const externals = ['vue-demi', 'vue', 'vue-router', '@morehook/core']
 
 const esbuildMinifer = (options: ESBuildOptions) => {
   const { renderChunk } = esbuild(options)
 
   return {
     name: 'esbuild-minifer',
-    renderChunk,
+    renderChunk
   }
 }
 
-for (const { globals, name, external, submodules, iife, build, cjs, mjs, dts, target } of packages) {
+for (const {
+  globals,
+  name,
+  external,
+  submodules,
+  iife,
+  build,
+  cjs,
+  mjs,
+  dts,
+  target
+} of packages) {
   if (build === false) continue
 
   const iifeGlobals = {
     'vue-demi': 'VueDemi',
     '@morehook/core': 'MoreHook',
-    ...(globals || {}),
+    ...(globals || {})
   }
 
   const iifeName = 'MoreHook'
@@ -57,13 +64,18 @@ for (const { globals, name, external, submodules, iife, build, cjs, mjs, dts, ta
 
   if (submodules) {
     // 有子模块的情况
-    functionNames.push(...fg.sync('*/index.ts', { cwd: resolve(`packages/${name}`) }).map(i => i.split('/')[0]))
+    functionNames.push(
+      ...fg
+        .sync('*/index.ts', { cwd: resolve(`packages/${name}`) })
+        .map(i => i.split('/')[0])
+    )
   }
 
   for (const fn of functionNames) {
-    const input = fn === 'index'
-      ? `packages/${name}/index.ts`
-      : `packages/${name}/${fn}/index.ts`
+    const input =
+      fn === 'index'
+        ? `packages/${name}/index.ts`
+        : `packages/${name}/${fn}/index.ts`
 
     const info = functions.find(i => i.name === fn)
 
@@ -72,14 +84,14 @@ for (const { globals, name, external, submodules, iife, build, cjs, mjs, dts, ta
     if (mjs !== false) {
       output.push({
         file: `packages/${name}/dist/${fn}.mjs`,
-        format: 'es',
+        format: 'es'
       })
     }
 
     if (cjs !== false) {
       output.push({
         file: `packages/${name}/dist/${fn}.cjs`,
-        format: 'cjs',
+        format: 'cjs'
       })
     }
 
@@ -91,9 +103,7 @@ for (const { globals, name, external, submodules, iife, build, cjs, mjs, dts, ta
           name: iifeName,
           extend: true,
           globals: iifeGlobals,
-          plugins: [
-            injectVueDemi,
-          ],
+          plugins: [injectVueDemi]
         },
         {
           file: `packages/${name}/dist/${fn}.iife.min.js`,
@@ -104,26 +114,18 @@ for (const { globals, name, external, submodules, iife, build, cjs, mjs, dts, ta
           plugins: [
             injectVueDemi,
             esbuildMinifer({
-              minify: true,
-            }),
-          ],
-        },
+              minify: true
+            })
+          ]
+        }
       )
     }
 
     configs.push({
       input,
       output,
-      plugins: [
-        target
-        ? esbuild({ target })
-        : esbuildPlugin,
-        json(),
-      ],
-      external: [
-        ...externals,
-        ...(external || []),
-      ],
+      plugins: [target ? esbuild({ target }) : esbuildPlugin, json()],
+      external: [...externals, ...(external || [])]
     })
 
     if (dts !== false) {
@@ -131,13 +133,10 @@ for (const { globals, name, external, submodules, iife, build, cjs, mjs, dts, ta
         input,
         output: {
           file: `packages/${name}/dist/${fn}.d.ts`,
-          format: 'es',
+          format: 'es'
         },
         plugins: dtsPlugin,
-        external: [
-          ...externals,
-          ...(external || []),
-        ],
+        external: [...externals, ...(external || [])]
       })
     }
 
@@ -147,33 +146,25 @@ for (const { globals, name, external, submodules, iife, build, cjs, mjs, dts, ta
         output: [
           {
             file: `packages/${name}/dist/${fn}/component.cjs`,
-            format: 'cjs',
+            format: 'cjs'
           },
           {
             file: `packages/${name}/dist/${fn}/component.mjs`,
-            format: 'es',
-          },
+            format: 'es'
+          }
         ],
-        plugins: [
-          esbuildPlugin,
-        ],
-        external: [
-          ...externals,
-          ...(external || []),
-        ],
+        plugins: [esbuildPlugin],
+        external: [...externals, ...(external || [])]
       })
 
       configs.push({
         input: `packages/${name}/${fn}/component.ts`,
         output: {
           file: `packages/${name}/dist/${fn}/component.d.ts`,
-          format: 'es',
+          format: 'es'
         },
         plugins: dtsPlugin,
-        external: [
-          ...externals,
-          ...(external || []),
-        ],
+        external: [...externals, ...(external || [])]
       })
     }
   }

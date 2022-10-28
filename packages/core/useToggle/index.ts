@@ -13,7 +13,9 @@ export function useToggle<T extends State, U extends RefState>(
 /**
  * 用于在N个状态值间切换
  */
-export function useToggle<T extends State, U extends RefState>(...args: (T | U)[]) {
+export function useToggle<T extends State, U extends RefState>(
+  ...args: (T | U)[]
+) {
   const argsStateArr = args.map(variable =>
     isRef(variable) ? variable : ref(variable)
   )

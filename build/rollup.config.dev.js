@@ -1,8 +1,8 @@
-import serve from 'rollup-plugin-serve';
-import livereload from 'rollup-plugin-livereload';
+import serve from 'rollup-plugin-serve'
+import livereload from 'rollup-plugin-livereload'
 import coreConfig from './rollup.config'
 
-coreConfig.output.forEach((item) => {
+coreConfig.output.forEach(item => {
   item.sourcemap = true
 })
 
@@ -11,10 +11,10 @@ coreConfig.plugins = [
   livereload(),
   serve({
     open: true, // 自动打开页面
-    port: 3002, 
+    port: 3002,
     openPage: '/example/index.html', // 打开的页面
     contentBase: ''
   })
 ]
 
-export default coreConfig;
+export default coreConfig

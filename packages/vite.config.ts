@@ -8,13 +8,11 @@ export default defineConfig(async () => {
   return {
     server: {
       hmr: {
-        overlay: false,
+        overlay: false
       },
       fs: {
-        allow: [
-          resolve(__dirname, '..'),
-        ],
-      },
+        allow: [resolve(__dirname, '..')]
+      }
     },
     plugins: [
       // custom
@@ -26,29 +24,29 @@ export default defineConfig(async () => {
         include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
         resolvers: [
           IconsResolver({
-            componentPrefix: '',
-          }),
+            componentPrefix: ''
+          })
         ],
         dts: './.vitepress/components.d.ts',
-        transformer: 'vue3',
-      }),
+        transformer: 'vue3'
+      })
     ],
     resolve: {
       alias: {
-        '@morehook/core': resolve(__dirname, 'core/index.ts'),
+        '@morehook/core': resolve(__dirname, 'core/index.ts')
         // '@vueuse/shared': resolve(__dirname, 'shared/index.ts'),
         // '@vueuse/math': resolve(__dirname, 'math/index.ts'),
         // '@vueuse/integrations': resolve(__dirname, 'integrations/index.ts'),
         // '@vueuse/components': resolve(__dirname, 'components/index.ts'),
         // '@vueuse/metadata': resolve(__dirname, 'metadata/index.ts'),
         // '@vueuse/docs-utils': resolve(__dirname, '.vitepress/plugins/utils.ts'),
-      },
+      }
       // dedupe: [
       //   'vue',
       //   'vue-demi',
       //   '@vue/runtime-core',
       // ],
-    },
+    }
     // optimizeDeps: {
     //   exclude: [
     //     'vue-demi',

@@ -19,8 +19,8 @@
     "html",
   ],
   "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-    "source.fixAll.stylelint": true,
-    "source.fixAll.eslint": true
+    "source.fixAll": false,
+    "source.fixAll.stylelint": false,
+    "source.fixAll.eslint": false
   },
 }

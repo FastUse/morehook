@@ -3,13 +3,13 @@ export function getCategories(functions: any[]): string[] {
     functions
       .filter(i => !i.internal)
       .map(i => i.category)
-      .filter(Boolean),
-  ).sort(
-    (a, b) => (a.startsWith('@') && !b.startsWith('@'))
+      .filter(Boolean)
+  ).sort((a, b) =>
+    a.startsWith('@') && !b.startsWith('@')
       ? 1
-      : (b.startsWith('@') && !a.startsWith('@'))
-          ? -1
-          : a.localeCompare(b),
+      : b.startsWith('@') && !a.startsWith('@')
+      ? -1
+      : a.localeCompare(b)
   )
 }
 
