@@ -2,14 +2,14 @@
 layout: home
 
 title: MoreHooks
-titleTemplate: 基于vue提炼的一些hooks
+titleTemplate: 基于vue提炼的hooks
 
 hero:
   name: MoreHooks
   text: 基于vue提炼的hooks
-  tagline: 部分与VueUse相同，会加些甜点，作者目的也是练手观摩
+  tagline: 阅读 vueuse 源码的一些记录以及业务总结出的一套hooks
   image:
-    src: /logo.png
+    src: /logo.svg
     alt: VitePress
   actions:
     - theme: brand
@@ -19,6 +19,14 @@ hero:
       text: GitHub
       link: https://github.com/M-cheng-web/morehook
     - theme: alt
-      text: vueuse官网
-      link: https://vueuse.org/
+      text: VueUse官网
+      link: https://vueuse.org
+
+features:
+  - title: 含有大部分 VueUse Hooks (部分会自定义)
+    details: vueuse 目前有 200+ hooks
+    icon: 🚀
+  - title: 兼容 Vue3 和 Vue2
+    details: 归功于 antfu 的 vue-demi 插件！
+    icon: ⚡
 ---

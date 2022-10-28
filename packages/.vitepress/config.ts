@@ -12,6 +12,7 @@ export default defineConfig({
   cleanUrls: 'without-subfolders',
 
   themeConfig: {
+    logo: '/logo.svg',
     nav: nav(),
 
     sidebar: {
@@ -43,9 +44,9 @@ export default defineConfig({
     // },
     // outlineTitle: 'This',
 
-    footer: {
-      message: 'Released under the MIT License.',
-    },
+    // footer: {
+    //   message: 'Released under the MIT License.',
+    // },
   },
 })
 
