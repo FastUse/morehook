@@ -46,13 +46,13 @@ npm i @morehook/core
 
 ## Other
 此项目采用 vitepress + rollup 包含打包部署npm包以及对文档的一键部署，用的同样也是 vueuse 那一套流程，去除了单测及一些小点，强烈推荐感兴趣的同学熟悉一番，以下为功能点:
-+ 🔋 自动插入 Type 类型声明
-+ 🔋 自动插入 Demo 示例
-+ 🔋 自动插入 hooks 生成右侧导航栏
-+ 🔋 自动辨别 hooks 所属类型在右侧导航栏进行分类
-+ 🔋 eslint
-+ 🔋 typescript
-+ 🔋 脚本打包并发布文档系统
++ 🚀 自动插入 Type 类型声明
++ 🚀 自动插入 Demo 示例
++ 🚀 自动插入 hooks 生成右侧导航栏
++ 🚀 自动辨别 hooks 所属类型在右侧导航栏进行分类
++ 🚀 eslint
++ 🚀 typescript
++ 🚀 脚本打包并发布文档系统
 
 
 ## SIGNIFICANCE STATEMENT (重要说明)
