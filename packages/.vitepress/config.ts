@@ -2,6 +2,9 @@ import { defineConfig, DefaultTheme } from 'vitepress'
 import { version } from '../../package.json'
 import { categoryNames, metadata } from '../metadata/metadata'
 
+const GuideSidebar = sidebarGuide()
+const CoreSidebar = sidebarCore()
+
 export default defineConfig({
   lang: 'zh-CN',
   title: 'MoreHook',
@@ -16,8 +19,9 @@ export default defineConfig({
     nav: nav(),
 
     sidebar: {
-      '/guide/': sidebarGuide(),
-      '/core/': sidebarCore(),
+      '/guide/': GuideSidebar,
+      '/core/': CoreSidebar,
+      '/functions': CoreSidebar,
     } as DefaultTheme.Sidebar,
 
     editLink: {
@@ -57,6 +61,7 @@ export default defineConfig({
 function nav(): DefaultTheme.NavItem[] {
   return [
     { text: '开始', link: '/guide/introduce', activeMatch: '/guide/' },
+    { text: '搜索', link: '/functions', activeMatch: '/functions/' },
     {
       text: version,
       link: ''

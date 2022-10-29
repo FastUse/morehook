@@ -5,7 +5,6 @@ dist
 node_modules
 index.html
 *.sh
-node_modules
 *.md
 *.woff
 *.ttf

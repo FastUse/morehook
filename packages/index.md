@@ -16,6 +16,9 @@ hero:
       text: 快速开始
       link: /guide/introduce
     - theme: alt
+      text: 搜索Hooks
+      link: /functions
+    - theme: alt
       text: GitHub
       link: https://github.com/M-cheng-web/morehook
     - theme: alt
