@@ -49,7 +49,7 @@ export default defineConfig({
     // },
   },
   head: [
-    ['link', { rel: 'icon', href: '/logo.svg', type: 'image/png' }],
+    ['link', { rel: 'icon', href: 'logo.svg' }],
   ]
 })
 
