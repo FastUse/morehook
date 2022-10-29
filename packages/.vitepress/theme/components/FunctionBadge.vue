@@ -22,14 +22,15 @@ const link = computed(() => {
       target: '_blank',
     }
   }
-  return { href: `/${props.fn.package}/${props.fn.name}/` }
+  return { href: `${props.fn.package}/${props.fn.name}/` }
 })
 </script>
 
 <template>
   <div class="function-badge">
     <a v-bind="link">
-      <span v-html="styledName(fn.name)" />
+      <!-- <span v-html="styledName(fn.name)" /> -->
+      <span>{{ fn.name }}</span>
       <i v-if="fn.external" class="external" />
     </a>
     <span class="line">-</span>
