@@ -80,7 +80,6 @@ async function cli() {
   try {
     await build()
   } catch (e) {
-    console.error(e)
     process.exit(1)
   }
 }
