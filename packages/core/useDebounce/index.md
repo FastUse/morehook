@@ -2,25 +2,28 @@
 category: UnDistribution
 ---
 
-# useBoolean
-优雅的管理 boolean 值
+# useDebounce
+
+处理防抖值 - 连续触发只会更新一次值
 
 ## Usage
 
 ```html
 <template>
   <div>
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+    <div>data: {{ data }}</div>
+    <c-button @click="() => (originData = Math.random())">
+      点击更改 data
+    </c-button>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { ref } from 'vue'
+import { useDebounce } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
+const originData = ref(Math.random())
+
+const data = useDebounce(originData, 1000, true)
 </script>
 ```

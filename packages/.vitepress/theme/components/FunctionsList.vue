@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { Ref } from 'vue'
-import { computed, toRef } from 'vue'
+import type { Ref } from 'vue-demi'
+import { computed, toRef } from 'vue-demi'
 import Fuse from 'fuse.js'
 import { useEventListener, useUrlSearchParams } from '@vueuse/core'
 import { categoryNames, functions } from '../../../../packages/metadata/metadata'

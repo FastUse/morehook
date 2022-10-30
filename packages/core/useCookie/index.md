@@ -4,24 +4,31 @@ category: UnDistribution
 
 # useCookie
 
-用来操作 Cookie
+操作 Cookie
 
 ## Usage
 
 ```html
 <template>
   <div>
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+    <div>value:{{ state }}</div>
+    <button @click="handlerUpdateState">修改Cookie</button>
   </div>
 </template>
 
-<script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+<script setup lang="ts">
+import { useCookie } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
+// 获取cookie中的 obj
+const state = useCookie('obj', {
+  defaultValue: '1111',
+  watch: true,
+  path: '/useCookie',
+  expires: 1
+})
+
+const handlerUpdateState = () => {
+  state.value = String(Math.random())
+}
 </script>
 ```

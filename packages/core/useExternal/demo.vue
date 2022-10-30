@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <div   >
     <p>{{ useBooleanState }}</p>
     <button @click="useBooleanToggle">toggle</button>
     <button @click="setTrue">setTrue</button>
@@ -14,10 +14,4 @@ const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
   useBoolean()
 </script>
 
-<style lang="scss" scoped>
-.demo {
-  button {
-    margin-right: 20px;
-  }
-}
-</style>
+ 

@@ -1,23 +1,28 @@
 <template>
-  <div class="demo">
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+  <div>
+    <div>data: {{ data }}</div>
+    <div>点击 {{ sum }} 次</div>
+    <c-button @click="handleBtn">点击更改 data</c-button>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { ref } from 'vue'
+import { useDebounceFn } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
-</script>
-
-<style lang="scss" scoped>
-.demo {
-  button {
-    margin-right: 20px;
-  }
+const sum = ref(0)
+function handleBtn() {
+  run()
+  sum.value++
 }
-</style>
+
+const data = ref(Math.random())
+
+const { run } = useDebounceFn(
+  () => {
+    data.value = Math.random()
+  },
+  1000,
+  true
+)
+</script>

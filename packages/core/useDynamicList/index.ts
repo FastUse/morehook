@@ -1,6 +1,20 @@
 import { ref, Ref, isRef } from 'vue-demi'
-import { getRandomStr } from '../utils'
 
+/**
+ * 获取随机字符串
+ * randomLength: 生成的字符串长度
+ */
+const getRandomStr = (randomLength = 5) => {
+  return Number(Math.random().toString().slice(3, 8) + Date.now())
+    .toString(36)
+    .slice(0, randomLength)
+}
+
+/**
+ * 用于管理列表状态
+ * @param initialValue 初始列表
+ * @returns
+ */
 export function useDynamicList<T = any>(initialValue: Ref<T[]>) {
   let uuid = 0
   const uuidKeys = ref<string[]>([]) // 记录当前所有的下标

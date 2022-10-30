@@ -6,22 +6,6 @@ type Serializer<T> = {
 }
 
 /**
- * 防抖
- * @param fn
- * @param delay
- * @returns
- */
-const debounce = function (this: any, fn: Fn, delay: number) {
-  let timer: NodeJS.Timeout | null = null
-  return (...args: []) => {
-    if (timer) clearTimeout(timer)
-    timer = setTimeout(() => {
-      fn.call(this, ...args)
-    }, delay)
-  }
-}
-
-/**
  * 节流
  * @param fn
  * @param delay
@@ -124,24 +108,12 @@ const getRandomNum = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-/**
- * 获取随机字符串
- * randomLength: 生成的字符串长度
- */
-const getRandomStr = (randomLength = 5) => {
-  return Number(Math.random().toString().slice(3, 8) + Date.now())
-    .toString(36)
-    .slice(0, randomLength)
-}
-
 export {
-  debounce,
   throttle,
   throttleAndDeBounce,
   TypeSerializers,
   getValueType,
-  getRandomNum,
-  getRandomStr
+  getRandomNum
 }
 
 export type { Fn }

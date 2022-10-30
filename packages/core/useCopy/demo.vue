@@ -1,23 +1,16 @@
 <template>
-  <div class="demo">
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+  <div>
+    <div>当前剪切板内容: {{ text }}</div>
+    <c-button @click="change">更改剪切板内容</c-button>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { useCopy } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
-</script>
+const text = useCopy()
 
-<style lang="scss" scoped>
-.demo {
-  button {
-    margin-right: 20px;
-  }
+function change() {
+  text.value = Math.random()
 }
-</style>
+</script>

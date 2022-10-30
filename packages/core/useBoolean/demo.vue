@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <div>
     <p>{{ useBooleanState }}</p>
     <button @click="useBooleanToggle">toggle</button>
     <button @click="setTrue">setTrue</button>

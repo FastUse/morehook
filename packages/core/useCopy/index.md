@@ -2,25 +2,26 @@
 category: UnDistribution
 ---
 
-# useBoolean
-优雅的管理 boolean 值
+# useCopy
+控制 剪切板内容
 
 ## Usage
 
 ```html
 <template>
-  <div>
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+  <div   >
+    <div>当前剪切板内容: {{ text }}</div>
+    <c-button @click="change">更改剪切板内容</c-button>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { useCopy } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
+const text = useCopy()
+
+function change() {
+  text.value = Math.random()
+}
 </script>
 ```

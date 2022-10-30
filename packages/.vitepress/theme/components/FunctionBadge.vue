@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed } from 'vue-demi'
 import type { VueUseFunction } from '../../../metadata/types'
 import { renderMarkdown } from '../utils'
 
