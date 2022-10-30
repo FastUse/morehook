@@ -1,23 +1,23 @@
-<script setup lang="ts">
-import { useToggle } from '@morehook/core'
-
-const [
-  useToggleDemoState,
-  [useTToggle, useTSetLeft, useTSetCenter, useTSetRight]
-] = useToggle('left', 'center', 'right')
-
-const handleUseTToggle = () => {
-  useTToggle('center')
-}
-</script>
-
 <template>
-  <div>
-    <p>useToggleDemoState: {{ useToggleDemoState }}</p>
-    <button @click="handleUseTToggle">设置指定值</button>
-    <button @click="useTToggle">useTToggle</button>
-    <button @click="useTSetLeft">useTSetLeft</button>
-    <button @click="useTSetCenter">useTSetCenter</button>
-    <button @click="useTSetRight">useTSetRight</button>
+  <div class="demo">
+    <p>{{ useBooleanState }}</p>
+    <button @click="useBooleanToggle">toggle</button>
+    <button @click="setTrue">setTrue</button>
+    <button @click="setFalse">setFalse</button>
   </div>
 </template>
+
+<script lang="ts" setup>
+import { useBoolean } from '@morehook/core'
+
+const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
+  useBoolean()
+</script>
+
+<style lang="scss" scoped>
+.demo {
+  button {
+    margin-right: 20px;
+  }
+}
+</style>

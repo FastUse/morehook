@@ -1,17 +1,26 @@
 ---
-category: State
+category: UnDistribution
 ---
 
-# useToggle
-用于在多个状态值间切换的 Hook（支持N个状态切换）
+# useBoolean
+优雅的管理 boolean 值
 
 ## Usage
-```ts
-import { useTToggle } from '@morehook/core';
 
-const [ useToggleDemoState, [ useTToggle, useTSetLeft, useTSetCenter, useTSetRight]] = useToggle('left','center','right');
+```html
+<template>
+  <div>
+    <p>{{ useBooleanState }}</p>
+    <button @click="useBooleanToggle">toggle</button>
+    <button @click="setTrue">setTrue</button>
+    <button @click="setFalse">setFalse</button>
+  </div>
+</template>
 
-const handleUseTToggle = ()=>{
-  useTToggle('center')
-};
+<script lang="ts" setup>
+import { useBoolean } from '@morehook/core'
+
+const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
+  useBoolean()
+</script>
 ```

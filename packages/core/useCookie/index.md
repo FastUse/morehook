@@ -2,8 +2,9 @@
 category: UnDistribution
 ---
 
-# useBoolean
-优雅的管理 boolean 值
+# useCookie
+
+用来操作 Cookie
 
 ## Usage
 

@@ -21,6 +21,7 @@ importers:
       '@rollup/plugin-json': ^5.0.1
       '@rollup/plugin-node-resolve': ^15.0.1
       '@types/fs-extra': ^9.0.13
+      '@types/js-cookie': ^3.0.2
       '@types/js-yaml': ^4.0.5
       '@types/node': ^18.11.2
       '@types/prettier': ^2.7.1
@@ -30,6 +31,8 @@ importers:
       bumpp: ^8.2.1
       consola: ^2.15.3
       cross-env: ^7.0.3
+      dayjs: ^1.11.6
+      easyqrcodejs: ^4.4.13
       esbuild-register: ^3.3.3
       eslint: ^8.26.0
       eslint-config-prettier: ^8.5.0
@@ -40,6 +43,7 @@ importers:
       fs-extra: ^10.1.0
       fuse.js: ^6.6.2
       gray-matter: ^4.0.3
+      js-cookie: ^3.0.1
       markdown-table: ^3.0.2
       ohmyfetch: ^0.4.20
       prettier: ^2.7.1
@@ -61,6 +65,11 @@ importers:
       vitest: ^0.24.3
       vue: ^3.2.41
       vue-demi: 0.13.11
+      vue-router: ^4.1.6
+    dependencies:
+      dayjs: 1.11.6
+      easyqrcodejs: 4.4.13
+      js-cookie: 3.0.1
     devDependencies:
       '@algolia/client-search': 4.14.2
       '@babel/core': 7.19.6
@@ -72,6 +81,7 @@ importers:
       '@rollup/plugin-json': 5.0.1_rollup@3.2.3
       '@rollup/plugin-node-resolve': 15.0.1_rollup@3.2.3
       '@types/fs-extra': 9.0.13
+      '@types/js-cookie': 3.0.2
       '@types/js-yaml': 4.0.5
       '@types/node': 18.11.5
       '@types/prettier': 2.7.1
@@ -112,6 +122,7 @@ importers:
       vitest: 0.24.3_sass@1.55.0
       vue: 3.2.41
       vue-demi: 0.13.11_vue@3.2.41
+      vue-router: 4.1.6_vue@3.2.41
 
   packages/core:
     specifiers: {}
@@ -1739,6 +1750,10 @@ packages:
       '@types/node': 18.11.5
     dev: true
 
+  /@types/js-cookie/3.0.2:
+    resolution: {integrity: sha512-6+0ekgfusHftJNYpihfkMu8BWdeHs9EOJuGcSofErjstGPfPGEu9yTu4t460lTzzAMl2cM5zngQJqPMHbbnvYA==}
+    dev: true
+
   /@types/js-yaml/4.0.5:
     resolution: {integrity: sha512-FhpRzf927MNQdRZP0J5DLIdTXhjLYzeUTmLAu69mnVksLH9CJY3IuSeEgbKUki7GQZm0WqDkGzyxju2EZGD2wA==}
     dev: true
@@ -2398,6 +2413,10 @@ packages:
     resolution: {integrity: sha512-Z1PhmomIfypOpoMjRQB70jfvy/wxT50qW08YXO5lMIJkrdq4yOTR+AW7FqutScmB9NkLwxo+jU+kZLbofZZq/w==}
     dev: true
 
+  /dayjs/1.11.6:
+    resolution: {integrity: sha512-zZbY5giJAinCG+7AGaw0wIhNZ6J8AhWuSXKvuc1KAyMiRsvGQWqh4L+MomvhdAYjN+lqvVCMq1I41e3YHvXkyQ==}
+    dev: false
+
   /debug/4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
     engines: {node: '>=6.0'}
@@ -2451,6 +2470,10 @@ packages:
   /duplexer/0.1.2:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
     dev: true
+
+  /easyqrcodejs/4.4.13:
+    resolution: {integrity: sha512-NulfMl+bhx/gAjZcBjgNd99jqPE5wEho1Z3nZwnKNISu0STnVq0xFQ28SVhcnOwt+47BJ80dULVNzpGIwYi66A==}
+    dev: false
 
   /electron-to-chromium/1.4.284:
     resolution: {integrity: sha512-M8WEXFuKXMYMVr45fo8mq0wUrrJHheiKZf6BArTKk9ZBYCKJEOU5H8cdWgDT+qCVZf7Na4lVUaZsA+h6uA9+PA==}
@@ -3449,6 +3472,11 @@ packages:
     resolution: {integrity: sha512-34wB/Y7MW7bzjKRjUKTa46I2Z7eV62Rkhva+KkopW7Qvv/OSWBqvkSY7vusOPrNuZcUG3tApvdVgNB8POj3SPw==}
     engines: {node: '>=10'}
     dev: true
+
+  /js-cookie/3.0.1:
+    resolution: {integrity: sha512-+0rgsUXZu4ncpPxRL+lNEptWMOWl9etvPHc/koSRp6MPwpRYAhmk0dUG00J4bxVV3r9uUzfo24wW0knS07SKSw==}
+    engines: {node: '>=12'}
+    dev: false
 
   /js-sdsl/4.1.5:
     resolution: {integrity: sha512-08bOAKweV2NUC1wqTtf3qZlnpOX/R2DU9ikpjOHs0H+ibQv3zpncVQg6um4uYtRtrwIX8M4Nh3ytK4HGlYAq7Q==}
@@ -4622,6 +4650,15 @@ packages:
       semver: 7.3.8
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /vue-router/4.1.6_vue@3.2.41:
+    resolution: {integrity: sha512-DYWYwsG6xNPmLq/FmZn8Ip+qrhFEzA14EI12MsMgVxvHFDYvlr4NXpVF5hrRH1wVcDP8fGi5F4rxuJSl8/r+EQ==}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      '@vue/devtools-api': 6.4.5
+      vue: 3.2.41
     dev: true
 
   /vue/3.2.41:

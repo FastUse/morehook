@@ -1,16 +1,24 @@
-import { ref } from 'vue-demi'
+import { Ref } from 'vue-demi'
+import { useToggle } from '@morehook/core'
 
-export function useCounter(initialValue = 0) {
-  const count = ref(initialValue)
+const defaultValue = false
 
-  const inc = (delta = 1) => (count.value += delta)
-  const dec = (delta = 1) => (count.value -= delta)
-  const get = () => count.value
-  const set = (val: number) => (count.value = val)
-  const reset = (val = initialValue) => {
-    initialValue = val
-    return set(val)
-  }
+interface Actions {
+  toggle: () => void
+  setTrue: () => void
+  setFalse: () => void
+}
 
-  return { count, inc, dec, get, set, reset }
+export function useBoolean(value?: boolean): [Ref<boolean>, Actions]
+
+export function useBoolean(value?: boolean) {
+  value = value || defaultValue
+
+  const [state, [toggle]] = useToggle(value, !value)
+
+  const setTrue = () => toggle(true)
+  const setFalse = () => toggle(false)
+
+  const actions: Actions = { toggle, setTrue, setFalse }
+  return [state, actions]
 }

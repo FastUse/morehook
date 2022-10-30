@@ -3,12 +3,24 @@ category: State
 ---
 
 # useBoolean
-我是
+优雅的管理 boolean 值
 
-## 我是副标题一号
-asdd
+## Usage
 
-## 我是副标题二号
-```
-asdasd22
+```html
+<template>
+  <div>
+    <p>{{ useBooleanState }}</p>
+    <button @click="useBooleanToggle">toggle</button>
+    <button @click="setTrue">setTrue</button>
+    <button @click="setFalse">setFalse</button>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { useBoolean } from '@morehook/core'
+
+const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
+  useBoolean()
+</script>
 ```
