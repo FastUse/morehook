@@ -27,7 +27,7 @@ hero:
 
 features:
   - title: 含有大部分 VueUse Hooks (部分会自定义)
-    details: vueuse 目前有 200+ hooks
+    details: 感谢 vueuse 的贡献者，作者受益匪浅
     icon: 🚀
   - title: 兼容 Vue3 和 Vue2
     details: 归功于 antfu 的 vue-demi 插件！

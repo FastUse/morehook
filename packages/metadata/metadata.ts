@@ -7,6 +7,8 @@ import _metadata, {
 
 // 类型标签列表排序
 const categoriesOrder = [
+  'UnDistribution', // 待分配~
+
   // 状态 - 对数据的状态更改捕捉
   // 例如记录promise的等待以及成功状态，storage自动存取，一些双向的数据更改可以放这个分类
   'State',

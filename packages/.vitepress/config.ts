@@ -86,7 +86,7 @@ function sidebarGuide() {
       text: '开始',
       items: [
         { text: '介绍', link: '/guide/introduce' },
-        { text: '快速上手', link: '/guide/getting-started' },
+        { text: '分类说明', link: '/guide/categories' },
       ]
     },
     ...sidebarCore()
