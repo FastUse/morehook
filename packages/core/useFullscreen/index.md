@@ -2,25 +2,29 @@
 category: UnDistribution
 ---
 
-# useBoolean
-优雅的管理 boolean 值
+# useFullscreen
+
+控制元素全屏
 
 ## Usage
 
 ```html
 <template>
   <div>
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+    <div style="border: 1px solid red; background: #fff" ref="tar">123</div>
+    <p>{{ isFullscreen }}</p>
+
+    <button @click="setFull">设置div全屏</button>
+    <button @click="exitFull">退出div全屏</button>
+    <button @click="toggle">div-toggle</button>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { ref } from 'vue'
+import { useFullscreen } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
+const tar = ref()
+const [isFullscreen, { setFull, exitFull, toggle }] = useFullscreen(tar)
 </script>
 ```

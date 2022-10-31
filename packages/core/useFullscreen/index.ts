@@ -1,9 +1,19 @@
 import { ref, Ref, isRef, onMounted, onUnmounted } from 'vue-demi'
 
+/**
+ * onFull: 全屏钩子
+ * onExitFull: 退出全屏钩子
+ */
 interface Options {
   onFull?: () => void
   onExitFull?: () => void
 }
+
+/**
+ * setFull: 设置全屏
+ * exitFull: 退出全屏
+ * toggle: 切换是否全屏
+ */
 interface Actions {
   setFull: () => void
   exitFull: () => void
@@ -21,6 +31,12 @@ const defaultOptions = {
   }
 }
 
+/**
+ * 控制元素全屏
+ * @param target 需要全屏的元素(默认 document.body)
+ * @param options
+ * @returns isFullscreen: 是否全屏状态， actions: 操控是否全屏
+ */
 export function useFullscreen(
   target?: Target,
   options?: Options

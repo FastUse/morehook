@@ -2,6 +2,10 @@ import { ref, Ref, isRef, watch as vueWatch } from 'vue-demi'
 import { TypeSerializers, getValueType } from '../utils'
 
 const storage = localStorage
+
+/**
+ * watch: 是否监听返回出去的值，当此值变化时同时更改 localStorage
+ */
 interface Options {
   watch: boolean
 }
@@ -10,6 +14,13 @@ const defaultOptions = {
   watch: true
 }
 
+/**
+ * 管理 localStorage
+ * @param key 键
+ * @param initialValue 初始值
+ * @param options
+ * @returns 返回取到的值
+ */
 export function useLocalStorage<T = any>(
   key: string,
   initialValue?: T | Ref<T>,

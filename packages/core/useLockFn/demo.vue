@@ -1,5 +1,5 @@
 <template>
-  <div   >
+  <div>
     <p>{{ useBooleanState }}</p>
     <button @click="useBooleanToggle">toggle</button>
     <button @click="setTrue">setTrue</button>
@@ -13,5 +13,3 @@ import { useBoolean } from '@morehook/core'
 const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
   useBoolean()
 </script>
-
- 

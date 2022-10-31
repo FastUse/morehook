@@ -2,25 +2,28 @@
 category: UnDistribution
 ---
 
-# useBoolean
-优雅的管理 boolean 值
+# useLocalStorage
+
+管理 localStorage
 
 ## Usage
 
 ```html
 <template>
   <div>
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+    <p>localData: {{ localData }}</p>
+
+    <c-button @click="changeData">更改data值</c-button>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { useLocalStorage } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
+function changeData() {
+  localData.value = Math.random()
+}
+
+const localData = useLocalStorage('a')
 </script>
 ```
