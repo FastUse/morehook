@@ -2,25 +2,33 @@
 category: UnDistribution
 ---
 
-# useBoolean
-优雅的管理 boolean 值
+# useLockFn
+
+给函数设置单行道，只有此函数执行完毕才能执行下一个
 
 ## Usage
 
 ```html
 <template>
   <div>
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+    <p>sum：{{ sum }}</p>
+    <button @click="fun">(异步)点击加 1</button>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { ref } from 'vue'
+import { useLockFn } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
+const sum = ref(0)
+const fun = useLockFn(
+  () =>
+    new Promise<void>(resolve => {
+      sum.value++
+      setTimeout(() => {
+        resolve()
+      }, 1000)
+    })
+)
 </script>
 ```
