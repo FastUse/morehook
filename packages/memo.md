@@ -18,6 +18,7 @@
 + 滑块验证
 + 随机字符串 (现在在 hooks 已经有了，拿出来封装一下就行)
 
+https://github.com/proYang/outils js工具库
 
 https://github.com/vueuse/vueuse
 
