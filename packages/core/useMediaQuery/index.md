@@ -2,25 +2,22 @@
 category: UnDistribution
 ---
 
-# useBoolean
-优雅的管理 boolean 值
+# useMediaQuery
+
+监听 mediaQuery 状态 (此 hook 只针对单个监听，useMediaQueryS支持多个)
 
 ## Usage
 
 ```html
 <template>
   <div>
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+    <p>当前是否满足设定值 : {{ state }}</p>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { useMediaQuery } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
+const state = useMediaQuery('(min-width: 680px)')
 </script>
 ```

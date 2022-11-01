@@ -9,25 +9,11 @@ type mqlListType = {
   handleChange: (event: MediaQueryListEvent) => void
 }[]
 
-// 使用示例
-// const query = {
-//   xs: '(max-width:500px)',
-//   sm: '(min-width:500px)',
-//   md: '(min-width:700px)',
-//   lg: '(min-width:900px)',
-//   xl: '(min-width:1100px)',
-//   xxl: '(min-width:1300px)'
-// }
-// const queryKey = useMediaQueryS(query)
-
-// watch(
-//   queryKey,
-//   value => {
-//     console.log('value', value)
-//   },
-//   { immediate: true }
-// )
-
+/**
+ * 监听多个 mediaQuery 状态
+ * @param query 需要监听的阈值对象
+ * @returns 返回当前满足value设定的 key
+ */
 export function useMediaQueryS(query: queryType) {
   const activeKey = ref<string>()
   const mqlList: mqlListType = []

@@ -17,6 +17,7 @@
 + vueuse 的还带有 组件类型 hook，而且他的demo能在文档中运行
 + 滑块验证
 + 随机字符串 (现在在 hooks 已经有了，拿出来封装一下就行)
++ 上传文件的，面试官那一套
 
 https://github.com/proYang/outils js工具库
 

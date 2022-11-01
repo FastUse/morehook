@@ -1,17 +1,11 @@
 <template>
-  <div   >
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+  <div>
+    <p>当前是否满足设定值 : {{ state }}</p>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { useMediaQuery } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
+const state = useMediaQuery('(min-width: 680px)')
 </script>
-
- 
