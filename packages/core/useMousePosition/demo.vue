@@ -1,17 +1,19 @@
 <template>
-  <div   >
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+  <div>
+    <div
+      ref="target"
+      style="border: 1px solid red; width: 300px; height: 300px"
+    ></div>
+    <p>clickX: {{ clickX }}</p>
+    <p>clickY: {{ clickY }}</p>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { ref } from 'vue'
+import { useMousePosition } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
+const target = ref()
+
+const { clickX, clickY } = useMousePosition({ type: 'move', target })
 </script>
-
- 

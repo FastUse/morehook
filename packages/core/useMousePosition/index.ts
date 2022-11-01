@@ -3,6 +3,10 @@ import { ref, Ref, isRef, onMounted, onBeforeUnmount } from 'vue-demi'
 // 分两种 1.点击触发 2.移动触发
 // 也分为全局触发和某个元素触发
 
+/**
+ * type: click(点击触发) move(移动触发) (默认 click)
+ * target: 触发的元素 (默认 document.body)
+ */
 interface Options {
   type?: 'click' | 'move'
   target?: HTMLElement | Ref<HTMLElement>
@@ -17,6 +21,13 @@ const defaultOptions = {
   }
 }
 
+/**
+ * 捕捉鼠标方位
+ * 分两种 1.点击触发 2.移动触发
+ * 也分为全局触发和某个元素触发
+ * @param options Options
+ * @return clickX: x坐标 clickY: y坐标
+ */
 export function useMousePosition(options?: Options): {
   clickX: Ref<number>
   clickY: Ref<number>
