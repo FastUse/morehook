@@ -3,6 +3,10 @@ import { ref, Ref, watch, isRef } from 'vue-demi'
 
 type Text = Ref<string> | string
 
+/**
+ * onRenderingStart: 开始渲染钩子
+ * onRenderingEnd: 渲染结束钩子
+ */
 interface useQRCodeOptions {
   onRenderingStart?: (qrCodeOptions: any) => void
   onRenderingEnd?: (qrCodeOptions: any, dataURL: string) => void
@@ -15,6 +19,12 @@ const defaultUseQRCodeOptions = {
   }
 }
 
+/**
+ * 根据字符串生成二维码
+ * @param text 二维码字符串内容
+ * @param options useQRCodeOptions
+ * @returns base64 格式的二维码内容
+ */
 export function useQRCode(text: Text, options?: useQRCodeOptions) {
   const state = ref<string>()
 

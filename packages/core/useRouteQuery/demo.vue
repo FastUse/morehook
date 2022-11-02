@@ -1,17 +1,18 @@
 <template>
-  <div   >
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+  <div>
+    <div class="hello" style="display: flex; align-items: flex-start">
+      <p>value:{{ state }}</p>
+      <button @click="handlerUpdateState">修改query</button>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { useRouteQuery } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
+const state = useRouteQuery('a')
+
+const handlerUpdateState = () => {
+  state.value = String(Math.random())
+}
 </script>
-
- 

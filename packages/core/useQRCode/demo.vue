@@ -1,15 +1,23 @@
 <template>
   <div>
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+    <div>二维码:</div>
+    <img :src="state" alt="" />
+    <c-button @click="change">更改二维码内容</c-button>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { ref } from 'vue'
+import { useQRCode } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
+const text = ref<string>('https://www.baidu.com/')
+
+const state = useQRCode(text, {
+  // logo: img.default,
+  colorDark: '#000000'
+})
+
+function change() {
+  text.value = String(Math.random())
+}
 </script>

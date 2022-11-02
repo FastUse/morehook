@@ -21,8 +21,14 @@
 
 https://github.com/proYang/outils js工具库
 
+https://github.com/sindresorhus/query-string 字符串转对象 工具库
+
 https://github.com/vueuse/vueuse
 
 https://github.com/yanzhandong/v3hooks
 
 https://github.com/ymhczm/tankhooks
+
+
++ useRouteQuery 用到了 vue-router,后面打包要屏蔽
++ useRouteQuery 用到了 vue-router，不能在文档系统中测试，后面要参考 vueuse 是如何处理的
