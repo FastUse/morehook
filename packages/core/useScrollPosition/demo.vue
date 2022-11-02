@@ -1,15 +1,24 @@
 <template>
   <div>
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+    <div
+      ref="divRef"
+      style="border: 1px solid red; height: 300px; overflow: auto"
+    >
+      <div style="height: 900px; background-color: yellowgreen">
+        我是内容，请滑动我，除了我你还可以滑动外层查看效果
+      </div>
+    </div>
+    <p>document bodu scrollY: {{ scrollY }}</p>
+    <p>div scrollY: {{ divScrollY }}</p>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { ref } from 'vue'
+import { useScrollPosition } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
+const { scrollY } = useScrollPosition()
+
+const divRef = ref()
+const { scrollY: divScrollY } = useScrollPosition({ target: divRef })
 </script>

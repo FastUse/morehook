@@ -2,25 +2,33 @@
 category: UnDistribution
 ---
 
-# useBoolean
-优雅的管理 boolean 值
+# useScrollPosition
+
+获取scroll 的Y轴滚动量 (可指定元素)
 
 ## Usage
 
 ```html
 <template>
   <div>
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+    <div
+      ref="divRef"
+      style="border: 1px solid red; height: 300px; overflow: auto"
+    >
+      <div style="height: 900px; background-color: yellowgreen"></div>
+    </div>
+    <p>document bodu scrollY: {{ scrollY }}</p>
+    <p>div scrollY: {{ divScrollY }}</p>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { ref } from 'vue'
+import { useScrollPosition } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
+const { scrollY } = useScrollPosition()
+
+const divRef = ref()
+const { scrollY: divScrollY } = useScrollPosition({ target: divRef })
 </script>
 ```

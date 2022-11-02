@@ -1,7 +1,8 @@
 import { ref, Ref, isRef, onMounted, onBeforeUnmount, watch } from 'vue-demi'
 
-// 分为全局触发和某个元素触发
-
+/**
+ * target: 需要获取滚动量的元素 (默认 )
+ */
 interface Options {
   target?: HTMLElement | Ref<HTMLElement>
 }
@@ -10,6 +11,12 @@ const defaultOptions = {
   target: window
 }
 
+/**
+ * 获取scroll 的Y轴滚动量
+ * 分为全局触发和某个元素触发
+ * @param options Options
+ * @return scrollY: 当更改此值时会直接滚动到目标区域
+ */
 export function useScrollPosition(options?: Options): {
   scrollY: Ref<number>
 }
