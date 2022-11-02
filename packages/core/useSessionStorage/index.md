@@ -2,26 +2,28 @@
 category: UnDistribution
 ---
 
-# useBoolean
+# useSessionStorage
 
-优雅的管理 boolean 值
+优雅操作 sessionStorage 存储
 
 ## Usage
 
 ```html
 <template>
   <div>
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+    <p>sessionStorage-a: {{ sessionStorage }}</p>
+
+    <c-button @click="change">更改 sessionStorage</c-button>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { useSessionStorage } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
+const sessionStorage = useSessionStorage<any>('a', 'cheng')
+
+function change() {
+  sessionStorage.value = Math.random()
+}
 </script>
 ```

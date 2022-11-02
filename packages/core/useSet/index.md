@@ -2,25 +2,27 @@
 category: UnDistribution
 ---
 
-# useBoolean
-优雅的管理 boolean 值
+# useSet
+
+快捷操作 Set 数据结构
 
 ## Usage
 
 ```html
 <template>
   <div>
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+    <p>setVal: {{ setVal }}</p>
+
+    <c-button @click="add(4)">添加 set值</c-button>
+    <c-button @click="remove(4)">删除 set值</c-button>
+    <c-button @click="clear">清除全部 set值</c-button>
+    <c-button @click="reset([7, 8, 9])">重置 set值</c-button>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { useSet } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
+const [setVal, { add, remove, clear, reset }] = useSet([1, 2, 3])
 </script>
 ```

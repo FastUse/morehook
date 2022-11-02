@@ -33,3 +33,4 @@ https://github.com/ymhczm/tankhooks
 + useRouteQuery 用到了 vue-router,后面打包要屏蔽
 + useRouteQuery 用到了 vue-router，不能在文档系统中测试，后面要参考 vueuse 是如何处理的，而且现在进这个页面会直接报错导致空页面
 + 思考一下兼容性,比如现在的入参是一个，但是以后扩展成两个时怎么对以前的进行兼容，返回参数也是同理
++ 最好以后写大的业务hook时，诺列一下业务场景
