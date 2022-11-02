@@ -17,7 +17,7 @@ category: UnDistribution
     >
       <div style="height: 900px; background-color: yellowgreen"></div>
     </div>
-    <p>document bodu scrollY: {{ scrollY }}</p>
+    <p>document body scrollY: {{ scrollY }}</p>
     <p>div scrollY: {{ divScrollY }}</p>
   </div>
 </template>
