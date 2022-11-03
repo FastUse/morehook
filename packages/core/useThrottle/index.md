@@ -15,7 +15,7 @@ category: UnDistribution
     <p>源数据 state: {{ state }}</p>
     <p>节流数据 throttleState: {{ throttleState }}</p>
 
-    <c-button @click="changeState">节流更改state</c-button>
+    <button @click="changeState">节流更改state</button>
   </div>
 </template>
 
