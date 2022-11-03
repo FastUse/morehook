@@ -1,17 +1,16 @@
 <template>
-  <div   >
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+  <div>
+    <p ref="p">可选择区域: asdasasdsadsadsadasd eeeeeeeeeeeeeeee</p>
+    <div>已选择的值：{{ text }}</div>
+    <div>位置信息：rect: {{ rect }}</div>
+    <div>left: {{ rect.left }}</div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { ref } from 'vue'
+import { useTextSelection } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
+const p = ref()
+const { text, rect } = useTextSelection(p)
 </script>
-
- 

@@ -13,6 +13,12 @@ const defaultReact = {
   width: NaN
 }
 
+/**
+ * 获取用户选中的字符串
+ * @param target 指定在哪个元素下的选中
+ * @returns text: 选中的内容字符串 rect: 参照 https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect
+ * @tips 获取到的 数据是相对于视图的左上角计算的(除 height，width外)
+ */
 export function useTextSelection(target: Target = document) {
   const state = reactive({
     text: '',
