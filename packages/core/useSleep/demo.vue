@@ -1,17 +1,25 @@
 <template>
-  <div   >
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+  <div>
+    <p>num: {{ num }}</p>
+
+    <c-button @click="sleep">暂停3秒执行</c-button>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { ref } from 'vue'
+import { useSleep } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
+const num = ref(0)
+let timmer = setInterval(() => {
+  num.value++
+}, 1000)
+
+async function sleep() {
+  clearInterval(timmer)
+  await useSleep(3000)
+  timmer = setInterval(() => {
+    num.value++
+  }, 1000)
+}
 </script>
-
- 

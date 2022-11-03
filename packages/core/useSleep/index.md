@@ -2,25 +2,38 @@
 category: UnDistribution
 ---
 
-# useBoolean
-优雅的管理 boolean 值
+# useSleep
+
+暂停程序 - 在设定时间后继续执行
+
+谨慎选择 while暂停方式，其原理是跑满cpu以至于不能执行其他程序
 
 ## Usage
 
 ```html
 <template>
   <div>
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+    <p>num: {{ num }}</p>
+
+    <c-button @click="sleep">暂停3秒执行</c-button>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { ref } from 'vue'
+import { useSleep } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
+const num = ref(0)
+let timmer = setInterval(() => {
+  num.value++
+}, 1000)
+
+async function sleep() {
+  clearInterval(timmer)
+  await useSleep(3000)
+  timmer = setInterval(() => {
+    num.value++
+  }, 1000)
+}
 </script>
 ```
