@@ -2,25 +2,32 @@
 category: UnDistribution
 ---
 
-# useBoolean
-优雅的管理 boolean 值
+# useThrottle
+
+处理节流值
+ * 不同于 useThrottleFn,此函数专门用来对某个值的节流变化
 
 ## Usage
 
 ```html
 <template>
   <div>
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+    <p>源数据 state: {{ state }}</p>
+    <p>节流数据 throttleState: {{ throttleState }}</p>
+
+    <c-button @click="changeState">节流更改state</c-button>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { ref } from 'vue'
+import { useThrottle } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
+const state = ref(Math.random())
+const throttleState = useThrottle(state)
+
+function changeState() {
+  state.value = Math.random()
+}
 </script>
 ```

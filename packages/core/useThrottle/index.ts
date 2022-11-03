@@ -6,8 +6,9 @@ const defaultDelay = 1000
 
 /**
  * 处理节流值
- * @param value
- * @param delay
+ * 不同于 useThrottleFn,此函数专门用来对某个值的节流变化
+ * @param value 监听的源数据
+ * @param delay 节流设定时间 (默认 1000)
  * @returns
  */
 export function useThrottle<T>(value: Ref<T>, delay?: number) {
