@@ -26,6 +26,8 @@ https://github.com/sindresorhus/query-string 字符串转对象 工具库
 
 https://github.com/MathisBullinger/froebel ts 工具库
 
+https://github.com/front-end-study-program/utils 连哥 js 工具库
+
 https://github.com/vueuse/vueuse
 
 https://github.com/yanzhandong/v3hooks

@@ -6,22 +6,6 @@ type Serializer<T> = {
 }
 
 /**
- * 节流
- * @param fn
- * @param delay
- * @returns
- */
-const throttle = function (this: any, fn: Fn, delay: number) {
-  let oldNow = Date.now()
-  return (...args: []) => {
-    const currNow = Date.now()
-    if (currNow - oldNow < delay) return
-    oldNow = currNow
-    fn.call(this, ...args)
-  }
-}
-
-/**
  * 防抖+节流
  * @param fn
  * @param DBdelay
@@ -108,12 +92,6 @@ const getRandomNum = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-export {
-  throttle,
-  throttleAndDeBounce,
-  TypeSerializers,
-  getValueType,
-  getRandomNum
-}
+export { throttleAndDeBounce, TypeSerializers, getValueType, getRandomNum }
 
 export type { Fn }
