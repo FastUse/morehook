@@ -2,25 +2,36 @@
 category: UnDistribution
 ---
 
-# useBoolean
-优雅的管理 boolean 值
+# useWebSocket
+
+管理 websocket
 
 ## Usage
 
 ```html
 <template>
   <div>
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+    <div>webScoket状态: {{ readyState }}</div>
+
+    <c-button @click="connect">连接webScoket</c-button>
+    <c-button @click="disconnect">关闭webScoket</c-button>
+    <c-button @click="handleSendMessage">发送消息</c-button>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { watchEffect } from 'vue'
+import { useWebSocket } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
+const { connect, readyState, latestMessage, disconnect, sendMessage } =
+  useWebSocket('ws://127.0.0.1:8080')
+
+const handleSendMessage = () => {
+  sendMessage('hello v3hooks')
+}
+
+watchEffect(() => {
+  console.log(latestMessage.value)
+})
 </script>
 ```

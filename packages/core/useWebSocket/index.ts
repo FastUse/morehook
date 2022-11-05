@@ -1,5 +1,14 @@
 import { Ref, ref } from 'vue-demi'
 
+/**
+ * manual: 是否手动连接 (默认false)
+ * reconnectLimit: 重连数
+ * reconnectInterval: 重连间隔时间
+ * onOpen: 打开连接回调
+ * onClose: 关闭连接回调
+ * onMessage: 发送消息回调
+ * onError: 连接报错回调
+ */
 interface UseWebSocketOptions {
   manual?: boolean // 是否手动连接（默认自动）
   reconnectLimit?: number // 重连数
@@ -15,12 +24,20 @@ enum ReadyState {
   Closing = 2,
   Closed = 3
 }
+/**
+ * connect: 连接方法
+ * disconnect: 关闭连接方法
+ * sendMessage: 发送消息方法
+ * readyState: 当前连接状态
+ * latestMessage: 最后返回的消息
+ * webSocketIns: 连接实例
+ */
 interface Result {
-  latestMessage: Ref<WebSocketEventMap['message'] | undefined>
-  sendMessage: WebSocket['send']
-  disconnect: () => void
   connect: () => void
+  disconnect: () => void
+  sendMessage: WebSocket['send']
   readyState: Ref<ReadyState>
+  latestMessage: Ref<WebSocketEventMap['message'] | undefined>
   webSocketIns: Ref<WebSocket | undefined>
 }
 
@@ -42,6 +59,12 @@ const defaultOptions = {
   }
 }
 
+/**
+ * 管理 websocket
+ * @param socketUrl 连接地址
+ * @param options UseWebSocketOptions
+ * @return Result
+ */
 export function useWebSocket(
   socketUrl: string,
   options?: UseWebSocketOptions
