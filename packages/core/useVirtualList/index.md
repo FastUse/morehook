@@ -2,25 +2,52 @@
 category: UnDistribution
 ---
 
-# useBoolean
-优雅的管理 boolean 值
+# useVirtualList
+
+管理虚拟列表
 
 ## Usage
 
 ```html
 <template>
   <div>
-    <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+    <div
+      :ref="containerProps.ref"
+      @scroll="containerProps.onScroll"
+      style="height: 300px; overflow: auto; border: 1px solid #cccccc"
+    >
+      <div :style="wrapperStyle">
+        <div
+          v-for="active in list"
+          :key="active"
+          style="
+            height: 60px;
+            border-bottom: 1px solid #cccccc;
+            background-color: white;
+          "
+        >
+          {{ active }}
+        </div>
+      </div>
+    </div>
+
+    <c-button type="button" @click="handleVirtualScrollTo">
+      scroll to
+    </c-button>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useBoolean } from '@morehook/core'
+import { useVirtualList } from '@morehook/core'
 
-const [useBooleanState, { toggle: useBooleanToggle, setTrue, setFalse }] =
-  useBoolean()
+const { list, wrapperStyle, containerProps, scrollTo } = useVirtualList(
+  Array.from(Array(99999).keys()),
+  { itemHeight: 60, overscan: 10 }
+)
+
+// 滚动到第22个元素
+const handleVirtualScrollTo = () => {
+  scrollTo(22)
+}
 </script>
 ```

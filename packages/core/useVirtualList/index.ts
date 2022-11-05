@@ -1,11 +1,27 @@
 import { reactive, ref, Ref } from 'vue-demi'
 
-export interface OptionType {
+// TODO
+// 当每个 itemHeight 不一样时，怎么做呢
+
+/**
+ * itemHeight: 列表中子项的高度
+ * overscan: 滚动列表时为了让视图正常设置的偏差值 (默认为5,一般情况下不需要特殊设置)
+ */
+export interface Option {
   itemHeight: number | ((index: number) => number)
   overscan?: number
 }
 
-export function useVirtualList<T = any>(state: T[], options: OptionType) {
+/**
+ * 虚拟列表
+ * @param state 源数据
+ * @param options Option
+ * @returns
+ * list: 当前视图显示的数据
+ * wrapperStyle: 包装列表的容器样式
+ * containerProps: 最外层容器的ref以及scroll事件绑定
+ */
+export function useVirtualList<T = any>(state: T[], options: Option) {
   let start = 0
   let end = 10
   const list = ref(state.slice(start, end)) as Ref<T[]>
