@@ -1,5 +1,4 @@
 import { Ref, ref } from 'vue-demi'
-import { useTimeout } from '@morehook/core'
 
 interface UseWebSocketOptions {
   manual?: boolean // 是否手动连接（默认自动）
@@ -102,10 +101,10 @@ export function useWebSocket(socketUrl: string, options?: UseWebSocketOptions) {
   // 错误后再次连接
   const reconnect = () => {
     if (reconnectCount.value >= reconnectLimit) return
-    useTimeout(() => {
+    setTimeout(() => {
       reconnectCount.value++
       run()
-    }, ref(reconnectInterval))
+    }, reconnectInterval)
   }
 
   // 取消连接

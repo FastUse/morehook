@@ -6,13 +6,15 @@ type RefState = Ref<State>
 type Fn = (v?: any) => void
 type Actions = Fn[]
 
+/**
+ * 用于在N个状态值间切换
+ * @param args 多个数据源
+ * @return [0]: 当前选中值  [1]: [toggle(), ...activeState()] (操作当前值)
+ */
 export function useToggle<T extends State, U extends RefState>(
   ...args: (T | U)[]
 ): [U, Actions]
 
-/**
- * 用于在N个状态值间切换
- */
 export function useToggle<T extends State, U extends RefState>(
   ...args: (T | U)[]
 ) {
