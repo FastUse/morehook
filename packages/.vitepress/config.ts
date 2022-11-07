@@ -61,7 +61,7 @@ export default defineConfig({
 function nav(): DefaultTheme.NavItem[] {
   return [
     { text: '开始', link: '/guide/introduce', activeMatch: '/guide/' },
-    { text: '搜索', link: '/functions', activeMatch: '/functions/' },
+    { text: '搜索', link: '/guide/functions', activeMatch: '/functions/' },
     {
       text: version,
       link: ''

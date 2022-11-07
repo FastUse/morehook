@@ -2,8 +2,6 @@
 
 每个 hooks 都要总结利弊，分析在哪些场景可以使用
 
-当前做到： useDynamicList
-
 ## 功能列表
 + 做一个手机验证码的 hook
 + 倒计时
@@ -40,3 +38,7 @@ https://github.com/ymhczm/tankhooks
 + 思考一下兼容性,比如现在的入参是一个，但是以后扩展成两个时怎么对以前的进行兼容，返回参数也是同理
 + 最好以后写大的业务hook时，诺列一下业务场景
 + node配合搭建cli
+
+
+一个 JS 库，将 Base64 扩展到了2048个字符，从而使得二进制数据，可以转成非常短的字符串。
+https://github.com/qntm/base2048
