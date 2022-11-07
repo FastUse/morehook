@@ -6,36 +6,6 @@ type Serializer<T> = {
 }
 
 /**
- * 防抖+节流
- * @param fn
- * @param DBdelay
- * @param TRdelay
- * @returns
- */
-const throttleAndDeBounce = function (
-  this: any,
-  fn: Fn,
-  DBdelay: number,
-  TRdelay: number
-) {
-  let oldNow = Date.now()
-  let timer: NodeJS.Timeout | null = null
-  return (...args: []) => {
-    const currNow = Date.now()
-    if (currNow - oldNow < TRdelay) {
-      if (timer) clearTimeout(timer)
-      timer = setTimeout(() => {
-        oldNow = currNow
-        fn.call(this, ...args)
-      }, DBdelay)
-      return
-    }
-    oldNow = currNow
-    fn.call(this, ...args)
-  }
-}
-
-/**
  * 按照类型格式数据的常量Map
  */
 const TypeSerializers: Record<
@@ -85,13 +55,6 @@ const getValueType = (defaultValue: unknown) => {
     : 'any'
 }
 
-/**
- * 一定范围内的随机数生成
- */
-const getRandomNum = (min: number, max: number) => {
-  return Math.floor(Math.random() * (max - min + 1) + min)
-}
-
-export { throttleAndDeBounce, TypeSerializers, getValueType, getRandomNum }
+export { TypeSerializers, getValueType }
 
 export type { Fn }
