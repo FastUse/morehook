@@ -4,7 +4,7 @@ category: State
 
 # useRouteQuery
 
-获取vueRouter query
+获取vueRouter query (修改返回的state可直接修改url中的query)
 
 确保项目已安装Vue Router v4.x版本及以上，否则将不能使用此Hook
 
