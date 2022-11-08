@@ -1,7 +1,6 @@
 import { ref, Ref, isRef, watch as vueWatch } from 'vue-demi'
 import { TypeSerializers, getValueType } from '../utils'
-
-const storage = sessionStorage
+import { isClient } from '../_configurable'
 
 /**
  * watch: 是否监听返回值，当返回值更改时也会同步到 sessionStorage (默认 true)
@@ -26,8 +25,12 @@ export function useSessionStorage<T = any>(
   initialValue?: T | Ref<T>,
   options?: Options
 ) {
-  const { watch } = { ...defaultOptions, ...options }
   const data = ref() as Ref<T | undefined | null>
+
+  if (!isClient) return data
+
+  const storage = sessionStorage
+  const { watch } = { ...defaultOptions, ...options }
 
   try {
     if (initialValue !== undefined) {

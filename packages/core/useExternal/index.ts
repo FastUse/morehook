@@ -1,4 +1,5 @@
 import { ref, Ref, isRef, watch } from 'vue-demi'
+import { isClient, defaultWindow } from '../_configurable'
 
 type Elements = HTMLScriptElement | HTMLLinkElement | HTMLImageElement
 
@@ -28,7 +29,7 @@ interface Options {
   noModule?: boolean
   defer?: boolean
   media?: string
-  target?: HTMLElement | Ref<HTMLElement>
+  target?: HTMLElement | Ref<HTMLElement> | undefined
 }
 
 /**
@@ -54,15 +55,16 @@ export function useExternal(
     noModule,
     defer,
     media = 'all',
-    target = document.body
+    target = defaultWindow ? document.body : undefined
   } = options
-
-  let el: Elements = document.createElement('script')
-
-  let parentEl: Element | HTMLElement = document.head
 
   const loadScript = () =>
     new Promise(resolve => {
+      if (!isClient) {
+        resolve(undefined)
+        return
+      }
+
       const isExist = document.querySelector(`script[src="${originSrc}"]`)
       if (isExist) return
 
@@ -81,6 +83,11 @@ export function useExternal(
 
   const loadCss = () =>
     new Promise(resolve => {
+      if (!isClient) {
+        resolve(undefined)
+        return
+      }
+
       const isExist = document.querySelector(`link[href="${originSrc}"]`)
       if (isExist) return
 
@@ -97,36 +104,54 @@ export function useExternal(
   // 图片需要手动控制下载，否则可能会出现没有及时拿到外部 target 元素
   const loadImage = () =>
     new Promise(resolve => {
+      if (!isClient) {
+        resolve(undefined)
+        return
+      }
+
       const isExist = document.querySelector(`img[src="${originSrc}"]`)
       if (isExist) return
 
       el = document.createElement('img')
       el.src = originSrc
-      parentEl = isRef(target) ? target.value : target
-      parentEl.appendChild(el)
+
+      if (target) {
+        parentEl = isRef(target) ? target.value : target
+        parentEl.appendChild(el)
+      }
       resolve(el)
     })
 
-  const load = () =>
-    // eslint-disable-next-line no-async-promise-executor
-    new Promise(async (resolve, reject) => {
+  const load = () => {
+    return new Promise((resolve, reject) => {
+      if (!isClient) {
+        resolve(undefined)
+        return
+      }
+
+      let _load: Promise<unknown> = Promise.resolve()
+
       if (/\.js$/.test(originSrc)) {
-        await loadScript()
+        _load = loadScript()
       }
       if (/\.css$/.test(originSrc)) {
-        await loadCss()
+        _load = loadCss()
       }
       if (/\.(gif|jpg|jpeg|png|svg|GIF|JPG|PNG|)$/.test(originSrc)) {
-        await loadImage()
+        _load = loadImage()
       }
-      resources.value = el
-      el.addEventListener('error', (event: any) => reject(event))
-      el.addEventListener('abort', (event: any) => reject(event))
-      el.addEventListener('load', () => {
-        onLoaded && onLoaded(el)
+
+      _load.then(() => {
+        resources.value = el
+        el.addEventListener('error', (event: any) => reject(event))
+        el.addEventListener('abort', (event: any) => reject(event))
+        el.addEventListener('load', () => {
+          onLoaded && onLoaded(el)
+        })
+        resolve(el)
       })
-      resolve(el)
     })
+  }
 
   const unload = () => {
     if (resources.value) {
@@ -134,6 +159,12 @@ export function useExternal(
       resources.value = null
     }
   }
+
+  if (!isClient) return { resources, load, unload }
+
+  let el: Elements = document.createElement('script')
+
+  let parentEl: Element | HTMLElement = document.head
 
   if (isRef(src)) {
     watch(src, val => {

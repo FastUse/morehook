@@ -1,4 +1,5 @@
 import { reactive, onMounted, onUnmounted } from 'vue-demi'
+import { isClient } from '../_configurable'
 
 const getConnection = () => {
   const nav = navigator as any
@@ -44,6 +45,8 @@ const handlerSetConnection = () => {
  * @returns NetworkState
  */
 export function useNetwork() {
+  if (!isClient) return reactive({})
+
   const state = reactive<NetworkState>({
     online: navigator.onLine,
     since: Date.now(),

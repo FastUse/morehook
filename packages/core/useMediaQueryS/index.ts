@@ -1,4 +1,5 @@
 import { ref, onUnmounted } from 'vue-demi'
+import { isClient } from '../_configurable'
 
 type queryType = {
   [key: string]: string
@@ -15,6 +16,8 @@ type mqlListType = {
  * @returns 返回当前满足value设定的 key
  */
 export function useMediaQueryS(query: queryType) {
+  if (!isClient) return ref('')
+
   const activeKey = ref<string>()
   const mqlList: mqlListType = []
   const queryEntries = Object.entries(query)

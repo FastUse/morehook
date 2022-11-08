@@ -1,4 +1,5 @@
 import { ref, Ref, isRef, onMounted, onBeforeUnmount } from 'vue-demi'
+import { isClient, defaultWindow } from '../_configurable'
 
 // 分两种 1.点击触发 2.移动触发
 // 也分为全局触发和某个元素触发
@@ -15,7 +16,7 @@ interface Options {
 
 const defaultOptions = {
   type: 'click',
-  target: document.body,
+  target: defaultWindow ? defaultWindow.document.body : undefined,
   onSuccess: () => {
     // 成功回调
   }
@@ -37,6 +38,14 @@ export function useMousePosition(options?: Options) {
   const { type, target, onSuccess } = { ...defaultOptions, ...options }
   const clickX = ref<number>(-1)
   const clickY = ref<number>(-1)
+
+  if (!isClient || !target) {
+    return {
+      clickX,
+      clickY
+    }
+  }
+
   let elm = target
 
   const handler = (event: MouseEvent) => {

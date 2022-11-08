@@ -1,5 +1,6 @@
 import qrcode from 'easyqrcodejs'
 import { ref, Ref, watch, isRef } from 'vue-demi'
+import { isClient } from '../_configurable'
 
 type Text = Ref<string> | string
 
@@ -27,6 +28,8 @@ const defaultUseQRCodeOptions = {
  */
 export function useQRCode(text: Text, options?: useQRCodeOptions) {
   const state = ref<string>()
+
+  if (!isClient) return state
 
   const { onRenderingEnd, ...otherOptions } = {
     ...defaultUseQRCodeOptions,

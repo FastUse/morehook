@@ -1,4 +1,4 @@
-import { computed } from 'vue-demi'
+import { computed, ref } from 'vue-demi'
 import { useRoute, useRouter } from 'vue-router'
 
 /**
@@ -10,6 +10,8 @@ import { useRoute, useRouter } from 'vue-router'
 export function useRouteQuery(key?: string) {
   const route = useRoute()
   const router = useRouter()
+
+  if (!route || !router) return ref('')
 
   if (key) {
     return computed({

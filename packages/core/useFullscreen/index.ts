@@ -1,4 +1,5 @@
 import { ref, Ref, isRef, onMounted, onUnmounted } from 'vue-demi'
+import { isClient } from '../_configurable'
 
 /**
  * onFull: 全屏钩子
@@ -41,6 +42,27 @@ export function useFullscreen(
   target?: Target,
   options?: Options
 ): [isFullscreen: Ref<boolean>, actions: Actions] {
+  const actions: Actions = {
+    setFull: () => {
+      if (!isClient) return
+      if (isFullscreen.value) return
+      el.requestFullscreen()
+      isFullscreen.value = true
+    },
+    exitFull: () => {
+      if (!isClient) return
+      if (!isFullscreen.value) return
+      document.exitFullscreen()
+      isFullscreen.value = false
+    },
+    toggle: () => {
+      if (!isClient) return
+      isFullscreen.value ? actions.exitFull() : actions.setFull()
+    }
+  }
+
+  if (!isClient) return [ref(false), actions]
+
   const fullScreenElement = !!document.fullscreenElement
   const isFullscreen = ref(fullScreenElement)
 
@@ -72,22 +94,6 @@ export function useFullscreen(
   onUnmounted(() => {
     el.removeEventListener('fullscreenchange', handler)
   })
-
-  const actions: Actions = {
-    setFull: () => {
-      if (isFullscreen.value) return
-      el.requestFullscreen()
-      isFullscreen.value = true
-    },
-    exitFull: () => {
-      if (!isFullscreen.value) return
-      document.exitFullscreen()
-      isFullscreen.value = false
-    },
-    toggle: () => {
-      isFullscreen.value ? actions.exitFull() : actions.setFull()
-    }
-  }
 
   return [isFullscreen, actions]
 }

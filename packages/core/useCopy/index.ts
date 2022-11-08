@@ -1,4 +1,5 @@
-import { ref, Ref, watch } from 'vue-demi'
+import { ref, watch } from 'vue-demi'
+import { isClient } from '../_configurable'
 
 /**
  * onSuccess: 成功回调
@@ -26,14 +27,17 @@ const defaultOptions = {
  * @param str 剪切板初始化时的内容
  * @param options 如上 Options
  */
-export function useCopy(str?: Str, options?: Options): Ref<Str>
-
 export function useCopy(str?: Str, options?: Options) {
   const state = ref<Str>()
   const { onSuccess, onError } = { ...defaultOptions, ...options }
   state.value = str || ''
 
   const writeText = (str: Str) => {
+    if (!isClient) {
+      onError('请在window环境下使用')
+      return
+    }
+
     str = typeof str === 'object' ? JSON.stringify(str) : String(str)
     navigator.clipboard.writeText(str).then(
       () => {

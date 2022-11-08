@@ -1,4 +1,5 @@
 import { Ref, isRef, reactive, onMounted, onUnmounted, toRefs } from 'vue-demi'
+import { isClient } from '../_configurable'
 
 type Target = HTMLElement | Ref<HTMLElement> | (() => HTMLElement) | Document
 
@@ -24,6 +25,8 @@ export function useTextSelection(target: Target = document) {
     text: '',
     rect: defaultReact
   })
+
+  if (!isClient) return toRefs(state)
 
   let el: HTMLElement | Document = document
 

@@ -1,7 +1,6 @@
 import { ref, Ref, isRef, watch as vueWatch } from 'vue-demi'
 import { TypeSerializers, getValueType } from '../utils'
-
-const storage = localStorage
+import { isClient } from '../_configurable'
 
 /**
  * watch: 是否监听返回出去的值，当此值变化时同时更改 localStorage
@@ -26,9 +25,13 @@ export function useLocalStorage<T = any>(
   initialValue?: T | Ref<T>,
   options?: Options
 ) {
+  const data = ref() as Ref<T | undefined | null>
+
+  if (!isClient) return data
+
+  const storage = localStorage
   const { watch } = { ...defaultOptions, ...options }
 
-  const data = ref() as Ref<T | undefined | null>
   try {
     if (initialValue !== undefined) {
       data.value = isRef(initialValue) ? initialValue.value : initialValue

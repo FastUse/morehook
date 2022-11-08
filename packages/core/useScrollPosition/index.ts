@@ -1,4 +1,5 @@
 import { ref, Ref, isRef, onMounted, onBeforeUnmount, watch } from 'vue-demi'
+import { isClient, defaultWindow } from '../_configurable'
 
 /**
  * target: 需要获取滚动量的元素 (默认 )
@@ -8,7 +9,7 @@ interface Options {
 }
 
 const defaultOptions = {
-  target: window
+  target: defaultWindow
 }
 
 /**
@@ -17,14 +18,15 @@ const defaultOptions = {
  * @param options Options
  * @return scrollY: 当更改此值时会直接滚动到目标区域
  */
-export function useScrollPosition(options?: Options): {
-  scrollY: Ref<number>
-}
-
 export function useScrollPosition(options?: Options) {
+  const scrollY = ref<number>(-1)
+
+  if (!isClient) {
+    return { scrollY }
+  }
+
   const { target } = { ...defaultOptions, ...options }
   const isSpot = !!options?.target // 是否指定了元素
-  const scrollY = ref<number>(-1)
   let elm = target
 
   const handler = (event: Event) => {
@@ -40,12 +42,12 @@ export function useScrollPosition(options?: Options) {
 
   onMounted(() => {
     elm = isRef(target) ? target.value : target
-    elm.addEventListener('scroll', handler)
+    elm && elm.addEventListener('scroll', handler)
   })
 
   onBeforeUnmount(() => {
     elm = isRef(target) ? target.value : target
-    elm.removeEventListener('scroll', handler)
+    elm && elm.removeEventListener('scroll', handler)
   })
 
   watch(scrollY, val => {

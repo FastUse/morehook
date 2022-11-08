@@ -1,4 +1,5 @@
 import { Ref, ref } from 'vue-demi'
+import { isClient } from '../_configurable'
 
 /**
  * manual: 是否手动连接 (默认false)
@@ -84,11 +85,6 @@ export function useWebSocket(socketUrl: string, options?: UseWebSocketOptions) {
   if (!socketUrl || typeof socketUrl !== 'string') {
     throw new Error('useWebSocket require string socketUrl')
   }
-  const readyState = ref<number>(ReadyState.Connecting) // 连接状态
-
-  const reconnectCount = ref<number>(0) // 连接数
-  const socket = ref<WebSocket>() // socket 对象
-  const latestMessage = ref<WebSocketEventMap['message']>() // 最近消息
 
   const run = () => {
     socket.value = new WebSocket(socketUrl)
@@ -149,6 +145,28 @@ export function useWebSocket(socketUrl: string, options?: UseWebSocketOptions) {
     if (data && socket.value && readyState.value === ReadyState.Open)
       socket.value.send(data)
   }
+
+  if (!isClient) {
+    return {
+      latestMessage: '',
+      readyState: -1,
+      connect: () => {
+        //
+      },
+      disconnect: () => {
+        //
+      },
+      sendMessage: () => {
+        //
+      },
+      webSocketIns: ref()
+    }
+  }
+
+  const readyState = ref<number>(ReadyState.Connecting) // 连接状态
+  const reconnectCount = ref<number>(0) // 连接数
+  const socket = ref<WebSocket>() // socket 对象
+  const latestMessage = ref<WebSocketEventMap['message']>() // 最近消息
 
   if (!manual) connect()
 
