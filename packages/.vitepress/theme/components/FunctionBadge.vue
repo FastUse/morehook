@@ -5,6 +5,9 @@ import { renderMarkdown } from '../utils'
 
 const props = defineProps<{ fn: VueUseFunction }>()
 
+/**
+ * 这个只是为了把 use try on 这样的内容置为一些透明
+ */
 function styledName(name: string) {
   if (name.startsWith('use'))
     return `<span style="opacity: 0.7;">use</span>${name.slice(3)}`
@@ -17,10 +20,8 @@ function styledName(name: string) {
 
 const link = computed(() => {
   if (props.fn.external) {
-    return {
-      href: props.fn.external,
-      target: '_blank',
-    }
+    // 如果是外部链接-特殊处理
+    return { href: props.fn.external, target: '_blank' }
   }
   return { href: `${props.fn.package}/${props.fn.name}/` }
 })

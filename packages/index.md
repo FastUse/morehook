@@ -17,7 +17,7 @@ hero:
       link: /guide/introduce
     - theme: alt
       text: 搜索-Hooks
-      link: /guide/functions
+      link: /functions
     - theme: alt
       text: GitHub
       link: https://github.com/M-cheng-web/morehook
