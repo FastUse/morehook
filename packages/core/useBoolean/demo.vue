@@ -1,9 +1,10 @@
 <template>
   <div>
     <p>{{ useBooleanState }}</p>
-    <button @click="useBooleanToggle">toggle</button>
-    <button @click="setTrue">setTrue</button>
-    <button @click="setFalse">setFalse</button>
+
+    <c-button @click="useBooleanToggle">toggle</c-button>
+    <c-button @click="setTrue">setTrue</c-button>
+    <c-button @click="setFalse">setFalse</c-button>
   </div>
 </template>
 
