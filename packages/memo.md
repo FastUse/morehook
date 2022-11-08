@@ -40,5 +40,41 @@ https://github.com/ymhczm/tankhooks
 + node配合搭建cli
 
 
+节流搜索应该把最后一次也执行(是否在节流过期时执行最后一次被拦住的方法)
+``` js
+/**
+ * 节流
+ * @param fn 待执行函数
+ * @param delay 节流设定时间
+ * @param runLastFn 是否在节流过期时执行最后一次被拦住的方法
+ * @returns 包装后的函数
+ */
+const throttle = function (fn, delay, runLastFn = true) {
+  let oldNow = Date.now();
+  let lastFn = () => {};
+  let timmer = null;
+
+  return (...args) => {
+    const currNow = Date.now();
+
+    if (currNow - oldNow < delay) {
+      if (runLastFn) {
+        lastFn = fn;
+        clearInterval(timmer);
+        timmer = setInterval(() => {
+          lastFn.call(this, ...args);
+          clearInterval(timmer);
+        }, delay);
+      }
+    } else {
+      if (runLastFn) clearInterval(timmer);
+      oldNow = currNow;
+      fn.call(this, ...args);
+    }
+  };
+};
+```
+
+
 一个 JS 库，将 Base64 扩展到了2048个字符，从而使得二进制数据，可以转成非常短的字符串。
 https://github.com/qntm/base2048

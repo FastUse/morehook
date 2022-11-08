@@ -9,6 +9,22 @@ const coreCategories = categoryNames.filter(i => !i.startsWith('@'))
 const addonCategories = categoryNames.filter(i => i.startsWith('@'))
 const sortMethods = ['category', 'name', 'updated']
 
+// 分类详细说明
+const categoryDetail = {
+  'UnDistribution': '待分配',
+  'State': '对数据的状态更改捕捉（例如记录promise的等待以及成功状态，storage自动存取，一些双向的数据更改可以放这个分类）',
+  'Elements': '元素（涉及到原生 DOM 的hook）',
+  'Browser': '浏览器（关于浏览器的）',
+  'Sensors': '传感器（例如网络状态捕捉，网络资源加载，鼠标动向捕捉，scroll捕捉，屏幕区间捕捉）',
+  'Network': '网络连接（例如http封装，websocket封装，fetch封装）',
+  'Animation': '动画',
+  'Component': '组件（可以控制页面 ref元素）',
+  'Watch': '监听（监听数组，状态这些）',
+  'Array': '数组（关于数组的处理）',
+  'Time': '时间（关于时间的处理）',
+  'Utilities': '公共工具（例如转base64，转数字，eventBus，暂停sleep，防抖节流，这些）',
+}
+
 useEventListener('click', (e) => {
   // @ts-expect-error cast
   if (e.target.tagName === 'A')
@@ -24,6 +40,7 @@ const sortMethod = toRef(query, 'sort') as Ref<'category' | 'name' | 'updated' |
 
 const showCategory = computed(() => !search.value && (!sortMethod.value || sortMethod.value === 'category'))
 
+// 全部的 hook 列表
 const items = computed(() => {
   let fn = functions.filter(i => !i.internal)
   if (hasComponent.value) fn = fn.filter(i => i.component)
@@ -31,9 +48,13 @@ const items = computed(() => {
   if (!category.value) return fn
   return fn.filter(item => item.category === category.value)
 })
+
+// 搜索结果
 const fuse = computed(() => new Fuse(items.value, {
   keys: ['name', 'description'],
 }))
+
+// 将搜索结果排序后生成展示的列表
 const result = computed(() => {
   if (search.value) {
     return fuse.value.search(search.value).map(i => i.item)
@@ -117,6 +138,7 @@ function toggleSort(method: string) {
       <template v-for="(fn, idx) of result" :key="fn.name">
         <h3 v-if="showCategory && fn.category !== result[idx - 1]?.category" class="category">
           {{ fn.category }}
+          <h5>{{ categoryDetail[fn.category!] }}</h5>
         </h3>
         <FunctionBadge :fn="fn" />
       </template>
@@ -197,6 +219,12 @@ function toggleSort(method: string) {
     .category {
       padding-bottom: 20px;
       opacity: 0.6;
+      & > h5 {
+        font-size: 16px;
+        margin-top: 6px;
+        line-height: 18px;
+        color: #666;
+      }
     }
   }
 }

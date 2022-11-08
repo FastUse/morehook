@@ -7,7 +7,7 @@ Hooks 分类说明，便于记忆和查找
 + 🛠 Browser - 浏览器（关于浏览器的）
 + 🛠 Sensors - 传感器（例如网络状态捕捉，网络资源加载，鼠标动向捕捉，scroll捕捉，屏幕区间捕捉）
 + 🛠 Network - 网络连接（例如http封装，websocket封装，fetch封装）
-+ 🛠 Animation - 动画（例如settimeout封装，当前时间，过渡）
++ 🛠 Animation - 动画
 + 🛠 Component - 组件（可以控制页面 ref元素）
 + 🛠 Watch - 监听（监听数组，状态这些）
 + 🛠 Reactivity - 反应（暂时不大清楚界限）
