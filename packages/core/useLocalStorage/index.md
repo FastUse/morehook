@@ -13,7 +13,7 @@ category: State
   <div>
     <p>localData: {{ localData }}</p>
 
-    <c-button @click="changeData">更改data值</c-button>
+    <button @click="changeData">更改data值</button>
   </div>
 </template>
 

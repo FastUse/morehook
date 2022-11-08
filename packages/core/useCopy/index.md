@@ -11,7 +11,7 @@ category: Utilities
 <template>
   <div   >
     <div>当前剪切板内容: {{ text }}</div>
-    <c-button @click="change">更改剪切板内容</c-button>
+    <button @click="change">更改剪切板内容</button>
   </div>
 </template>
 

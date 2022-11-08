@@ -13,10 +13,10 @@ category: State
   <div>
     <p>state: {{ state }}</p>
 
-    <c-button @click="useToggleState">useToggleState</c-button>
-    <c-button @click="useSet1">useSet1</c-button>
-    <c-button @click="useSet2">useSet2</c-button>
-    <c-button @click="useSet3">useSet3</c-button>
+    <button @click="useToggleState">useToggleState</button>
+    <button @click="useSet1">useSet1</button>
+    <button @click="useSet2">useSet2</button>
+    <button @click="useSet3">useSet3</button>
   </div>
 </template>
 

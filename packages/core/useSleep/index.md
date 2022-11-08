@@ -15,7 +15,7 @@ category: Utilities
   <div>
     <p>num: {{ num }}</p>
 
-    <c-button @click="sleep">暂停3秒执行</c-button>
+    <button @click="sleep">暂停3秒执行</button>
   </div>
 </template>
 

@@ -12,7 +12,7 @@ category: Utilities
 <template>
   <div>
     <div>data: {{ data }}</div>
-    <c-button @click="run">点击更改 data</c-button>
+    <button @click="run">点击更改 data</button>
   </div>
 </template>
 

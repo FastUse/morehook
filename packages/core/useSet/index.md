@@ -13,10 +13,10 @@ category: State
   <div>
     <p>setVal: {{ setVal }}</p>
 
-    <c-button @click="add(4)">添加 set值</c-button>
-    <c-button @click="remove(4)">删除 set值</c-button>
-    <c-button @click="clear">清除全部 set值</c-button>
-    <c-button @click="reset([7, 8, 9])">重置 set值</c-button>
+    <button @click="add(4)">添加 set值</button>
+    <button @click="remove(4)">删除 set值</button>
+    <button @click="clear">清除全部 set值</button>
+    <button @click="reset([7, 8, 9])">重置 set值</button>
   </div>
 </template>
 

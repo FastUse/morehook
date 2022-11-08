@@ -15,7 +15,7 @@ category: Utilities
   <div>
     <div>二维码:</div>
     <img :src="state" alt="" />
-    <c-button @click="change">更改二维码内容</c-button>
+    <button @click="change">更改二维码内容</button>
   </div>
 </template>
 

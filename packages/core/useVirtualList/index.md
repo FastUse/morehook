@@ -31,9 +31,9 @@ category: Component
       </div>
     </div>
 
-    <c-button type="button" @click="handleVirtualScrollTo">
+    <button type="button" @click="handleVirtualScrollTo">
       scroll to
-    </c-button>
+    </button>
   </div>
 </template>
 

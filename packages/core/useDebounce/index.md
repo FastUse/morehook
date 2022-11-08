@@ -12,9 +12,9 @@ category: Utilities
 <template>
   <div>
     <div>data: {{ data }}</div>
-    <c-button @click="() => (originData = Math.random())">
+    <button @click="() => (originData = Math.random())">
       点击更改 data
-    </c-button>
+    </button>
   </div>
 </template>
 

@@ -13,7 +13,7 @@ category: State
   <div>
     <p>sessionStorage-a: {{ sessionStorage }}</p>
 
-    <c-button @click="change">更改 sessionStorage</c-button>
+    <button @click="change">更改 sessionStorage</button>
   </div>
 </template>
 

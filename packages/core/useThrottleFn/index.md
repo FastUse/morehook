@@ -13,7 +13,7 @@ category: Utilities
   <div>
     <p>num: {{ num }}</p>
 
-    <c-button @click="run">执行函数 +1</c-button>
+    <button @click="run">执行函数 +1</button>
   </div>
 </template>
 

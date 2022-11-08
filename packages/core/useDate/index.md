@@ -12,7 +12,7 @@ category: State
 <template>
   <div   >
     <p>{{ data }}</p>
-    <c-button @click="refresh()">刷新时间</c-button>
+    <button @click="refresh()">刷新时间</button>
   </div>
 </template>
 

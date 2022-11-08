@@ -13,9 +13,9 @@ category: Network
   <div>
     <div>webScoket状态: {{ readyState }}</div>
 
-    <c-button @click="connect">连接webScoket</c-button>
-    <c-button @click="disconnect">关闭webScoket</c-button>
-    <c-button @click="handleSendMessage">发送消息</c-button>
+    <button @click="connect">连接webScoket</button>
+    <button @click="disconnect">关闭webScoket</button>
+    <button @click="handleSendMessage">发送消息</button>
   </div>
 </template>
 
