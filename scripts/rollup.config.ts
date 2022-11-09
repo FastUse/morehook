@@ -56,7 +56,6 @@ for (const {
   const iifeGlobals = {
     'vue-demi': 'VueDemi',
     '@morehook/core': 'MoreHook',
-    'vue-router': 'VueRouter',
     ...(globals || {})
   }
 

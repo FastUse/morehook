@@ -34,5 +34,10 @@
     "url": "https://github.com/M-cheng-web/morehook/issues"
   },
   "homepage": "https://github.com/M-cheng-web/morehook#readme",
-  "unpkg": "./index.iife.min.js"
+  "unpkg": "./index.iife.min.js",
+  "dependencies": {
+    "dayjs": "^1.11.6",
+    "easyqrcodejs": "^4.4.13",
+    "js-cookie": "^3.0.1"
+  }
 }
