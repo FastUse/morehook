@@ -39,7 +39,7 @@ export const categoryNames = Array.from(categories)
 
 export const coreCategoryNames = categoryNames.filter(f => !f.startsWith('@'))
 
-// 区别于 core 文件夹下的 hooks  应该是另外一种分类，先不用管   (好像是除了 core 的其他 导航)
+// 区别于 core 文件夹下的 hooks  这里是依赖外部库的 hook
 export const addonCategoryNames = categoryNames.filter(f => f.startsWith('@'))
 
 export const getFunction = (name: string) =>

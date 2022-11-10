@@ -23,6 +23,7 @@ const categoryDetail = {
   'Array': '数组（关于数组的处理）',
   'Time': '时间（关于时间的处理）',
   'Utilities': '公共工具（例如转base64，转数字，eventBus，暂停sleep，防抖节流，这些）',
+  '@Router': 'vue-router的相关 hooks'
 }
 
 useEventListener('click', (e) => {
@@ -100,6 +101,15 @@ function toggleSort(method: string) {
           <button v-for="cate of coreCategories" :key="cate" class="select-button"
             :class="{ active: category === cate }" @click="toggleCategory(cate)">
             {{ cate }}
+          </button>
+        </div>
+      </div>
+      <div class="sub-action">
+        <div>Add-ons</div>
+        <div>
+          <button v-for="cate of addonCategories" :key="cate" class="select-button"
+            :class="{ active: category === cate }" @click="toggleCategory(cate)">
+            {{ cate.slice(1) }}
           </button>
         </div>
       </div>
@@ -216,10 +226,12 @@ function toggleSort(method: string) {
       padding-top: 60px;
       opacity: 0.5;
     }
+
     .category {
       padding-bottom: 20px;
       opacity: 0.6;
-      & > h5 {
+
+      &>h5 {
         font-size: 16px;
         margin-top: 6px;
         line-height: 18px;

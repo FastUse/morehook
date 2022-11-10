@@ -21,6 +21,7 @@ export default defineConfig({
     sidebar: {
       '/guide/': GuideSidebar,
       '/core/': CoreSidebar,
+      '/router/': CoreSidebar,
       '/functions': CoreSidebar,
     } as DefaultTheme.Sidebar,
 

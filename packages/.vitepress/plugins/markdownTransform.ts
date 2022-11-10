@@ -161,15 +161,16 @@ ${code}
 `
     : ''
 
-  const packageNote = packages.find(p => p.name === pkg)!.addon
-    ? `Available in the <a href="/${pkg}/README">@vueuse/${pkg}</a> add-on.\n`
-    : ''
+  // const packageNote = packages.find(p => p.name === pkg)!.addon
+  //   ? `Available in the <a href="/${pkg}/README">@vueuse/${pkg}</a> add-on.\n`
+  //   : ''
 
   // 先不要 贡献 和 changelog
   const footer = `${typingSection}\n\n${sourceSection}\n`
   // const footer = `${typingSection}\n\n${sourceSection}\n${ContributorsSection}\n${changelogSection}\n`
 
-  const header = demoSection + packageNote
+  // const header = demoSection + packageNote
+  const header = demoSection
 
   return {
     footer,
