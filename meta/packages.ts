@@ -11,5 +11,16 @@ export const packages: any[] = [
       // 'js-cookie': 'JsCookie',
       // easyqrcodejs: 'Easyqrcodejs'
     }
+  },
+  {
+    name: 'router',
+    display: 'Router',
+    description: '关于 vuerouter 的 hooks',
+    keywords: ['morehook', 'vuerouter', 'router'],
+    addon: true,
+    external: ['vue-router'],
+    globals: {
+      'vue-router': 'VueRouter'
+    }
   }
 ]

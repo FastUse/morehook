@@ -1,7 +1,7 @@
 {
-  "name": "@morehook/core",
+  "name": "@morehook/router",
   "version": "1.10.4",
-  "description": "关于vue的一些hooks，兼容vue2+vue3",
+  "description": "关于 vuerouter 的 hooks",
   "main": "./index.cjs",
   "module": "./index.mjs",
   "jsdelivr": "./index.iife.min.js",
@@ -19,19 +19,17 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/M-cheng-web/morehook",
-    "directory": "packages/core"
+    "directory": "packages/router"
   },
   "author": "M-cheng-web <https://github.com/M-cheng-web>",
   "keywords": [
-    "vuehook",
-    "hook",
-    "vue3",
-    "vue3hook",
     "morehook",
-    "vueHook"
+    "vuerouter",
+    "router"
   ],
   "peerDependencies": {
-    "vue": "*"
+    "vue": "*",
+    "vue-router": ">=4.0.0-rc.1"
   },
   "dependencies": {
     "vue-demi": "*"
@@ -39,6 +37,6 @@
   "bugs": {
     "url": "https://github.com/M-cheng-web/morehook/issues"
   },
-  "homepage": "https://github.com/M-cheng-web/morehook#readme",
+  "homepage": "https://github.com/vueuse/vueuse/tree/main/packages/router#readme",
   "unpkg": "./index.iife.min.js"
 }

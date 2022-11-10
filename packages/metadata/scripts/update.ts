@@ -35,12 +35,15 @@ async function readFunctions() {
   }
 
   for (const info of packages) {
+    if (info.utils) continue
+
     const dir = join(DIR_SRC, info.name)
     const functions = await listFunctions(dir)
 
     const pkg = {
       ...info,
-      dir: relative(DIR_ROOT, dir).replace(/\\/g, '/')
+      dir: relative(DIR_ROOT, dir).replace(/\\/g, '/'),
+      docs: info.addon ? `${DOCS_URL}/${info.name}/README.html` : undefined
     }
 
     indexes.packages[info.name] = pkg
@@ -108,28 +111,28 @@ async function readFunctions() {
         indexes.functions.push(fn)
       })
     )
-
-    indexes.functions.sort((a, b) => a.name.localeCompare(b.name))
-    indexes.categories = getCategories(indexes.functions)
-
-    // 针对关联性处理
-    indexes.functions.forEach(fn => {
-      if (!fn.related) return
-
-      fn.related.forEach(name => {
-        const target = indexes.functions.find(f => f.name === name)
-
-        if (!target) throw new Error(`Unknown related function: ${name}`)
-
-        if (!target.related) target.related = []
-
-        if (!target.related.includes(fn.name)) target.related.push(fn.name)
-      })
-    })
-    indexes.functions.forEach(fn => fn.related?.sort())
-
-    return indexes
   }
+
+  indexes.functions.sort((a, b) => a.name.localeCompare(b.name))
+  indexes.categories = getCategories(indexes.functions)
+
+  // 针对关联性处理
+  indexes.functions.forEach(fn => {
+    if (!fn.related) return
+
+    fn.related.forEach(name => {
+      const target = indexes.functions.find(f => f.name === name)
+
+      if (!target) throw new Error(`Unknown related function: ${name}`)
+
+      if (!target.related) target.related = []
+
+      if (!target.related.includes(fn.name)) target.related.push(fn.name)
+    })
+  })
+  indexes.functions.forEach(fn => fn.related?.sort())
+
+  return indexes
 }
 
 async function run() {

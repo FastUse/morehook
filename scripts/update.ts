@@ -10,11 +10,11 @@
 //   updatePackageREADME
 // } from './utils'
 import { metadata } from '../packages/metadata/metadata'
-import { updatePackageJSON } from './utils'
+import { updatePackageJSON, updateImport } from './utils'
 
 async function run() {
   await Promise.all([
-    // updateImport(metadata),
+    updateImport(metadata),
     // updatePackageREADME(metadata),
     // updateIndexREADME(metadata),
     // updateFunctionsMD(metadata),
