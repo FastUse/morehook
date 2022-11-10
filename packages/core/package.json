@@ -1,6 +1,6 @@
 {
   "name": "@morehook/core",
-  "version": "1.10.0",
+  "version": "1.10.3",
   "description": "关于vue的一些hooks，兼容vue2+vue3",
   "main": "./index.cjs",
   "module": "./index.mjs",
@@ -30,14 +30,15 @@
     "morehook",
     "vueHook"
   ],
+  "peerDependencies": {
+    "vue": "*"
+  },
+  "dependencies": {
+    "vue-demi": "*"
+  },
   "bugs": {
     "url": "https://github.com/M-cheng-web/morehook/issues"
   },
   "homepage": "https://github.com/M-cheng-web/morehook#readme",
-  "unpkg": "./index.iife.min.js",
-  "dependencies": {
-    "dayjs": "^1.11.6",
-    "easyqrcodejs": "^4.4.13",
-    "js-cookie": "^3.0.1"
-  }
+  "unpkg": "./index.iife.min.js"
 }

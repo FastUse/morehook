@@ -1,11 +1,13 @@
 import fs from 'fs'
-import { resolve } from 'path'
-import type { Options as ESBuildOptions } from 'rollup-plugin-esbuild'
 import esbuild from 'rollup-plugin-esbuild'
 import dts from 'rollup-plugin-dts'
 import json from '@rollup/plugin-json'
-import type { OutputOptions, Plugin, RollupOptions } from 'rollup'
 import fg from 'fast-glob'
+import nodeResolve from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
+import { resolve } from 'path'
+import type { Options as ESBuildOptions } from 'rollup-plugin-esbuild'
+import type { OutputOptions, Plugin, RollupOptions } from 'rollup'
 import { functions } from '../packages/metadata/metadata'
 import { packages } from '../meta/packages'
 
@@ -28,7 +30,7 @@ const esbuildPlugin = esbuild({
 
 const dtsPlugin = [dts()]
 
-const externals = ['vue-demi', 'vue', 'vue-router', '@morehook/core']
+const externals = ['vue-demi', '@morehook/core']
 
 const esbuildMinifer = (options: ESBuildOptions) => {
   const { renderChunk } = esbuild(options)
@@ -124,7 +126,12 @@ for (const {
     configs.push({
       input,
       output,
-      plugins: [target ? esbuild({ target }) : esbuildPlugin, json()],
+      plugins: [
+        commonjs(),
+        nodeResolve(),
+        json(),
+        target ? esbuild({ target }) : esbuildPlugin
+      ],
       external: [...externals, ...(external || [])]
     })
 
