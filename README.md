@@ -45,6 +45,7 @@ npm i @morehook/core
 
 ```html
 <script src="https://unpkg.com/@morehook/core"></script>
+<script src="https://cdn.jsdelivr.net/npm/@morehook/core"></script>
 ```
 
 ## Other
@@ -56,6 +57,10 @@ npm i @morehook/core
 + 🚀 eslint
 + 🚀 typescript
 + 🚀 脚本打包并发布文档系统
+
+::: warning
+当前 @morehook/core 内包含 ['js-cookie', 'dayjs', 'easyqrcodejs'] 插件，追求更小包体积的可以联系我~
+:::
 
 ## SIGNIFICANCE STATEMENT (重要说明)
 作者目的为学习总结 vueuse 并根据平时业务场景总结出一套更适应自己的 hooks，因此项目包含大部分 vueuse 的 hooks（可能会稍加修改去除一些边缘情况），感谢默默付出的大佬们，致敬!
