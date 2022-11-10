@@ -12,7 +12,9 @@ export default defineConfig(async () => {
       },
       fs: {
         allow: [resolve(__dirname, '..')]
-      }
+      },
+      host: '0.0.0.0',
+      port: 8868
     },
     plugins: [
       // custom
