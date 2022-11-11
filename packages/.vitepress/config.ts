@@ -89,6 +89,7 @@ function sidebarGuide() {
         { text: '介绍', link: '/guide/introduce' },
         { text: '分类说明', link: '/guide/categories' },
         { text: '搜索-Hooks', link: '/functions' },
+        { text: '备忘录', link: '/guide/memo' },
       ]
     },
     ...sidebarCore()
