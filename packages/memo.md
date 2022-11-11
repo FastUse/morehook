@@ -17,6 +17,7 @@
 + 随机字符串 (现在在 hooks 已经有了，拿出来封装一下就行)
 + 上传文件的，面试官那一套
 + promise 执行链那一套
++ 下载文件那一套
 
 https://github.com/proYang/outils js工具库
 
