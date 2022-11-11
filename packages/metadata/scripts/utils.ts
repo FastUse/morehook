@@ -1,3 +1,4 @@
+// 获取分类名集合
 export function getCategories(functions: any[]): string[] {
   return uniq(
     functions

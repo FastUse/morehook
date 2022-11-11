@@ -10,7 +10,7 @@ Hooks 分类说明，便于记忆和查找
 + 🛠 Animation - 动画
 + 🛠 Component - 组件（可以控制页面 ref元素）
 + 🛠 Watch - 监听（监听数组，状态这些）
-+ 🛠 Reactivity - 反应（暂时不大清楚界限）
 + 🛠 Array - 数组（关于数组的处理）
 + 🛠 Time - 时间（关于时间的处理）
 + 🛠 Utilities - 公共工具（例如转base64，转数字，eventBus，暂停sleep，防抖节流，这些）
++ 🛠 @Router - vue-router的相关 hooks

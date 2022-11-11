@@ -9,8 +9,8 @@
 //   updatePackageJSON,
 //   updatePackageREADME
 // } from './utils'
-import { metadata } from '../packages/metadata/metadata'
-import { updatePackageJSON, updateImport } from './utils'
+import { metadata, allCategories } from '../packages/metadata/metadata'
+import { updatePackageJSON, updateImport, updateGuideCategories } from './utils'
 
 async function run() {
   await Promise.all([
@@ -19,7 +19,8 @@ async function run() {
     // updateIndexREADME(metadata),
     // updateFunctionsMD(metadata),
     // updateFunctionREADME(metadata),
-    updatePackageJSON(metadata)
+    updatePackageJSON(metadata),
+    updateGuideCategories(allCategories)
     // process.env.CI && updateCountBadge(metadata),
     // process.env.CI && updateContributors(),
   ])

@@ -15,6 +15,7 @@ export const DOCS_URL = 'https://m-cheng-web.github.io/morehook/'
 
 export const DIR_ROOT = resolve(__dirname, '..')
 export const DIR_SRC = resolve(__dirname, '../packages')
+export const GUID_CATE_SRC = resolve(__dirname, '../packages/guide')
 const DIR_TYPES = resolve(__dirname, '../types/packages')
 
 /**
@@ -354,4 +355,24 @@ export async function updateContributors() {
     `${JSON.stringify(collaborators, null, 2)}\n`,
     'utf8'
   )
+}
+
+export function isValidKey(
+  key: string | number | symbol,
+  object: object
+): key is keyof typeof object {
+  return key in object
+}
+
+/**
+ * 更改 packages/guide/categories 文件（也就是分类说明）
+ */
+export async function updateGuideCategories(allCategories: object) {
+  let content = `# 分类说明\nHooks 分类说明，便于记忆和查找\n\n`
+  Object.keys(allCategories).forEach(key => {
+    if (isValidKey(key, allCategories)) {
+      content += `+ 🛠 ${key} - ${allCategories[key]}\n`
+    }
+  })
+  await fs.writeFile(join(GUID_CATE_SRC, './categories.md'), content, 'utf8')
 }
