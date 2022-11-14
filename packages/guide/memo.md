@@ -26,6 +26,9 @@
 + https://github.com/ymhczm/tankhooks
 + 一个 JS 库，将 Base64 扩展到了2048个字符，从而使得二进制数据，可以转成非常短的字符串。
 https://github.com/qntm/base2048
++ https://github.com/upscayl/upscayl 图片转高清
++ https://github.com/Sanster/lama-cleaner 一个开源的 AI 工具，可以从图片上擦除任何不需要的物体
++ https://github.com/jj811208/watching-you 一个 JS 动画库，可以设定所要观察的 DOM 元素，从而形成一种互动效果，好像页面正在注视用户的操作
 
 ## 其他
 每个 hooks 都要总结利弊，分析在哪些场景可以使用
@@ -33,6 +36,7 @@ https://github.com/qntm/base2048
 + 思考一下兼容性,比如现在的入参是一个，但是以后扩展成两个时怎么对以前的进行兼容，返回参数也是同理
 + 最好以后写大的业务hook时，诺列一下业务场景
 + node配合搭建cli
++ react 可以组件和hook都方便返回，vue3怎么处理呢？
 
 ## 备注
 目前所有的外部插件都会引入到最后的打包中，除了 vue-router，后面看需要决定要不要再次分开
