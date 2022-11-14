@@ -1,7 +1,7 @@
 # 备忘录
 
 ## IDEA
-+ 支持 hooks + 组件
++ 支持 hooks + 组件，如何用 export 而不是 default export
 + 做一个手机验证码的 hook
 + 倒计时
 + 城市选择框 hook
