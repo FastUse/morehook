@@ -16,6 +16,11 @@ export default defineConfig(async () => {
       host: '0.0.0.0',
       port: 8868
     },
+    esbuild: {
+      jsxFactory: 'h',
+      jsxFragment: 'Fragment',
+      jsxInject: "import { h } from 'vue-demi';"
+    },
     plugins: [
       // custom
       MarkdownTransform(),
