@@ -13,6 +13,13 @@ export const packages: any[] = [
     }
   },
   {
+    name: 'component',
+    display: 'Component',
+    description: '关于 vue 的小型业务组件库',
+    keywords: ['morehook', 'component', 'vue组件'],
+    addon: true
+  },
+  {
     name: 'router',
     display: 'Router',
     description: '关于 vuerouter 的 hooks',
