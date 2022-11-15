@@ -3,7 +3,7 @@
 阅读 vueuse 源码的一些记录以及根据业务总结出的一套 hooks
 
 ## DOCUMENT & DEMO
-[https://m-cheng-web.github.io/morehook/](https://m-cheng-web.github.io/morehook/)
+[https://fastuse.github.io/morehook/](https://fastuse.github.io/morehook/)
 
 ## Usage
 HTML:

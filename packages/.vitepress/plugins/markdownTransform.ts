@@ -59,7 +59,7 @@ export function MarkdownTransform(): Plugin {
 // ps: /Users/xxx/Desktop/vitepress/packages
 const DIR_SRC = resolve(__dirname, '../..')
 
-const GITHUB_BLOB_URL = 'https://github.com/M-cheng-web/morehook/blob/main/packages'
+const GITHUB_BLOB_URL = 'https://github.com/FastUse/morehook/blob/main/packages'
 
 /**
  * 解析特定信息为 md文档格式

@@ -11,7 +11,7 @@ import { packages } from '../meta/packages'
 
 export const git = Git()
 
-export const DOCS_URL = 'https://m-cheng-web.github.io/morehook/'
+export const DOCS_URL = 'https://fastuse.github.io/morehook/'
 
 export const DIR_ROOT = resolve(__dirname, '..')
 export const DIR_SRC = resolve(__dirname, '../packages')
@@ -263,15 +263,12 @@ export async function updatePackageJSON(indexes: PackageIndexes) {
     packageJSON.author =
       author || 'M-cheng-web <https://github.com/M-cheng-web>'
     packageJSON.bugs = {
-      url: 'https://github.com/M-cheng-web/morehook/issues'
+      url: 'https://github.com/FastUse/morehook/issues'
     }
-    packageJSON.homepage =
-      name === 'core'
-        ? 'https://github.com/M-cheng-web/morehook#readme'
-        : `https://github.com/vueuse/vueuse/tree/main/packages/${name}#readme`
+    packageJSON.homepage = 'https://github.com/FastUse/morehook#readme'
     packageJSON.repository = {
       type: 'git',
-      url: 'git+https://github.com/M-cheng-web/morehook',
+      url: 'git+https://github.com/FastUse/morehook.git',
       directory: `packages/${name}`
     }
     packageJSON.main = './index.cjs'

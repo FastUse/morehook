@@ -12,13 +12,13 @@ export const packages: any[] = [
       // easyqrcodejs: 'Easyqrcodejs'
     }
   },
-  {
-    name: 'component',
-    display: 'Component',
-    description: '关于 vue 的小型业务组件库',
-    keywords: ['morehook', 'component', 'vue组件'],
-    addon: true
-  },
+  // {
+  //   name: 'component',
+  //   display: 'Component',
+  //   description: '关于 vue 的小型业务组件库',
+  //   keywords: ['morehook', 'component', 'vue组件'],
+  //   addon: true
+  // },
   {
     name: 'router',
     display: 'Router',

@@ -20,7 +20,7 @@ hero:
       link: /functions
     - theme: alt
       text: GitHub
-      link: https://github.com/M-cheng-web/morehook
+      link: https://github.com/FastUse/morehook
     - theme: alt
       text: VueUse官网
       link: https://vueuse.org

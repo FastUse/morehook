@@ -3,7 +3,7 @@
 @morehook 下的针对于 `vue-router` 的hooks
 
 ## DOCUMENT & DEMO
-[https://m-cheng-web.github.io/morehook/router/useRouteQuery](https://m-cheng-web.github.io/morehook/router/useRouteQuery)
+[https://fastuse.github.io/morehook/router/useRouteQuery](https://fastuse.github.io/morehook/router/useRouteQuery)
 
 ## Install
 ``` bash

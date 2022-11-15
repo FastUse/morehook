@@ -26,12 +26,12 @@ export default defineConfig({
     } as DefaultTheme.Sidebar,
 
     editLink: {
-      pattern: 'https://github.com/M-cheng-web/morehook/tree/main/packages/:path',
+      pattern: 'https://github.com/FastUse/morehook/tree/main/packages/:path',
       text: 'Suggest changes to this page'
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/M-cheng-web/morehook' }
+      { icon: 'github', link: 'https://github.com/FastUse/morehook' }
     ],
 
     // 这里后续一定要去申请

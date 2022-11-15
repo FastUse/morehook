@@ -1,7 +1,7 @@
 {
   "name": "@morehook/component",
   "version": "1.10.4",
-  "description": "关于 vuerouter 的 hooks",
+  "description": "关于 vue 的小型业务组件库",
   "main": "./index.cjs",
   "module": "./index.mjs",
   "jsdelivr": "./index.iife.min.js",
@@ -18,14 +18,14 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/M-cheng-web/morehook",
-    "directory": "packages/router"
+    "url": "git+https://github.com/FastUse/morehook.git",
+    "directory": "packages/component"
   },
   "author": "M-cheng-web <https://github.com/M-cheng-web>",
   "keywords": [
     "morehook",
-    "vuerouter",
-    "router"
+    "component",
+    "vue组件"
   ],
   "peerDependencies": {
     "vue": "*",
@@ -35,8 +35,8 @@
     "vue-demi": "*"
   },
   "bugs": {
-    "url": "https://github.com/M-cheng-web/morehook/issues"
+    "url": "https://github.com/FastUse/morehook/issues"
   },
-  "homepage": "https://github.com/vueuse/vueuse/tree/main/packages/router#readme",
+  "homepage": "https://github.com/FastUse/morehook#readme",
   "unpkg": "./index.iife.min.js"
 }

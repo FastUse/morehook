@@ -14,6 +14,6 @@ git add -A
 git commit -m 'deploy'
 
 # 发布到 https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:M-cheng-web/morehook.git main:gh-pages
+git push -f git@github.com:FastUse/morehook.git main:gh-pages
 
 cd -
