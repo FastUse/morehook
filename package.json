@@ -31,6 +31,7 @@
     "@babel/preset-env": "^7.10.2",
     "@morehook/core": "workspace:*",
     "@morehook/metadata": "workspace:*",
+    "@morehook/component": "workspace:*",
     "@rollup/plugin-babel": "^6.0.2",
     "@rollup/plugin-commonjs": "^23.0.2",
     "@rollup/plugin-json": "^5.0.1",

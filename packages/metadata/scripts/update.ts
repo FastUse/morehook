@@ -19,9 +19,9 @@ const git = Git(DIR_ROOT)
 
 async function listFunctions(dir: string, ignore: string[] = []) {
   const files = await fg('*', {
-    onlyDirectories: true,
+    onlyDirectories: true, // 只获取目录
     cwd: dir,
-    ignore: ['_*', 'dist', 'node_modules', ...ignore]
+    ignore: ['_*', 'dist', 'node_modules', ...ignore] // 排除
   })
   files.sort()
   return files
@@ -51,7 +51,12 @@ async function readFunctions() {
     await Promise.all(
       functions.map(async fnName => {
         const mdPath = join(dir, fnName, 'index.md')
-        const tsPath = join(dir, fnName, 'index.ts')
+        const tsPath = join(
+          dir,
+          fnName,
+          // component是直接用 tsx 写的组件，没有 index.ts 文件
+          info.name === 'component' ? 'index.tsx' : 'index.ts'
+        )
 
         const fn: VueUseFunction = {
           name: fnName,

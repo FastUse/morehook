@@ -23,13 +23,13 @@
   },
   "author": "M-cheng-web <https://github.com/M-cheng-web>",
   "keywords": [
+    "fastuse",
     "morehook",
     "component",
     "vue组件"
   ],
   "peerDependencies": {
-    "vue": "*",
-    "vue-router": ">=4.0.0-rc.1"
+    "vue": "*"
   },
   "dependencies": {
     "vue-demi": "*"

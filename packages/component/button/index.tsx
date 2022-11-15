@@ -1,7 +1,7 @@
 import { defineComponent, ref } from 'vue-demi'
 // import { useToggle } from '@morehook/core'
 
-export const button = defineComponent({
+export const MButton = defineComponent({
   setup() {
     const count = ref(0)
     const handleIncrease = () => {

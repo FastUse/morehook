@@ -40,11 +40,11 @@ export default defineConfig(async () => {
     ],
     resolve: {
       alias: {
-        '@morehook/core': resolve(__dirname, 'core/index.ts')
+        '@morehook/core': resolve(__dirname, 'core/index.ts'),
+        '@morehook/component': resolve(__dirname, 'component/index.ts')
         // '@vueuse/shared': resolve(__dirname, 'shared/index.ts'),
         // '@vueuse/math': resolve(__dirname, 'math/index.ts'),
         // '@vueuse/integrations': resolve(__dirname, 'integrations/index.ts'),
-        // '@vueuse/components': resolve(__dirname, 'components/index.ts'),
         // '@vueuse/metadata': resolve(__dirname, 'metadata/index.ts'),
         // '@vueuse/docs-utils': resolve(__dirname, '.vitepress/plugins/utils.ts'),
       }
