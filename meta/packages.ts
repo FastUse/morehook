@@ -24,7 +24,8 @@ export const packages: any[] = [
     name: 'component',
     display: 'Component',
     description: '关于 vue 的小型业务组件库',
-    keywords: ['fastuse', 'morehook', 'component', 'vue组件']
+    keywords: ['fastuse', 'morehook', 'component', 'vue组件'],
+    singleChunk: true // 是否子包单独打包 (目前是组件包独有的,暂时没用上)
   },
   {
     name: 'router',

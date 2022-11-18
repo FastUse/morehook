@@ -2,9 +2,8 @@
   "name": "@morehook/component",
   "version": "1.10.4",
   "description": "关于 vue 的小型业务组件库",
-  "main": "./index.cjs",
   "module": "./index.mjs",
-  "jsdelivr": "./index.iife.min.js",
+  "jsdelivr": "./index.mjs.js",
   "types": "./index.d.ts",
   "sideEffects": false,
   "exports": {

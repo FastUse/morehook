@@ -40,7 +40,7 @@ const TypeSerializers: Record<
  * @returns
  */
 const getValueType = (defaultValue: unknown) => {
-  return defaultValue == null
+  return defaultValue === null
     ? 'any'
     : typeof defaultValue === 'boolean'
     ? 'boolean'

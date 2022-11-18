@@ -5,7 +5,9 @@ import json from '@rollup/plugin-json'
 import fg from 'fast-glob'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import { resolve } from 'path'
+import jsx from 'acorn-jsx'
+import scss from 'rollup-plugin-scss'
+import { join, resolve } from 'path'
 import type { Options as ESBuildOptions } from 'rollup-plugin-esbuild'
 import type { OutputOptions, Plugin, RollupOptions } from 'rollup'
 import { functions } from '../packages/metadata/metadata'
@@ -24,34 +26,29 @@ const injectVueDemi: Plugin = {
   }
 }
 
-const esbuildPlugin = esbuild({
-  target: 'esnext'
-})
-
+const esbuildPlugin = esbuild({ target: 'esnext' })
 const dtsPlugin = [dts()]
 
 const externals = ['vue-demi', '@morehook/core']
+const packagesRoot = resolve(__dirname, '..', 'packages')
 
 const esbuildMinifer = (options: ESBuildOptions) => {
   const { renderChunk } = esbuild(options)
-
-  return {
-    name: 'esbuild-minifer',
-    renderChunk
-  }
+  return { name: 'esbuild-minifer', renderChunk }
 }
 
 for (const {
   globals,
   name,
   external,
-  submodules,
   iife,
   build,
   cjs,
   mjs,
   dts,
-  target
+  target,
+  submodules,
+  singleChunk
 } of packages) {
   if (build === false) continue
 
@@ -60,7 +57,6 @@ for (const {
     '@morehook/core': 'MoreHook',
     ...(globals || {})
   }
-
   const iifeName = 'MoreHook'
   const functionNames = ['index']
 
@@ -73,106 +69,135 @@ for (const {
     )
   }
 
-  for (const fn of functionNames) {
-    const input =
-      fn === 'index'
-        ? `packages/${name}/index.ts`
-        : `packages/${name}/${fn}/index.ts`
-
-    const info = functions.find(i => i.name === fn)
-
-    const output: OutputOptions[] = []
-
-    if (mjs !== false) {
-      output.push({
-        file: `packages/${name}/dist/${fn}.mjs`,
-        format: 'es'
-      })
-    }
-
-    if (cjs !== false) {
-      output.push({
-        file: `packages/${name}/dist/${fn}.cjs`,
-        format: 'cjs'
-      })
-    }
-
-    if (iife !== false) {
-      output.push(
-        {
-          file: `packages/${name}/dist/${fn}.iife.js`,
-          format: 'iife',
-          name: iifeName,
-          extend: true,
-          globals: iifeGlobals,
-          plugins: [injectVueDemi]
-        },
-        {
-          file: `packages/${name}/dist/${fn}.iife.min.js`,
-          format: 'iife',
-          name: iifeName,
-          extend: true,
-          globals: iifeGlobals,
-          plugins: [
-            injectVueDemi,
-            esbuildMinifer({
-              minify: true
-            })
-          ]
-        }
-      )
-    }
-
+  // 打包区分为 hooks 和 组件
+  const componentFun = functions.filter(item => item.package === 'component')
+  if (singleChunk) {
     configs.push({
-      input,
-      output,
+      input: componentFun.reduce((pre, item) => {
+        pre[item.name] = `packages/${name}/${item.name}/index.tsx`
+        return pre
+      }, {}),
+      output: [
+        {
+          dir: `packages/${name}/dist`,
+          format: 'es',
+          entryFileNames: '[name]/index.mjs'
+        }
+      ],
       plugins: [
         commonjs(),
         nodeResolve(),
+        scss({
+          output: function (styles) {
+            fs.mkdirSync(join(packagesRoot, `${name}/dist`))
+            fs.writeFileSync(
+              join(packagesRoot, `${name}/dist/index.css`),
+              styles,
+              'utf-8'
+            )
+          }
+        }),
         json(),
-        target ? esbuild({ target }) : esbuildPlugin
+        esbuildPlugin
       ],
+      acornInjectPlugins: [jsx() as () => unknown],
       external: [...externals, ...(external || [])]
     })
 
-    if (dts !== false) {
-      configs.push({
-        input,
-        output: {
-          file: `packages/${name}/dist/${fn}.d.ts`,
-          format: 'es'
+    configs.push({
+      input: componentFun.reduce((pre, item) => {
+        pre[item.name] = `packages/${name}/${item.name}/index.tsx`
+        return pre
+      }, {}),
+      // 怎么合并呢？ 不想在操作文件 后面待做
+      output: [
+        {
+          dir: `packages/${name}/dist`,
+          format: 'es',
+          entryFileNames: '[name]/index.d.ts'
         },
-        plugins: dtsPlugin,
-        external: [...externals, ...(external || [])]
-      })
-    }
+        {
+          dir: `packages/${name}/dist`,
+          format: 'es',
+          entryFileNames: 'index.d.ts'
+        }
+      ],
+      plugins: dtsPlugin,
+      external: [...externals, ...(external || [])]
+    })
+  } else {
+    for (const fn of functionNames) {
+      const input =
+        fn === 'index'
+          ? `packages/${name}/index.ts`
+          : `packages/${name}/${fn}/index.ts`
 
-    if (info?.component) {
-      configs.push({
-        input: `packages/${name}/${fn}/component.ts`,
-        output: [
+      const output: OutputOptions[] = []
+
+      if (mjs !== false) {
+        output.push({
+          file: `packages/${name}/dist/${fn}.mjs`,
+          format: 'es'
+        })
+      }
+
+      if (cjs !== false) {
+        output.push({
+          file: `packages/${name}/dist/${fn}.cjs`,
+          format: 'cjs'
+        })
+      }
+
+      if (iife !== false) {
+        output.push(
           {
-            file: `packages/${name}/dist/${fn}/component.cjs`,
-            format: 'cjs'
+            file: `packages/${name}/dist/${fn}.iife.js`,
+            format: 'iife',
+            name: iifeName,
+            extend: true,
+            globals: iifeGlobals,
+            plugins: [injectVueDemi]
           },
           {
-            file: `packages/${name}/dist/${fn}/component.mjs`,
-            format: 'es'
+            file: `packages/${name}/dist/${fn}.iife.min.js`,
+            format: 'iife',
+            name: iifeName,
+            extend: true,
+            globals: iifeGlobals,
+            plugins: [
+              injectVueDemi,
+              esbuildMinifer({
+                minify: true
+              })
+            ]
           }
+        )
+      }
+
+      configs.push({
+        input,
+        output,
+        plugins: [
+          commonjs(),
+          nodeResolve(),
+          json(),
+          target ? esbuild({ target }) : esbuildPlugin
         ],
-        plugins: [esbuildPlugin],
+        acornInjectPlugins: [jsx() as () => unknown],
         external: [...externals, ...(external || [])]
       })
 
-      configs.push({
-        input: `packages/${name}/${fn}/component.ts`,
-        output: {
-          file: `packages/${name}/dist/${fn}/component.d.ts`,
-          format: 'es'
-        },
-        plugins: dtsPlugin,
-        external: [...externals, ...(external || [])]
-      })
+      if (dts !== false) {
+        configs.push({
+          input,
+          output: {
+            file: `packages/${name}/dist/${fn}.d.ts`,
+            format: 'es'
+          },
+          plugins: dtsPlugin,
+          external: [...externals, ...(external || [])]
+        })
+      }
     }
   }
 }

@@ -14,7 +14,6 @@ const rootDir = path.resolve(__dirname, '..')
 // const watch = process.argv.includes('--watch')
 
 const FILES_COPY_ROOT = ['LICENSE']
-
 const FILES_COPY_LOCAL = ['README.md', 'index.json', '*.cjs', '*.mjs', '*.d.ts']
 
 assert(process.cwd() !== __dirname)
@@ -27,26 +26,31 @@ async function buildMetaFiles() {
     const packageRoot = path.resolve(__dirname, '..', 'packages', name)
     const packageDist = path.resolve(packageRoot, 'dist')
 
-    if (name === 'core')
+    // ----- 复制 core hooks README -----
+    if (name === 'core') {
       await fs.copyFile(
         path.join(rootDir, 'README.md'),
         path.join(packageDist, 'README.md')
       )
+    }
 
-    for (const file of FILES_COPY_ROOT)
+    // ----- 复制 LICENSE 证书 -----
+    for (const file of FILES_COPY_ROOT) {
       await fs.copyFile(path.join(rootDir, file), path.join(packageDist, file))
+    }
 
     const files = await fg(FILES_COPY_LOCAL, { cwd: packageRoot })
-    for (const file of files)
+    for (const file of files) {
       await fs.copyFile(
         path.join(packageRoot, file),
         path.join(packageDist, file)
       )
+    }
 
+    // ----- 更改本地引用版本 -----
     const packageJSON = await fs.readJSON(
       path.join(packageRoot, 'package.json')
     )
-
     // 当子类包互相引用时，要手动更改其版本（不改的话则是 workspace）
     for (const key of Object.keys(packageJSON.dependencies || {})) {
       if (key.startsWith('@morehook/')) {
@@ -56,6 +60,19 @@ async function buildMetaFiles() {
     await fs.writeJSON(path.join(packageDist, 'package.json'), packageJSON, {
       spaces: 2
     })
+
+    // ----- 将组件的 css 引入 -----
+    if (name === 'component') {
+      await fs.copyFile(
+        path.join(packageRoot, 'index.ts'),
+        path.join(packageDist, 'index.mjs')
+      )
+      await fs.writeFile(
+        path.join(packageDist, 'index.mjs'),
+        "import './index.css'",
+        { flag: 'a+' }
+      )
+    }
   }
 }
 
