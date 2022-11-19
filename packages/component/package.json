@@ -1,6 +1,6 @@
 {
   "name": "@morehook/component",
-  "version": "1.10.4",
+  "version": "1.10.5",
   "description": "关于 vue 的小型业务组件库",
   "module": "./index.mjs",
   "types": "./index.d.ts",
@@ -8,7 +8,6 @@
   "exports": {
     ".": {
       "types": "./index.d.ts",
-      "require": "./index.cjs",
       "import": "./index.mjs"
     },
     "./*": "./*"
@@ -27,7 +26,7 @@
     "vue组件"
   ],
   "peerDependencies": {
-    "vue": "*"
+    "vue": "^3.0.0"
   },
   "dependencies": {
     "vue-demi": "*"
@@ -35,5 +34,6 @@
   "bugs": {
     "url": "https://github.com/FastUse/morehook/issues"
   },
-  "homepage": "https://github.com/FastUse/morehook#readme"
+  "homepage": "https://github.com/FastUse/morehook#readme",
+  "main": "./index.cjs"
 }

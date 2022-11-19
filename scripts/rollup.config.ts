@@ -7,6 +7,7 @@ import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import jsx from 'acorn-jsx'
 import scss from 'rollup-plugin-scss'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 import { join, resolve } from 'path'
 import type { Options as ESBuildOptions } from 'rollup-plugin-esbuild'
 import type { OutputOptions, Plugin, RollupOptions } from 'rollup'
@@ -29,7 +30,7 @@ const injectVueDemi: Plugin = {
 const esbuildPlugin = esbuild({ target: 'esnext' })
 const dtsPlugin = [dts()]
 
-const externals = ['vue-demi', '@morehook/core']
+const externals = ['vue', 'vue-demi', '@morehook/core']
 const packagesRoot = resolve(__dirname, '..', 'packages')
 
 const esbuildMinifer = (options: ESBuildOptions) => {
@@ -70,8 +71,8 @@ for (const {
   }
 
   // 打包区分为 hooks 和 组件
-  const componentFun = functions.filter(item => item.package === 'component')
   if (singleChunk) {
+    const componentFun = functions.filter(item => item.package === 'component')
     configs.push({
       input: componentFun.reduce((pre, item) => {
         pre[item.name] = `packages/${name}/${item.name}/index.tsx`
@@ -98,8 +99,9 @@ for (const {
           }
         }),
         json(),
+        vueJsx(),
         esbuildPlugin
-      ],
+      ] as any,
       acornInjectPlugins: [jsx() as () => unknown],
       external: [...externals, ...(external || [])]
     })

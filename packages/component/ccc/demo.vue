@@ -1,10 +1,10 @@
 <template>
   <div>
     <p>按钮组件</p>
-    <Btn></Btn>
+    <ccc></ccc>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { Btn } from '@morehook/component'
+import { ccc } from '@morehook/component'
 </script>
