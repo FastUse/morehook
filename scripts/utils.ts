@@ -252,7 +252,8 @@ export async function updatePackageJSON(indexes: PackageIndexes) {
     author,
     submodules,
     iife,
-    keywords
+    keywords,
+    main
   } of packages) {
     const packageDir = join(DIR_SRC, name)
     const packageJSONPath = join(packageDir, 'package.json')
@@ -271,7 +272,9 @@ export async function updatePackageJSON(indexes: PackageIndexes) {
       url: 'git+https://github.com/FastUse/morehook.git',
       directory: `packages/${name}`
     }
-    packageJSON.main = './index.cjs'
+    if (main !== false) {
+      packageJSON.main = './index.cjs'
+    }
     packageJSON.types = './index.d.ts'
     packageJSON.module = './index.mjs'
     if (iife !== false) {

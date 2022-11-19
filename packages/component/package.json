@@ -3,7 +3,6 @@
   "version": "1.10.4",
   "description": "关于 vue 的小型业务组件库",
   "module": "./index.mjs",
-  "jsdelivr": "./index.mjs.js",
   "types": "./index.d.ts",
   "sideEffects": false,
   "exports": {
@@ -36,6 +35,5 @@
   "bugs": {
     "url": "https://github.com/FastUse/morehook/issues"
   },
-  "homepage": "https://github.com/FastUse/morehook#readme",
-  "unpkg": "./index.iife.min.js"
+  "homepage": "https://github.com/FastUse/morehook#readme"
 }

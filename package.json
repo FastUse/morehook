@@ -7,8 +7,8 @@
   "repository": "git@github.com:M-cheng-web/morehook.git",
   "author": "M-cheng-web <https://github.com/M-cheng-web>",
   "scripts": {
-    "build": "esno scripts/build.ts",
-    "build2": "nr update && esno scripts/build.ts",
+    "build": "nr update && esno scripts/build.ts",
+    "build2": "esno scripts/build.ts",
     "build:rollup": "cross-env NODE_OPTIONS=\"--max-old-space-size=6144\" rollup -c",
     "build:types": "tsc --emitDeclarationOnly && nr types:fix",
     "dev": "nr update && nr docs",

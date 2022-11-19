@@ -103,27 +103,15 @@ for (const {
       acornInjectPlugins: [jsx() as () => unknown],
       external: [...externals, ...(external || [])]
     })
-
     configs.push({
-      input: componentFun.reduce((pre, item) => {
-        pre[item.name] = `packages/${name}/${item.name}/index.tsx`
-        return pre
-      }, {}),
-      // 怎么合并呢？ 不想在操作文件 后面待做
-      output: [
-        {
-          dir: `packages/${name}/dist`,
-          format: 'es',
-          entryFileNames: '[name]/index.d.ts'
-        },
-        {
-          dir: `packages/${name}/dist`,
-          format: 'es',
-          entryFileNames: 'index.d.ts'
-        }
-      ],
+      input: `packages/${name}/index.ts`,
+      output: {
+        dir: `packages/${name}/dist`,
+        format: 'es',
+        entryFileNames: 'index.d.ts'
+      },
       plugins: dtsPlugin,
-      external: [...externals, ...(external || [])]
+      external: [...externals, ...(external || []), /index.scss/]
     })
   } else {
     for (const fn of functionNames) {

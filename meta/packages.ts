@@ -11,20 +11,22 @@ export const packages: any[] = [
       'vue3hook',
       'morehook',
       'vueHook'
-    ],
+    ]
     // external: ['vue', 'vue-router', 'js-cookie', 'dayjs', 'easyqrcodejs'],
-    globals: {
-      // dayjs: 'Dayjs',
-      // 'vue-router': 'VueRouter',
-      // 'js-cookie': 'JsCookie',
-      // easyqrcodejs: 'Easyqrcodejs'
-    }
+    // globals: {
+    //   dayjs: 'Dayjs',
+    //   'vue-router': 'VueRouter',
+    //   'js-cookie': 'JsCookie',
+    //   easyqrcodejs: 'Easyqrcodejs'
+    // }
   },
   {
     name: 'component',
     display: 'Component',
     description: '关于 vue 的小型业务组件库',
     keywords: ['fastuse', 'morehook', 'component', 'vue组件'],
+    iife: false,
+    main: false,
     singleChunk: true // 是否子包单独打包 (目前是组件包独有的,暂时没用上)
   },
   {
