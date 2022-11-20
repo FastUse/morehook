@@ -2,21 +2,21 @@
 category: component
 ---
 
-# ccc
+# tag
 
-cc组件
+标签组件
 
 ## Usage
 
 ```html
 <template>
   <div>
-    <p>cc组件</p>
-    <button></button>
+    <p>标签组件</p>
+    <Tag></Tag>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { cc } from '@morehook/component'
+import { Tag } from '@morehook/component'
 </script>
 ```

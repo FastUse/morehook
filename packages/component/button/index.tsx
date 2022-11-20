@@ -1,25 +1,67 @@
-import { defineComponent, ref } from 'vue-demi'
-// import { useToggle } from '@morehook/core'
+import { defineComponent, type ExtractPropTypes } from 'vue'
+import {
+  createNamespace,
+  makeStringProp,
+  extend,
+  preventDefault
+} from '../_utils'
+import { ButtonType } from './types'
 import './index.scss'
 
+/**
+ * 目的是在制作大型业务组件时能暴露hook给外部便捷操作
+ */
 export const useBtn = () => {
   console.log(111)
 }
 
-export const button = defineComponent({
-  name: 'cbutton',
-  setup() {
-    const count = ref(0)
-    const handleIncrease = () => {
-      count.value++
+const [name] = createNamespace('button')
+
+export type ButtonProps = ExtractPropTypes<typeof buttonProps>
+export const buttonProps = extend(
+  {},
+  {
+    text: String,
+    type: makeStringProp<ButtonType>('default'),
+    loadingText: String,
+    color: String,
+    loading: Boolean,
+    disabled: Boolean
+  }
+)
+
+export const Button = defineComponent({
+  name,
+
+  props: buttonProps,
+
+  emits: ['click'],
+
+  setup(props, { emit, slots }) {
+    const renderText = () => {
+      let text
+      if (props.loading) {
+        text = props.loadingText
+      } else {
+        text = slots.default ? slots.default() : props.text
+      }
+
+      if (text) {
+        return <span class="text">{text}</span>
+      }
+    }
+
+    const onClick = (event: MouseEvent) => {
+      if (props.loading) {
+        preventDefault(event)
+      } else if (!props.disabled) {
+        emit('click', event)
+      }
     }
 
     return () => (
-      // style={{ padding: 10, backgroundColor: '#cef', textAlign: 'center' }}
-      <div class="Btn">
-        <h1>实验 tsx 写法</h1>
-        <button onClick={handleIncrease}>Count++</button>
-        <p>Parent count is: {count.value}</p>
+      <div class="button-body" onClick={onClick}>
+        <div class="content">{renderText()}</div>
       </div>
     )
   }

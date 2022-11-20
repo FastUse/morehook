@@ -72,6 +72,10 @@ for (const {
 
   // 打包区分为 hooks 和 组件
   if (singleChunk) {
+    // 明天待做
+    // 1. 正常做一个组件，看看发布一下看看
+    // 2. 扩展这个组件，多文件的形式
+    // 3. 样式隔离怎么办，会不会被外部影响样式，组件与组件之间的同名样式怎么办，可以做到物理隔离还是命名隔离？
     const componentFun = functions.filter(item => item.package === 'component')
     configs.push({
       input: componentFun.reduce((pre, item) => {

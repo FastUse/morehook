@@ -1,4 +1,5 @@
-import type { App, Component } from 'vue-demi'
+// import { camelize } from './format'
+import type { App, Component } from 'vue'
 
 // https://github.com/vant-ui/vant/issues/8302
 type EventShim = {
@@ -18,7 +19,7 @@ export function withInstall<T extends Component>(options: T) {
     const { name } = options
     if (name) {
       app.component(name, options)
-      // app.component(camelize(`-${name}`), options);
+      // app.component(camelize(`-${name}`), options)
     }
   }
 
