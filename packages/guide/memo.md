@@ -38,6 +38,7 @@ https://github.com/qntm/base2048
 + 最好以后写大的业务hook时，诺列一下业务场景
 + node配合搭建cli
 + react 可以组件和hook都方便返回，vue3怎么处理呢？
++ 兼容 vue2和vue3的思路=https://blog.csdn.net/duninet/article/details/122972172
 
 ## 备注
 目前所有的外部插件都会引入到最后的打包中，除了 vue-router，后面看需要决定要不要再次分开

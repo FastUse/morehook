@@ -1,6 +1,6 @@
 {
   "name": "@morehook/monorepo",
-  "version": "1.10.5",
+  "version": "1.10.6",
   "private": true,
   "description": "基本的Vue合成实用程序的集合",
   "license": "MIT",

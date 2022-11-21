@@ -1,6 +1,6 @@
 {
   "name": "@morehook/router",
-  "version": "1.10.5",
+  "version": "1.10.6",
   "description": "关于 vuerouter 的 hooks",
   "main": "./index.cjs",
   "module": "./index.mjs",
