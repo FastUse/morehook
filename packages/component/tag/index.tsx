@@ -10,8 +10,8 @@ import './index.scss'
 
 const [name] = createNamespace('tag')
 
-export type TagProps = ExtractPropTypes<typeof tagProps>
-export const tagProps = extend(
+type tagProps = ExtractPropTypes<typeof tagProps>
+const tagProps = extend(
   {},
   {
     size: String as PropType<TagSize>,

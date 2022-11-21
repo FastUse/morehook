@@ -17,8 +17,8 @@ export const useBtn = () => {
 
 const [name] = createNamespace('button')
 
-export type ButtonProps = ExtractPropTypes<typeof buttonProps>
-export const buttonProps = extend(
+type buttonProps = ExtractPropTypes<typeof buttonProps>
+const buttonProps = extend(
   {},
   {
     text: String,
