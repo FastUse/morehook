@@ -45,6 +45,6 @@ export function createBEM(name: string) {
 }
 
 export function createNamespace(name: string) {
-  const prefixedName = `fastuse-${name}`
+  const prefixedName = `fast-${name}`
   return [prefixedName, createBEM(prefixedName)] as const
 }

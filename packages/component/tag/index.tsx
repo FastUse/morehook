@@ -5,26 +5,29 @@ import {
   type CSSProperties,
   type ExtractPropTypes
 } from 'vue'
-import { truthProp, makeStringProp, createNamespace } from '../_utils'
+import { truthProp, makeStringProp, createNamespace, extend } from '../_utils'
 import type { TagType, TagSize } from './types'
+import './index.scss'
 
-const [name, bem] = createNamespace('tag')
-
-export const tagProps = {
-  size: String as PropType<TagSize>,
-  mark: Boolean,
-  show: truthProp,
-  type: makeStringProp<TagType>('default'),
-  color: String,
-  plain: Boolean,
-  round: Boolean,
-  textColor: String,
-  closeable: Boolean
-}
+const [name] = createNamespace('tag')
 
 export type TagProps = ExtractPropTypes<typeof tagProps>
+export const tagProps = extend(
+  {},
+  {
+    size: String as PropType<TagSize>,
+    mark: Boolean,
+    show: truthProp,
+    type: makeStringProp<TagType>('default'),
+    color: String,
+    plain: Boolean,
+    round: Boolean,
+    textColor: String,
+    closeable: Boolean
+  }
+)
 
-export default defineComponent({
+export const Tag = defineComponent({
   name,
 
   props: tagProps,
@@ -32,6 +35,14 @@ export default defineComponent({
   emits: ['close'],
 
   setup(props, { slots, emit }) {
+    const renderText = () => {
+      const text = slots.default ? slots.default() : ''
+
+      if (text) {
+        return <span>{text}</span>
+      }
+    }
+
     const onClose = (event: MouseEvent) => {
       event.stopPropagation()
       emit('close', event)
@@ -51,28 +62,18 @@ export default defineComponent({
     }
 
     const renderTag = () => {
-      const { type, mark, plain, round, size, closeable } = props
+      const { closeable } = props
 
-      const classes: Record<string, unknown> = {
-        mark,
-        plain,
-        round
-      }
-      if (size) {
-        classes[size] = size
-      }
+      const CloseIcon = closeable && <div onClick={onClose}>X</div>
 
       return (
-        <span style={getStyle()} class={bem([classes, type])}>
-          {slots.default?.()}
+        <span style={getStyle()} class="tag-body">
+          {renderText()}
+          {CloseIcon}
         </span>
       )
     }
 
-    return () => (
-      <Transition name={props.closeable ? 'van-fade' : undefined}>
-        {props.show ? renderTag() : null}
-      </Transition>
-    )
+    return () => <div>{props.show ? renderTag() : null}</div>
   }
 })

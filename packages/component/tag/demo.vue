@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>tag组件</p>
-    <Tag>asdasdasd</Tag>
+    <Tag>asdasds</Tag>
   </div>
 </template>
 
