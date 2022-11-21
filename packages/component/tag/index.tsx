@@ -1,5 +1,4 @@
 import {
-  Transition,
   defineComponent,
   type PropType,
   type CSSProperties,
