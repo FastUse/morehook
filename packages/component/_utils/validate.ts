@@ -1,4 +1,6 @@
-import { inBrowser, type Numeric } from './basic'
+export const inBrowser = typeof window !== 'undefined'
+
+export type Numeric = number | string
 
 export const isDef = <T>(val: T): val is NonNullable<T> =>
   val !== undefined && val !== null

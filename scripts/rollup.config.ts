@@ -158,12 +158,7 @@ for (const {
             name: iifeName,
             extend: true,
             globals: iifeGlobals,
-            plugins: [
-              injectVueDemi,
-              esbuildMinifer({
-                minify: true
-              })
-            ]
+            plugins: [injectVueDemi, esbuildMinifer({ minify: true })]
           }
         )
       }
