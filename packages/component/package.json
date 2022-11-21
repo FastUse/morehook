@@ -35,5 +35,5 @@
     "url": "https://github.com/FastUse/morehook/issues"
   },
   "homepage": "https://github.com/FastUse/morehook#readme",
-  "main": "./index.cjs"
+  "main": "./index.mjs"
 }

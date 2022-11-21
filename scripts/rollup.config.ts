@@ -86,7 +86,7 @@ for (const {
         {
           dir: `packages/${name}/dist`,
           format: 'es',
-          entryFileNames: '[name]/index.mjs'
+          entryFileNames: '[name]/index.js'
         }
       ],
       plugins: [

@@ -26,7 +26,7 @@ export const packages: any[] = [
     description: '关于 vue 的小型业务组件库',
     keywords: ['fastuse', 'morehook', 'component', 'vue组件'],
     iife: false,
-    main: false,
+    moduleJs: true, // 是否 main 入口指向 index.mjs
     singleChunk: true // 是否子包单独打包 (目前是组件包独有的,暂时没用上)
   },
   {
