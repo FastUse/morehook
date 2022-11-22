@@ -9,21 +9,11 @@ import {
 import { ButtonType } from './types'
 import './index.scss'
 
-export * from './components/smallBtn'
-
-/**
- * 目的是在制作大型业务组件时能暴露hook给外部便捷操作
- */
-const btnDefaultText = ref<any>('我是Btn默认填充值，可以通过hook更改：')
-export const useBtn = () => {
-  console.log('调用了：useBtn')
-  return { btnDefaultText }
-}
-
 const [name, bem] = createNamespace('button')
 
-type buttonProps = ExtractPropTypes<typeof buttonProps>
-const buttonProps = extend(
+export * from './components/smallBtn'
+export type ButtonProps = ExtractPropTypes<typeof buttonProps>
+export const buttonProps = extend(
   {},
   {
     text: String,
@@ -35,7 +25,15 @@ const buttonProps = extend(
   }
 )
 
-export const Button = defineComponent({
+// ----------- hooks -----------
+// 目的是在制作大型业务组件时能暴露hook给外部便捷操作
+const btnDefaultText = ref<any>('我是Btn默认填充值，可以通过hook更改：')
+export const useBtn = () => {
+  console.log('调用了：useBtn')
+  return { btnDefaultText }
+}
+
+export default defineComponent({
   name,
 
   props: buttonProps,
