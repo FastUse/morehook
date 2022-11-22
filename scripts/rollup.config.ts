@@ -6,9 +6,11 @@ import fg from 'fast-glob'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import jsx from 'acorn-jsx'
-import scss from 'rollup-plugin-scss'
+import postcss from 'rollup-plugin-postcss'
+import autoprefixer from 'autoprefixer'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import { join, resolve } from 'path'
+// import scss from 'rollup-plugin-scss'
+import { resolve } from 'path'
 import type { Options as ESBuildOptions } from 'rollup-plugin-esbuild'
 import type { OutputOptions, Plugin, RollupOptions } from 'rollup'
 import { functions } from '../packages/metadata/metadata'
@@ -31,7 +33,7 @@ const esbuildPlugin = esbuild({ target: 'esnext' })
 const dtsPlugin = [dts()]
 
 const externals = ['vue', 'vue-demi', '@morehook/core']
-const packagesRoot = resolve(__dirname, '..', 'packages')
+// const packagesRoot = resolve(__dirname, '..', 'packages')
 
 const esbuildMinifer = (options: ESBuildOptions) => {
   const { renderChunk } = esbuild(options)
@@ -73,8 +75,8 @@ for (const {
   // 打包区分为 hooks 和 组件
   if (singleChunk) {
     // 明天待做
-    // 1. 正常做一个组件，看看发布一下看看
-    // 2. 扩展这个组件，多文件的形式
+    // 1. 正常做一个组件，看看发布一下看看 (√)
+    // 2. 扩展这个组件，多文件的形式 (√)
     // 3. 样式隔离怎么办，会不会被外部影响样式，组件与组件之间的同名样式怎么办，可以做到物理隔离还是命名隔离？
     const componentFun = functions.filter(item => item.package === 'component')
     configs.push({
@@ -92,15 +94,25 @@ for (const {
       plugins: [
         commonjs(),
         nodeResolve(),
-        scss({
-          output: function (styles) {
-            fs.mkdirSync(join(packagesRoot, `${name}/dist`))
-            fs.writeFileSync(
-              join(packagesRoot, `${name}/dist/index.css`),
-              styles,
-              'utf-8'
-            )
-          }
+        // scss({
+        //   output: function (styles) {
+        //     fs.mkdirSync(join(packagesRoot, `${name}/dist`))
+        //     fs.writeFileSync(
+        //       join(packagesRoot, `${name}/dist/index.css`),
+        //       styles,
+        //       'utf-8'
+        //     )
+        //   }
+        // }),
+        postcss({
+          // modules: true, // 是否启用样式隔离，但是这里只更改了打包后的css名，没有更改引用的地方
+          extensions: ['.css', '.scss'],
+          extract: 'index.css',
+          plugins: [
+            autoprefixer({
+              overrideBrowserslist: ['>=0%']
+            })
+          ]
         }),
         json(),
         vueJsx(),

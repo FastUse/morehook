@@ -1,9 +1,11 @@
-.button-body {
-  color: red;
-  border: 1px solid red;
-  padding: 8px;
-  background-color: yellow;
-  .content {
+.fastuse-button {
+  &__body {
+    color: red;
+    border: 1px solid red;
+    padding: 8px;
+    background-color: yellow;
+  }
+  &__content {
     background-color: palegreen;
   }
 }

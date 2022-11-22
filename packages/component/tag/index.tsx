@@ -8,7 +8,7 @@ import { truthProp, makeStringProp, createNamespace, extend } from '../_utils'
 import type { TagType, TagSize } from './types'
 import './index.scss'
 
-const [name] = createNamespace('tag')
+const [name, bem] = createNamespace('tag')
 
 type tagProps = ExtractPropTypes<typeof tagProps>
 const tagProps = extend(
@@ -36,10 +36,7 @@ export const Tag = defineComponent({
   setup(props, { slots, emit }) {
     const renderText = () => {
       const text = slots.default ? slots.default() : ''
-
-      if (text) {
-        return <span>{text}</span>
-      }
+      return <span>{text}</span>
     }
 
     const onClose = (event: MouseEvent) => {
@@ -66,7 +63,7 @@ export const Tag = defineComponent({
       const CloseIcon = closeable && <div onClick={onClose}>X</div>
 
       return (
-        <span style={getStyle()} class="tag-body">
+        <span style={getStyle()} class={bem('body')}>
           {renderText()}
           {CloseIcon}
         </span>

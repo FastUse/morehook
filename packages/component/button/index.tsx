@@ -20,7 +20,7 @@ export const useBtn = () => {
   return { btnDefaultText }
 }
 
-const [name] = createNamespace('button')
+const [name, bem] = createNamespace('button')
 
 type buttonProps = ExtractPropTypes<typeof buttonProps>
 const buttonProps = extend(
@@ -65,19 +65,21 @@ export const Button = defineComponent({
       return <span class="text">{text}</span>
     }
 
-    return () => (
-      <div>
-        <div class="button-body" onClick={onClick}>
-          <div class="content">
-            {btnDefaultText.value}
-            {renderText()}
+    return () => {
+      return (
+        <div>
+          <div class={bem('body')} onClick={onClick}>
+            <div class={bem('content')}>
+              {btnDefaultText.value}
+              {renderText()}
+            </div>
           </div>
+
+          <div style="margin: 40px">------------父子组件分界线------------</div>
+
+          <SmallButton text={renderText} onClick={onClickSmall}></SmallButton>
         </div>
-
-        <div style="margin: 40px">------------父子组件分界线------------</div>
-
-        <SmallButton text={renderText} onClick={onClickSmall}></SmallButton>
-      </div>
-    )
+      )
+    }
   }
 })

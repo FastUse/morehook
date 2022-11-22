@@ -2,7 +2,7 @@ import { defineComponent, ref, type PropType } from 'vue'
 import { createNamespace, extend } from '../../_utils'
 import './index.scss'
 
-const [name] = createNamespace('small-button')
+const [name, bem] = createNamespace('small-button')
 
 const smallBtnDefaultText = ref<any>(
   '我是smallBtn默认填充值，可以通过hook更改：'
@@ -32,7 +32,7 @@ export const SmallButton = defineComponent({
   setup(props, { emit, slots }) {
     const renderText = () => {
       return (
-        <span class="text">
+        <span class={bem('text')}>
           {slots.default ? slots.default() : props.text()}
         </span>
       )
@@ -43,8 +43,8 @@ export const SmallButton = defineComponent({
     }
 
     return () => (
-      <div class="small-button-body" onClick={onClick}>
-        <div class="content">
+      <div class={bem('body')} onClick={onClick}>
+        <div>
           {smallBtnDefaultText.value}
           {renderText()}
         </div>
