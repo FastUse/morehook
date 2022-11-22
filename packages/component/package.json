@@ -1,6 +1,6 @@
 {
   "name": "@morehook/component",
-  "version": "1.10.6",
+  "version": "1.10.7",
   "description": "关于 vue 的小型业务组件库",
   "module": "./index.mjs",
   "types": "./index.d.ts",
