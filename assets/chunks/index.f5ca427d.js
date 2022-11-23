@@ -1,0 +1,1 @@
+const o=function(t,u,e=!1){let n=null;return(...l)=>{e&&(t.call(this,...l),e=!1),n&&clearTimeout(n),n=setTimeout(()=>{t.call(this,...l),e=!0},u)}};function c(t,u,e=!1){return{run:o(t,typeof u=="number"?u:1e3,e)}}export{c as u};

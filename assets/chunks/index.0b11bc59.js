@@ -1,0 +1,1 @@
+const u=function(l,e,n=!1){let r=Date.now(),a=()=>{},t=null;return(...o)=>{const c=Date.now();c-r<e?n&&(a=l,t&&clearInterval(t),t=setInterval(()=>{a.call(this,...o),t&&clearInterval(t)},e)):(n&&t&&clearInterval(t),r=c,l.call(this,...o))}};function s(l,e,n=!1){return{run:u(l,typeof e=="number"?e:1e3,n)}}export{s as u};
