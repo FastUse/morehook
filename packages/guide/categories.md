@@ -8,9 +8,10 @@ Hooks 分类说明，便于记忆和查找
 + 🛠 Sensors - 传感器（例如网络状态捕捉，网络资源加载，鼠标动向捕捉，scroll捕捉，屏幕区间捕捉）
 + 🛠 Network - 网络连接（例如http封装，websocket封装，fetch封装）
 + 🛠 Animation - 动画
-+ 🛠 Component - 组件（返回可直接在页面使用的组件）
++ 🛠 Component - 组件hook，涉及到大量页面操作的hook
 + 🛠 Watch - 监听（监听数组，状态这些）
 + 🛠 Array - 数组（关于数组的处理）
 + 🛠 Time - 时间（关于时间的处理）
 + 🛠 Utilities - 公共工具（例如转base64，转数字，eventBus，暂停sleep，防抖节流，这些）
 + 🛠 @Router - vue-router的相关 hooks
++ 🛠 @Component - 组件库，除了导出组件还提供hook便于操作目标组件内部数据
