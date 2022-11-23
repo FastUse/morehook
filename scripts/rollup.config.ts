@@ -9,7 +9,6 @@ import jsx from 'acorn-jsx'
 import postcss from 'rollup-plugin-postcss'
 import autoprefixer from 'autoprefixer'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-// import scss from 'rollup-plugin-scss'
 import { resolve } from 'path'
 import type { Options as ESBuildOptions } from 'rollup-plugin-esbuild'
 import type { OutputOptions, Plugin, RollupOptions } from 'rollup'
@@ -90,6 +89,7 @@ for (const {
       plugins: [
         commonjs(),
         nodeResolve(),
+        // rollup-plugin-scss 插件
         // scss({
         //   output: function (styles) {
         //     fs.mkdirSync(join(packagesRoot, `${name}/dist`))
