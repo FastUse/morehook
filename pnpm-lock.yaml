@@ -134,11 +134,9 @@ importers:
 
   packages/component:
     specifiers:
-      vue: ^3.0.0
       vue-demi: 0.13.11
     dependencies:
-      vue: 3.2.45
-      vue-demi: 0.13.11_vue@3.2.45
+      vue-demi: 0.13.11
 
   packages/core:
     specifiers:
@@ -5373,6 +5371,7 @@ packages:
         optional: true
     dependencies:
       vue: 3.2.45
+    dev: true
 
   /vue-eslint-parser/9.1.0_eslint@8.28.0:
     resolution: {integrity: sha512-NGn/iQy8/Wb7RrRa4aRkokyCZfOUWk19OP5HP6JEozQFX5AoS/t+Z0ZN7FY4LlmWc4FNI922V7cvX28zctN8dQ==}
