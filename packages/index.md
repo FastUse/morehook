@@ -16,7 +16,7 @@ hero:
       text: 快速开始
       link: /guide/introduce
     - theme: alt
-      text: 搜索-Hooks
+      text: 搜索
       link: /functions
     - theme: alt
       text: GitHub

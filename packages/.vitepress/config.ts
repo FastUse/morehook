@@ -63,7 +63,7 @@ export default defineConfig({
 function nav(): DefaultTheme.NavItem[] {
   return [
     { text: '开始', link: '/guide/introduce', activeMatch: '/guide/' },
-    { text: '搜索-Hooks', link: '/functions', activeMatch: '/functions/' },
+    { text: '搜索', link: '/functions', activeMatch: '/functions/' },
     {
       text: version,
       link: ''
@@ -89,7 +89,7 @@ function sidebarGuide() {
       items: [
         { text: '介绍', link: '/guide/introduce' },
         { text: '分类说明', link: '/guide/categories' },
-        { text: '搜索-Hooks', link: '/functions' },
+        { text: '搜索', link: '/functions' },
         { text: '备忘录', link: '/guide/memo' },
       ]
     },
