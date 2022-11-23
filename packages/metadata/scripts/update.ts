@@ -51,20 +51,7 @@ async function readFunctions() {
     await Promise.all(
       functions.map(async fnName => {
         const mdPath = join(dir, fnName, 'index.md')
-        const tsPath = join(dir, fnName, 'index.tx')
-
-        // console.log('tsPath', tsPath)
-        if (
-          tsPath ===
-          '/Users/chengxinhan/A-Learn/morehook/packages/core/useBoolean/index.tx'
-          // '/Users/chengxinhan/A-Learn/morehook/packages/component/tag/index.tx'
-        ) {
-          console.log('tsPath', tsPath)
-          console.log(
-            'tsPath',
-            await git.raw(['log', '-1', '--format=%at', `${tsPath}`])
-          )
-        }
+        const tsPath = join(dir, fnName, 'index.ts')
 
         const fn: VueUseFunction = {
           name: fnName,
@@ -72,8 +59,8 @@ async function readFunctions() {
           docs: '', // 文档地址
           category: '', // 种类
           description: '', // 描述
-          // lastUpdated:
-          //   +(await git.raw(['log', '-1', '--format=%at', `${tsPath}`])) * 1000, // 最后更新时间
+          lastUpdated:
+            +(await git.raw(['log', '-1', '--format=%at', `${tsPath}`])) * 1000, // 最后更新时间
           deprecated: false, // 是否不赞成使用
           alias: [], // 化名
           related: [] // 联系
