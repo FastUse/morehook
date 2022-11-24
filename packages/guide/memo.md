@@ -16,6 +16,7 @@
 + 上传文件的，面试官那一套
 + promise 执行链那一套
 + 下载文件那一套
++ 点击图片放大全屏的组件或者hook
 
 ## 相关库
 + https://github.com/proYang/outils js工具库
