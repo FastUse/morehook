@@ -1,1 +1,0 @@
-import{k as l,r as s}from"../app.6b554fcd.js";function f(...o){const u=o.map(e=>l(e)?e:s(e)),n=s(u[0].value);let t=0;const c=o.length,r=[e=>{if(e!==void 0&&o.includes(e)){n.value=l(e)?e.value:e;return}t=t+1>c-1?0:t+1,n.value=u[t].value},...(()=>u.map((e,a)=>()=>{n.value=e.value,t=a}))()];return[n,r]}export{f as u};
