@@ -11,7 +11,7 @@ import { packages } from '../meta/packages'
 
 export const git = Git()
 
-export const DOCS_URL = 'https://fastuse.github.io/morehook/'
+export const DOCS_URL = 'https://fastuse.github.io/morehook'
 
 export const DIR_ROOT = resolve(__dirname, '..')
 export const DIR_SRC = resolve(__dirname, '../packages')

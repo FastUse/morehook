@@ -7,7 +7,7 @@ import type { PackageIndexes, VueUseFunction } from '../types'
 import { getCategories } from './utils'
 import { packages } from '../../../meta/packages'
 
-export const DOCS_URL = 'https://fastuse.github.io/morehook/'
+export const DOCS_URL = 'https://fastuse.github.io/morehook'
 const DIR_PACKAGE = resolve(__dirname, '..')
 const DIR_ROOT = resolve(__dirname, '../../../')
 const DIR_SRC = resolve(DIR_ROOT, 'packages')

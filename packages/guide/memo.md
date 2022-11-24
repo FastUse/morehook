@@ -16,6 +16,8 @@
 + promise 执行链那一套
 + 下载文件那一套
 + 点击图片放大全屏的组件或者hook
++ 每次开发新hook后都需要重新 nr dev 才能看到新效果
+
 
 ## 相关库
 + https://github.com/proYang/outils js工具库
