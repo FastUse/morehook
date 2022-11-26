@@ -11,7 +11,8 @@ export const packages: any[] = [
       'vue3hook',
       'morehook',
       'vueHook'
-    ]
+    ],
+    external: ['@morehook/utils']
     // external: ['vue', 'vue-router', 'js-cookie', 'dayjs', 'easyqrcodejs'],
     // globals: {
     //   dayjs: 'Dayjs',

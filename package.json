@@ -32,6 +32,7 @@
     "@morehook/component": "workspace:*",
     "@morehook/core": "workspace:*",
     "@morehook/metadata": "workspace:*",
+    "@morehook/utils": "workspace:*",
     "@rollup/plugin-babel": "^6.0.2",
     "@rollup/plugin-commonjs": "^23.0.2",
     "@rollup/plugin-json": "^5.0.1",

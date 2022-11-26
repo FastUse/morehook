@@ -17,6 +17,7 @@ importers:
       '@morehook/component': workspace:*
       '@morehook/core': workspace:*
       '@morehook/metadata': workspace:*
+      '@morehook/utils': workspace:*
       '@rollup/plugin-babel': ^6.0.2
       '@rollup/plugin-commonjs': ^23.0.2
       '@rollup/plugin-json': ^5.0.1
@@ -82,6 +83,7 @@ importers:
       '@morehook/component': link:packages/component
       '@morehook/core': link:packages/core
       '@morehook/metadata': link:packages/metadata
+      '@morehook/utils': link:packages/utils
       '@rollup/plugin-babel': 6.0.2_ecxuj7zm5zl7qcys7nvyfh7ewm
       '@rollup/plugin-commonjs': 23.0.2_rollup@3.4.0
       '@rollup/plugin-json': 5.0.1_rollup@3.4.0
@@ -152,6 +154,9 @@ importers:
       vue-demi: 0.13.11
     dependencies:
       vue-demi: 0.13.11
+
+  packages/utils:
+    specifiers: {}
 
 packages:
 

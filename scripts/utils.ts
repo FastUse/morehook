@@ -232,7 +232,6 @@ export async function updatePackageJSON(indexes: PackageIndexes) {
     name,
     description,
     author,
-    submodules,
     iife,
     keywords,
     moduleJs

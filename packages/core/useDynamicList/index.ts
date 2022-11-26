@@ -1,14 +1,5 @@
 import { ref, Ref, isRef } from 'vue-demi'
-
-/**
- * 获取随机字符串
- * randomLength: 生成的字符串长度
- */
-const getRandomStr = (randomLength = 5) => {
-  return Number(Math.random().toString().slice(3, 8) + Date.now())
-    .toString(36)
-    .slice(0, randomLength)
-}
+import { getRandomStr } from '@morehook/utils'
 
 /**
  * 用于管理列表状态

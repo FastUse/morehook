@@ -41,7 +41,8 @@ export default defineConfig(async () => {
     resolve: {
       alias: {
         '@morehook/core': resolve(__dirname, 'core/index.ts'),
-        '@morehook/component': resolve(__dirname, 'component/index.ts')
+        '@morehook/component': resolve(__dirname, 'component/index.ts'),
+        '@morehook/utils': resolve(__dirname, 'utils/index.ts')
         // '@vueuse/shared': resolve(__dirname, 'shared/index.ts'),
         // '@vueuse/math': resolve(__dirname, 'math/index.ts'),
         // '@vueuse/integrations': resolve(__dirname, 'integrations/index.ts'),

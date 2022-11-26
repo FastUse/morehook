@@ -35,7 +35,8 @@
     "vue": "*"
   },
   "dependencies": {
-    "vue-demi": "*"
+    "vue-demi": "*",
+    "@morehook/utils": "workspace:*"
   },
   "bugs": {
     "url": "https://github.com/FastUse/morehook/issues"

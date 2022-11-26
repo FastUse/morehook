@@ -2,14 +2,14 @@ import fs from 'fs'
 import esbuild from 'rollup-plugin-esbuild'
 import dts from 'rollup-plugin-dts'
 import json from '@rollup/plugin-json'
-import fg from 'fast-glob'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import jsx from 'acorn-jsx'
 import postcss from 'rollup-plugin-postcss'
 import autoprefixer from 'autoprefixer'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import { resolve } from 'path'
+// import fg from 'fast-glob'
+// import { resolve } from 'path'
 import type { Options as ESBuildOptions } from 'rollup-plugin-esbuild'
 import type { OutputOptions, Plugin, RollupOptions } from 'rollup'
 import { functions } from '../packages/metadata/metadata'
@@ -56,6 +56,7 @@ for (const {
   const iifeGlobals = {
     'vue-demi': 'VueDemi',
     '@morehook/core': 'MoreHook',
+    '@morehook/utils': 'MoreHookUtils',
     ...(globals || {})
   }
   const iifeName = 'MoreHook'

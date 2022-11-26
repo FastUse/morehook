@@ -21,6 +21,7 @@
       "@morehook/core": ["./packages/core/index.ts"],
       "@morehook/core/*": ["./packages/core/*"],
       "@morehook/component": ["./packages/component/index.ts"],
+      "@morehook/utils": ["./packages/utils/index.ts"],
       // "@vueuse/docs-utils": ["./packages/.vitepress/plugins/utils.ts"],
       // "@vueuse/integrations": ["./packages/integrations/index.ts"],
       // "@vueuse/metadata": ["./packages/metadata/index.ts"],
