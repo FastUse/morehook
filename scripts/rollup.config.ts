@@ -49,7 +49,6 @@ for (const {
   mjs,
   dts,
   target,
-  submodules,
   singleChunk
 } of packages) {
   if (build === false) continue
@@ -60,19 +59,9 @@ for (const {
     ...(globals || {})
   }
   const iifeName = 'MoreHook'
-  const functionNames = ['index']
 
-  if (submodules) {
-    // 有子模块的情况
-    functionNames.push(
-      ...fg
-        .sync('*/index.ts', { cwd: resolve(`packages/${name}`) })
-        .map(i => i.split('/')[0])
-    )
-  }
-
-  // 打包区分为 hooks 和 组件
   if (singleChunk) {
+    // 打包组件专属
     const componentFun = functions.filter(item => item.package === 'component')
     configs.push({
       input: componentFun.reduce((pre, item) => {
@@ -128,73 +117,69 @@ for (const {
       external: [...externals, ...(external || []), /index.scss/]
     })
   } else {
-    for (const fn of functionNames) {
-      const input =
-        fn === 'index'
-          ? `packages/${name}/index.ts`
-          : `packages/${name}/${fn}/index.ts`
+    // 打包 hooks & utils
+    const fn = 'index'
+    const input = `packages/${name}/index.ts`
+    const output: OutputOptions[] = []
 
-      const output: OutputOptions[] = []
+    if (mjs !== false) {
+      output.push({
+        file: `packages/${name}/dist/${fn}.mjs`,
+        format: 'es'
+      })
+    }
 
-      if (mjs !== false) {
-        output.push({
-          file: `packages/${name}/dist/${fn}.mjs`,
-          format: 'es'
-        })
-      }
+    if (cjs !== false) {
+      output.push({
+        file: `packages/${name}/dist/${fn}.cjs`,
+        format: 'cjs'
+      })
+    }
 
-      if (cjs !== false) {
-        output.push({
-          file: `packages/${name}/dist/${fn}.cjs`,
-          format: 'cjs'
-        })
-      }
+    if (iife !== false) {
+      output.push(
+        {
+          file: `packages/${name}/dist/${fn}.iife.js`,
+          format: 'iife',
+          name: iifeName,
+          extend: true,
+          globals: iifeGlobals,
+          plugins: [injectVueDemi]
+        },
+        {
+          file: `packages/${name}/dist/${fn}.iife.min.js`,
+          format: 'iife',
+          name: iifeName,
+          extend: true,
+          globals: iifeGlobals,
+          plugins: [injectVueDemi, esbuildMinifer({ minify: true })]
+        }
+      )
+    }
 
-      if (iife !== false) {
-        output.push(
-          {
-            file: `packages/${name}/dist/${fn}.iife.js`,
-            format: 'iife',
-            name: iifeName,
-            extend: true,
-            globals: iifeGlobals,
-            plugins: [injectVueDemi]
-          },
-          {
-            file: `packages/${name}/dist/${fn}.iife.min.js`,
-            format: 'iife',
-            name: iifeName,
-            extend: true,
-            globals: iifeGlobals,
-            plugins: [injectVueDemi, esbuildMinifer({ minify: true })]
-          }
-        )
-      }
+    configs.push({
+      input,
+      output,
+      plugins: [
+        commonjs(),
+        nodeResolve(),
+        json(),
+        target ? esbuild({ target }) : esbuildPlugin
+      ],
+      acornInjectPlugins: [jsx() as () => unknown],
+      external: [...externals, ...(external || [])]
+    })
 
+    if (dts !== false) {
       configs.push({
         input,
-        output,
-        plugins: [
-          commonjs(),
-          nodeResolve(),
-          json(),
-          target ? esbuild({ target }) : esbuildPlugin
-        ],
-        acornInjectPlugins: [jsx() as () => unknown],
+        output: {
+          file: `packages/${name}/dist/${fn}.d.ts`,
+          format: 'es'
+        },
+        plugins: dtsPlugin,
         external: [...externals, ...(external || [])]
       })
-
-      if (dts !== false) {
-        configs.push({
-          input,
-          output: {
-            file: `packages/${name}/dist/${fn}.d.ts`,
-            format: 'es'
-          },
-          plugins: dtsPlugin,
-          external: [...externals, ...(external || [])]
-        })
-      }
     }
   }
 }

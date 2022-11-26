@@ -7,7 +7,6 @@ import consola from 'consola'
 import { metadata } from '../packages/metadata/metadata'
 import { packages } from '../meta/packages'
 import { version } from '../package.json'
-
 import { updateImport } from './utils'
 
 const rootDir = path.resolve(__dirname, '..')

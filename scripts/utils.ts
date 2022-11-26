@@ -58,29 +58,11 @@ export async function updateImport({ packages, functions }: PackageIndexes) {
   for (const { name, dir, manualImport } of Object.values(packages)) {
     if (manualImport) continue
 
-    let imports: string[]
-    if (name === 'components') {
-      imports = functions
-        .sort((a, b) => a.name.localeCompare(b.name))
-        .flatMap(fn => {
-          const arr: string[] = []
-
-          // don't include integration components
-          if (fn.package === 'integrations') return arr
-
-          if (fn.component)
-            arr.push(`export * from '../${fn.package}/${fn.name}/component'`)
-          if (fn.directive)
-            arr.push(`export * from '../${fn.package}/${fn.name}/directive'`)
-          return arr
-        })
-    } else {
-      imports = functions
-        .filter(i => i.package === name)
-        .map(f => f.name)
-        .sort()
-        .map(name => `export * from './${name}'`)
-    }
+    const imports: string[] = functions
+      .filter(i => i.package === name)
+      .map(f => f.name)
+      .sort()
+      .map(name => `export * from './${name}'`)
 
     // if (name === 'core') {
     //   imports.push(
@@ -290,25 +272,6 @@ export async function updatePackageJSON(indexes: PackageIndexes) {
     }
     if (keywords) {
       packageJSON.keywords = [...keywords]
-    }
-
-    if (submodules) {
-      indexes.functions
-        .filter(i => i.package === name)
-        .forEach(i => {
-          packageJSON.exports[`./${i.name}`] = {
-            types: `./${i.name}.d.ts`,
-            require: `./${i.name}.cjs`,
-            import: `./${i.name}.mjs`
-          }
-          if (i.component) {
-            packageJSON.exports[`./${i.name}/component`] = {
-              types: `./${i.name}/component.d.ts`,
-              require: `./${i.name}/component.cjs`,
-              import: `./${i.name}/component.mjs`
-            }
-          }
-        })
     }
 
     await fs.writeJSON(packageJSONPath, packageJSON, { spaces: 2 })
