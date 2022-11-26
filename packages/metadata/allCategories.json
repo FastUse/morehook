@@ -12,5 +12,6 @@
   "Time": "时间（关于时间的处理）",
   "Utilities": "公共工具（例如转base64，转数字，eventBus，暂停sleep，防抖节流，这些）",
   "@Router": "vue-router的相关 hooks",
-  "@Component": "组件库，除了导出组件还提供hook便于操作目标组件内部数据"
+  "@Component": "组件库，除了导出组件还提供hook便于操作目标组件内部数据",
+  "@Utils": "工具库，基础且单一的工具函数"
 }

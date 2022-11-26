@@ -24,6 +24,7 @@ export default defineConfig({
       '/router/': CoreSidebar,
       '/component/': CoreSidebar,
       '/functions': CoreSidebar,
+      '/utils': CoreSidebar,
     } as DefaultTheme.Sidebar,
 
     editLink: {

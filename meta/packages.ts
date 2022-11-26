@@ -46,6 +46,7 @@ export const packages: any[] = [
     display: 'Utils',
     description: '业务中的工具库，不同于hook，工具库功能更单一，不依赖vue',
     keywords: ['fastuse', 'morehook', 'utils', '工具'],
-    utils: true // 含义：1.不会在文档中看到此分类 2.此分类只会参与打包到npm以及让库内其他包使用
+    addon: true
+    // utils: true // 含义：1.不会在文档中看到此分类 2.此分类只会参与打包到npm以及让库内其他包使用
   }
 ]
