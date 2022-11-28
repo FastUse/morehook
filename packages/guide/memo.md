@@ -7,6 +7,7 @@
 + @utils -> 深拷贝
 
 ### 待完成
++ 大数字问题解决方案
 + 做一个手机验证码的 hook
 + 城市选择框 hook
 + 监听资源变化，可以把监控的那一套移植到hook中
@@ -24,6 +25,39 @@
 + 加载字体的组件 + hook
 + 加载中的组件 + hook，比如在等待分析报告的业务场景
 + 添加 changelog
++ 接口轮询
++ @hook -> 解决动画场景下，真假显示的hook，比如弹框的动画
++ @utils -> 将目标总数分为不同份
+
+```
+/**
+ * 获取随机数组
+ * ps: 根据总数 100 分成 4个随机数
+ */
+function getRandomNum(n, total) {
+  // 1. 先按照平均的方式来创建数值平均的数组
+  // 2. 再对每个值来随机减，这个减去的值会随机的附在其他位数的数值上
+
+  const res = Array.from({ length: n }, () => Math.floor(total / n));
+  const resSum = res.reduce((pre, item) => (pre += item), 0);
+
+  // 如果数组总数和总数不一致，那么将剩下的数随机放到任意一位上
+  if (resSum !== total) {
+    const index = Math.floor(Math.random() * n);
+    const randowNum = res[index];
+    res[index] = randowNum + (total - resSum);
+  }
+
+  for (let i = 0; i < res.length; i++) {
+    const randomIndex = Math.floor(Math.random() * n);
+    const minus = Math.floor(Math.random() * res[i]);
+    res[i] -= minus;
+    res[randomIndex] += minus;
+  }
+
+  return res;
+}
+```
 
 ### 未知问题
 + 每次开发新hook后都需要重新 nr dev 才能看到文档新效果（看了下文档并不能妥善解决，提个issues试试~）
