@@ -30,6 +30,7 @@
 + @hook -> 解决动画场景下，真假显示的hook，比如弹框的动画
 + @component -> 进度条，看看其他组件库怎么实现的
 + @component -> 全局loading，人物会动，带有进度条，带有假进度
++ @component -> 气泡根据内容，在接触容器边缘时能自动往左右偏移，类似于 https://element.eleme.cn/2.0/#/zh-CN/component/tooltip
 
 ```
 /**
