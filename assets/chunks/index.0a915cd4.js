@@ -1,0 +1,1 @@
+function m(a,t){const r=Array.from({length:t},()=>Math.floor(a/t)),s=r.reduce((o,n)=>o+=n,0);if(s!==a){const o=Math.floor(Math.random()*t),n=r[o];r[o]=n+(a-s)}for(let o=0;o<r.length;o++){const n=Math.floor(Math.random()*t),e=Math.floor(Math.random()*r[o]);r[o]-=e,r[n]+=e}return r}export{m as s};
