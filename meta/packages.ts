@@ -39,7 +39,8 @@ export const packages: any[] = [
     keywords: ['fastuse', 'morehook', 'component', 'vue组件'],
     iife: false,
     moduleJs: true, // 是否 main 入口指向 index.mjs
-    singleChunk: true // 是否子包单独打包 (目前是组件包独有的,暂时没用上)
+    singleChunk: true, // 是否子包单独打包 (目前是组件包独有的,暂时没用上)
+    external: ['@morehook/utils']
   },
   {
     name: 'utils',

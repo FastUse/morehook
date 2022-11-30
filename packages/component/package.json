@@ -29,7 +29,9 @@
     "vue": "^3.0.0"
   },
   "dependencies": {
-    "vue-demi": "*"
+    "vue-demi": "*",
+    "@morehook/utils": "workspace:*",
+    "@morehook/core": "workspace:*"
   },
   "bugs": {
     "url": "https://github.com/FastUse/morehook/issues"
