@@ -165,7 +165,7 @@ export default defineComponent({
               <img
                 class={bem('img')}
                 style={getImgHaveStyles()}
-                src="./loading.gif"
+                src="/loading.gif"
               />
               <div
                 class={bem('progress', ['have'])}
