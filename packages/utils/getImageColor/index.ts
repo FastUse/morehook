@@ -1,3 +1,9 @@
+/**
+ * x: x轴坐标
+ * y: y轴坐标
+ * direction: 快捷定义坐标(左上，右上，中间，左下，右下),优先级大于x，y
+ * target: 图片在页面的DOM，以防图片在外层被压缩宽高导致传入的x，y与实际不一
+ */
 interface Actions {
   x?: number
   y?: number
@@ -10,6 +16,11 @@ interface Actions {
   target?: HTMLElement
 }
 
+/**
+ * 获取图片中任意坐标的像素
+ * @param url 图片路径
+ * @param actions Actions
+ */
 export function getImageColor(url: string, actions: Actions): Promise<number[]>
 
 export function getImageColor(

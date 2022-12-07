@@ -2,13 +2,14 @@
 category: utils
 ---
 
-# _template
+# getImageColor
 
-我是功能描述:
+获取图片中任意坐标的像素
 
 ## Usage
 ``` js
-import { getRandomStr } from '@morehook/utils'
+import { getImageColor } from '@morehook/utils'
 
 const key = getRandomStr()
+const { offsetX, offsetY } = useMousePosition({ type: 'move', target })
 ```
