@@ -1,26 +1,12 @@
-interface Actions {
-  x?: number
-  y?: number
-  direction?:
-    | 'left-top'
-    | 'right-top'
-    | 'center'
-    | 'left-bottom'
-    | 'right-bottom'
-  target?: HTMLElement
-}
+/**
+ * uniapp 微信小程序专用
+ */
+export function getImageColor(url, { x, y, direction, target }) {
+  const canvas = wx.createOffscreenCanvas({ type: '2d' })
 
-export function getImageColor(url: string, actions: Actions): Promise<number[]>
-
-export function getImageColor(
-  url: string,
-  { x, y, direction, target }: Actions
-) {
-  const canvas = document.createElement('canvas')
   if (!canvas) return
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const context = canvas.getContext('2d')!
-  const image = new Image()
+  const context = canvas.getContext('2d')
+  const image = canvas.createImage()
   image.src = url
   image.crossOrigin = 'Anonymous'
 
