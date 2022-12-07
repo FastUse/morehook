@@ -27,30 +27,37 @@ const defaultOptions = {
  * 分两种 1.点击触发 2.移动触发
  * 也分为全局触发和某个元素触发
  * @param options Options
- * @return clickX: x坐标 clickY: y坐标
  */
 export function useMousePosition(options?: Options): {
-  clickX: Ref<number>
-  clickY: Ref<number>
+  pageX: Ref<number>
+  pageY: Ref<number>
+  offsetX: Ref<number>
+  offsetY: Ref<number>
 }
 
 export function useMousePosition(options?: Options) {
   const { type, target, onSuccess } = { ...defaultOptions, ...options }
-  const clickX = ref<number>(-1)
-  const clickY = ref<number>(-1)
+  const pageX = ref<number>(-1)
+  const pageY = ref<number>(-1)
+  const offsetX = ref<number>(-1)
+  const offsetY = ref<number>(-1)
 
   if (!isClient || !target) {
     return {
-      clickX,
-      clickY
+      pageX,
+      pageY,
+      offsetX,
+      offsetY
     }
   }
 
   let elm = target
 
   const handler = (event: MouseEvent) => {
-    clickX.value = event.pageX
-    clickY.value = event.pageY
+    pageX.value = event.pageX
+    pageY.value = event.pageY
+    offsetX.value = event.offsetX
+    offsetY.value = event.offsetY
     onSuccess()
   }
 
@@ -69,5 +76,5 @@ export function useMousePosition(options?: Options) {
     elm.removeEventListener('mousemove', handler)
   })
 
-  return { clickX, clickY }
+  return { pageX, pageY, offsetX, offsetY }
 }

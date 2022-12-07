@@ -4,8 +4,10 @@
       ref="target"
       style="border: 1px solid red; width: 300px; height: 300px"
     ></div>
-    <p>clickX: {{ clickX }}</p>
-    <p>clickY: {{ clickY }}</p>
+    <p>offsetX(相对于自身): {{ offsetX }}</p>
+    <p>offsetY(相对于自身): {{ offsetY }}</p>
+    <p>pageX(相对于 body): {{ pageX }}</p>
+    <p>pageY(相对于 body): {{ pageY }}</p>
   </div>
 </template>
 
@@ -15,5 +17,8 @@ import { useMousePosition } from '@morehook/core'
 
 const target = ref()
 
-const { clickX, clickY } = useMousePosition({ type: 'move', target })
+const { offsetX, offsetY, pageX, pageY } = useMousePosition({
+  type: 'move',
+  target
+})
 </script>
