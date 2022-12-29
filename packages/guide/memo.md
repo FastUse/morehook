@@ -27,7 +27,6 @@
 + 进度条卡点锚点
 + 懒加载
 + 滑块验证
-+ 上传文件的，面试官那一套
 + promise 执行链那一套
 + 点击图片放大全屏的组件或者hook
 + eventbus
@@ -37,6 +36,7 @@
 + 接口轮询
 + @component -> progress 进度条，看看其他组件库怎么实现的
 + @component -> 气泡根据内容，在接触容器边缘时能自动往左右偏移，类似于 https://element.eleme.cn/2.0/#/zh-CN/component/tooltip
++ 上传文件的，面试官那一套 (依赖于ele组件，暂不处理)
 ```
 ```
 
