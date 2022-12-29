@@ -8,6 +8,7 @@
 + @utils -> 将一个数值分为不同随机份 splitNumRandom
 + @component -> 全局loading，人物会动，带有进度条，带有假进度
 + @utils -> 获取图片某个坐标的像素
++ @utils -> 下载文件
 
 ### 待完成
 + 手写 https://github.com/ConardLi/awesome-coding-js
@@ -38,19 +39,6 @@
 + @component -> progress 进度条，看看其他组件库怎么实现的
 + @component -> 气泡根据内容，在接触容器边缘时能自动往左右偏移，类似于 https://element.eleme.cn/2.0/#/zh-CN/component/tooltip
 ```
-
-下载文件 的utils
-async downloadFile(url) {
-      if (!url) return;
-      let responsePromise = await fetch(url);
-      let blob = await responsePromise.blob();
-      let objectURL = window.URL.createObjectURL(blob);
-      let a = document.createElement('a');
-      a.href = objectURL;
-      a.download = 'morehook';
-      a.click();
-      a.remove();
-    },
 ```
 
 ### 未知问题
