@@ -8,7 +8,7 @@
 + @utils -> 将一个数值分为不同随机份 splitNumRandom
 + @component -> 全局loading，人物会动，带有进度条，带有假进度
 + @utils -> 获取图片某个坐标的像素
-+ @utils -> 下载文件
++ @utils -> downloadFile 下载文件
 
 ### 待完成
 + 手写 https://github.com/ConardLi/awesome-coding-js
@@ -29,7 +29,6 @@
 + 滑块验证
 + 上传文件的，面试官那一套
 + promise 执行链那一套
-+ 下载文件那一套
 + 点击图片放大全屏的组件或者hook
 + eventbus
 + 加载图片的组件 + hook
