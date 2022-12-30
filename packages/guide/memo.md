@@ -11,11 +11,11 @@
 + @utils -> downloadFile 下载文件
 
 ### 待完成
++ 下载 Amazing AI (macos appstore)
 + 手写 https://github.com/ConardLi/awesome-coding-js
 + element 的table组件 crud 的懒加载提炼一下
 + element tooltip 根据文字长度显示 https://juejin.cn/post/7016963612015067150
 + 集成对路由的一系列处理(监听，替换等等)
-+ 节流搜索框，也就是关联搜索
 + Google quicklink 插件试试
 + @component -> 全局loading 要做个配合后端的配置
 + 大数字问题解决方案
