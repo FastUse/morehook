@@ -37,8 +37,6 @@
 + @component -> progress 进度条，看看其他组件库怎么实现的
 + @component -> 气泡根据内容，在接触容器边缘时能自动往左右偏移，类似于 https://element.eleme.cn/2.0/#/zh-CN/component/tooltip
 + 上传文件的，面试官那一套 (依赖于ele组件，暂不处理)
-```
-```
 
 ### 未知问题
 + 每次开发新hook后都需要重新 nr dev 才能看到文档新效果（看了下文档并不能妥善解决，提个issues试试~）
@@ -57,6 +55,7 @@ https://github.com/qntm/base2048
 + https://github.com/upscayl/upscayl 图片转高清
 + https://github.com/Sanster/lama-cleaner 一个开源的 AI 工具，可以从图片上擦除任何不需要的物体
 + https://github.com/jj811208/watching-you 一个 JS 动画库，可以设定所要观察的 DOM 元素，从而形成一种互动效果，好像页面正在注视用户的操作
++ https://github.com/miracle90/monitor 前端监控体系搭建（错误、异常、白屏、性能监控、卡顿、pv等，接入日志、告警系统
 
 ## 其他
 每个 hooks 都要总结利弊，分析在哪些场景可以使用
