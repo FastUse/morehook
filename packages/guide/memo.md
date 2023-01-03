@@ -6,7 +6,7 @@
 + @utils -> 随机字符串
 + @utils -> 深拷贝
 + @utils -> 将一个数值分为不同随机份 splitNumRandom
-+ @component -> 全局loading，人物会动，带有进度条，带有假进度
++ @component -> 全局loading，人物会动，带有进度条，带有假进度，可手动控制进度条
 + @utils -> 获取图片某个坐标的像素
 + @utils -> downloadFile 下载文件
 
@@ -17,7 +17,6 @@
 + element tooltip 根据文字长度显示 https://juejin.cn/post/7016963612015067150
 + 集成对路由的一系列处理(监听，替换等等)
 + Google quicklink 插件试试
-+ @component -> 全局loading 要做个配合后端的配置
 + 大数字问题解决方案
 + 做一个手机验证码的 hook
 + 城市选择框 hook
