@@ -9,6 +9,7 @@
 + @component -> 全局loading，人物会动，带有进度条，带有假进度，可手动控制进度条
 + @utils -> 获取图片某个坐标的像素
 + @utils -> downloadFile 下载文件
++ @utils -> promiseScheduler promise任务调度
 
 ### 待完成
 + 下载 Amazing AI (macos appstore)
@@ -27,7 +28,6 @@
 + 进度条卡点锚点
 + 懒加载
 + 滑块验证
-+ promise 执行链那一套
 + 点击图片放大全屏的组件或者hook
 + 图标触屏移动的hook
 + eventbus
