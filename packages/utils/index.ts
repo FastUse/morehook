@@ -1,5 +1,6 @@
 export * from './deepCopy'
+export * from './downloadFile'
 export * from './getImageColor'
 export * from './getRandomStr'
-export * from './downloadFile'
+export * from './promiseScheduler'
 export * from './splitNumRandom'
