@@ -10,6 +10,7 @@
 + @utils -> 获取图片某个坐标的像素
 + @utils -> downloadFile 下载文件
 + @utils -> promiseScheduler promise任务调度
++ @utils -> uniapp-bridge uniapp-unit
 
 ### 待完成
 + 下载 Amazing AI (macos appstore)
