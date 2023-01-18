@@ -11,6 +11,7 @@
 + @utils -> downloadFile 下载文件
 + @utils -> promiseScheduler promise任务调度
 + @utils -> uniapp-bridge uniapp-unit
++ @utils -> precisionNumber(解决数字精度问题)
 
 ### 待完成
 + 下载 Amazing AI (macos appstore)
@@ -19,7 +20,6 @@
 + element tooltip 根据文字长度显示 https://juejin.cn/post/7016963612015067150
 + 集成对路由的一系列处理(监听，替换等等)
 + Google quicklink 插件试试
-+ 大数字问题解决方案
 + 各种弹窗(底部，居中等等)
 + 做一个手机验证码的 hook
 + 城市选择框 hook
