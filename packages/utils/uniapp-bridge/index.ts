@@ -1,12 +1,12 @@
 const {
-  uniPlatform,
-  titleBarHeight,
-  statusBarHeight,
-  platform,
-  windowWidth,
-  screenHeight,
-  navigationBarHeight
-} = uni.getSystemInfoSync()
+  uniPlatform = '',
+  titleBarHeight = '',
+  statusBarHeight = '',
+  platform = '',
+  windowWidth = '',
+  screenHeight = '',
+  navigationBarHeight = ''
+} = uni ? uni.getSystemInfoSync() : {}
 
 const isAlipayMp = uniPlatform === 'mp-alipay' // 是否是支付宝小程序平台
 
