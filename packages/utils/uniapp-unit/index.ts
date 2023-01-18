@@ -1,5 +1,3 @@
-const { titleBarHeight, statusBarHeight } = uni.getSystemInfoSync()
-
 /**
  * rpx转px
  */
@@ -39,12 +37,4 @@ const getWindowHeight = () => {
   return pxToRpx(uni.getSystemInfoSync().windowHeight)
 }
 
-export {
-  rpxToPx,
-  pxToRpx,
-  getWindowTop,
-  getStatusBarHeight,
-  getWindowHeight,
-  titleBarHeight,
-  statusBarHeight
-}
+export { rpxToPx, pxToRpx, getWindowTop, getStatusBarHeight, getWindowHeight }
