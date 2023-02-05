@@ -1,1 +1,0 @@
-import{d as a,r as n,g as c,o as r,c as s,i as d,u as t,t as i,j as l}from"../app.896bc32d.js";const _={class:"demo wide"},m={key:0,class:"error"},C=a({__name:"DemoContainer",setup(u){const e=n(null);return c(o=>{e.value=o}),(o,p)=>(r(),s("div",_,[d(o.$slots,"default"),t(e)?(r(),s("div",m,i(t(e)),1)):l("",!0)]))}});export{C as _};
