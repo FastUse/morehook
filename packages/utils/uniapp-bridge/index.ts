@@ -1,3 +1,5 @@
+const isClient = typeof window !== 'undefined'
+
 // 这里为了让ts检查不报错特意这样写的，以下代码无演示环境，只支持复制到目标项目
 const uni: any = {
   getSystemInfoSync: () => ({})
@@ -23,7 +25,7 @@ const isIos = platform === 'ios' // 是否是IOS
 
 const isAndroid = platform === 'android' // 是否是安卓设备
 
-const ua = window?.navigator?.userAgent?.toLowerCase?.()
+const ua = isClient ? window?.navigator?.userAgent?.toLowerCase?.() : ''
 
 const uaMatch = ua?.match(/micromessenger/i)
 
